@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/18 18:17:06 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/04/18 18:28:40 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@
 int	main(void)
 {
 	ft_printf("minishell\n");
+	ft_printf("haah master");
 }
