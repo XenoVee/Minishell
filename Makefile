@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/04/18 18:07:08 by rmaes         ########   odam.nl          #
+#    Updated: 2023/04/18 18:21:03 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,12 +54,12 @@ $(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c
 clean:
 	@echo "cleaning:  $(RED)removing object files$(DEFAULT)"
 	@rm -f $(OBJECTS)
-	make -C $(LIBFT_FOLDER) clean
+	@make -C $(LIBFT_FOLDER) clean
 
 fclean: clean
 	@echo "cleaning:  $(RED)removing $(NAME)$(DEFAULT)"
 	@rm -f $(NAME)
-	make -C $(LIBFT_FOLDER) rmlib
+	@make -C $(LIBFT_FOLDER) rmlib
 
 re: fclean all
 
