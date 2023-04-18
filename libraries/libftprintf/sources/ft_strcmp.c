@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell.h                                        :+:    :+:            */
+/*   ft_strcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/18 18:16:34 by rmaes         ########   odam.nl         */
+/*   Created: 2022/10/18 15:21:26 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/18 16:55:24 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+int	ft_strcmp(const char *str1, const char *str2)
+{
+	int	i;
 
-/*includes*/
-# include "../libraries/libftprintf/libft.h"
-
-/*Defines*/
-# define ERR_MALLOC		"Malloc failed. Please try again."
-
-/*Structs*/
-
-/*Functions*/
-
-#endif
+	i = 0;
+	while (str1[i] && str2[i] && str1[i] == str2[i])
+		i++;
+	return (str2[i] - str1[i]);
+}

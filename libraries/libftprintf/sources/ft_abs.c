@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_abs.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/18 17:42:47 by ohearn        ########   odam.nl         */
+/*   Created: 2022/10/13 16:28:38 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/13 16:30:03 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-
-int	main(void)
+int	ft_abs(int n)
 {
-	return (0);
+	if (n < 0)
+		return (-n);
+	return (n);
 }

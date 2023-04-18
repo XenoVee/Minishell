@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell.h                                        :+:    :+:            */
+/*   ft_sign.c                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/18 18:16:34 by rmaes         ########   odam.nl         */
+/*   Created: 2022/11/14 14:58:38 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/11/14 17:17:23 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-
-/*includes*/
-# include "../libraries/libftprintf/libft.h"
-
-/*Defines*/
-# define ERR_MALLOC		"Malloc failed. Please try again."
-
-/*Structs*/
-
-/*Functions*/
-
-#endif
+int	ft_sign(int n)
+{
+	if (n < 0)
+		return (-1);
+	if (n > 0)
+		return (1);
+	return (0);
+}

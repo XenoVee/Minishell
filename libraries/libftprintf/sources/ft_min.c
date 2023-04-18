@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell.h                                        :+:    :+:            */
+/*   ft_min.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/18 18:16:34 by rmaes         ########   odam.nl         */
+/*   Created: 2022/10/04 18:02:20 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/04 18:03:01 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-
-/*includes*/
-# include "../libraries/libftprintf/libft.h"
-
-/*Defines*/
-# define ERR_MALLOC		"Malloc failed. Please try again."
-
-/*Structs*/
-
-/*Functions*/
-
-#endif
+// make sure n is at most d - return smallest
+int	ft_min(int n, int d)
+{
+	if (n > d)
+		return (d);
+	return (n);
+}

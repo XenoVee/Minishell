@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell.h                                        :+:    :+:            */
+/*   ft_lstclear.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/18 18:16:34 by rmaes         ########   odam.nl         */
+/*   Created: 2021/12/17 16:41:19 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/17 18:52:11 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "../libft.h"
 
-/*includes*/
-# include "../libraries/libftprintf/libft.h"
+void	ft_lstclear(t_list **lst, void (*del)(void*))
+{
+	t_list	*tmp;
+	t_list	*list;
 
-/*Defines*/
-# define ERR_MALLOC		"Malloc failed. Please try again."
-
-/*Structs*/
-
-/*Functions*/
-
-#endif
+	list = *lst;
+	while (list)
+	{
+		tmp = list->next;
+		ft_lstdelone(list, del);
+		list = tmp;
+	}
+	*lst = NULL;
+}

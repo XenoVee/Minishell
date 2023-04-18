@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
-#    Makefile-Program                                   :+:    :+:             #
+#    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/04/18 17:16:52 by rmaes         ########   odam.nl          #
+#    Updated: 2023/04/18 18:07:08 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
 SOURCES_DIR = sources/
-FILES =	
+FILES =	main.c
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
 OBJECTS_DIR = objects/
@@ -27,17 +27,24 @@ OBJECTS = $(addprefix $(OBJECTS_DIR), $(FILES:.c=.o))
 
 CFLAGS = -Wall -Wextra -Werror
 CC = gcc
-NAME = 
+NAME = minishell
+
+LIBFT_FOLDER = libraries/libftprintf/
+LIBFT_NAME = libft.a
+LIBFT = $(addprefix $(LIBFT_FOLDER), $(LIBFT_NAME))
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
+$(NAME): $(OBJECTS) $(LIBFT)
 	@echo "compiling: $(YELLOW)creating executable$(DEFAULT)"
 	@$(CC) -o $@ $^
 	@echo "$(GREEN)$@ successfully compiled!$(DEFAULT)"
 
 $(OBJECTS_DIR):
-	mkdir objects
+	@mkdir objects
+
+$(LIBFT):
+	@make -C $(LIBFT_FOLDER)
 
 $(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c
 	@mkdir -p $(@D)
@@ -47,10 +54,12 @@ $(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c
 clean:
 	@echo "cleaning:  $(RED)removing object files$(DEFAULT)"
 	@rm -f $(OBJECTS)
+	make -C $(LIBFT_FOLDER) clean
 
 fclean: clean
 	@echo "cleaning:  $(RED)removing $(NAME)$(DEFAULT)"
 	@rm -f $(NAME)
+	make -C $(LIBFT_FOLDER) rmlib
 
 re: fclean all
 

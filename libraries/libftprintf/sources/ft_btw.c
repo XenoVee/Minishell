@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell.h                                        :+:    :+:            */
+/*   ft_btw.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/18 18:16:34 by rmaes         ########   odam.nl         */
+/*   Created: 2022/10/04 18:03:51 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/10/10 15:42:11 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "../libft.h"
 
-/*includes*/
-# include "../libraries/libftprintf/libft.h"
-
-/*Defines*/
-# define ERR_MALLOC		"Malloc failed. Please try again."
-
-/*Structs*/
-
-/*Functions*/
-
-#endif
+// make sure n is between d and i
+int	ft_btw(int n, int d, int i)
+{
+	if (i < d)
+		return (ft_max(ft_min(n, d), i));
+	else if (i == d)
+		return (d);
+	else
+		return (ft_max(ft_min(n, i), d));
+}

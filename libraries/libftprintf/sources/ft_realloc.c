@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell.h                                        :+:    :+:            */
+/*   ft_realloc.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/18 18:16:34 by rmaes         ########   odam.nl         */
+/*   Created: 2022/10/19 17:24:43 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/12/26 00:58:22 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include <stdlib.h>
+#include "../libft.h"
 
-/*includes*/
-# include "../libraries/libftprintf/libft.h"
+void	*ft_realloc(void *ptr, size_t size)
+{
+	char	*ret;
 
-/*Defines*/
-# define ERR_MALLOC		"Malloc failed. Please try again."
-
-/*Structs*/
-
-/*Functions*/
-
-#endif
+	ret = malloc(size);
+	if (!(ret == NULL))
+		ft_memcpy(ret, ptr, size);
+	free(ptr);
+	return (ret);
+}
