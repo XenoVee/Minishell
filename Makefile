@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/04/18 18:21:03 by rmaes         ########   odam.nl          #
+#    Updated: 2023/04/19 12:38:19 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ YELLOW = \033[0;93m
 SOURCES_DIR = sources/
 FILES =	main.c
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
+
+INCLUDES = includes
 
 OBJECTS_DIR = objects/
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(FILES:.c=.o))
@@ -46,10 +48,10 @@ $(OBJECTS_DIR):
 $(LIBFT):
 	@make -C $(LIBFT_FOLDER)
 
-$(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c
+$(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c 
 	@mkdir -p $(@D)
 	@echo "compiling: $(YELLOW)$@$(DEFAULT)"
-	@$(CC) -c $(CFLAGS) -o $@ $^
+	@$(CC) -c $(CFLAGS) -I $(INCLUDES) -o $@ $^
 
 clean:
 	@echo "cleaning:  $(RED)removing object files$(DEFAULT)"
