@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   tokenizer.h                                        :+:    :+:            */
+/*   init_struct.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/19 13:44:45 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/19 16:13:31 by ohearn        ########   odam.nl         */
+/*   Created: 2023/04/19 15:06:11 by ohearn        #+#    #+#                 */
+/*   Updated: 2023/04/19 16:13:35 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKENIZER_H
-# define TOKENIZER_H
+#include "minishell.h"
+#include "tokenizer.h"
 
-/*Structs*/
-typedef struct s_token
+t_token	init_tkn(void)
 {
-	int		type;
-	char	**tokens;
-}		t_token;
+	t_token	new;
 
-/*Functions*/
-
-#endif
+	new.type = 0;
+	new.tokens = NULL;
+	return (new);
+}
