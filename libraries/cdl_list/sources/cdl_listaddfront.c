@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   cdl_listaddfront.c                                 :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/19 12:54:03 by rmaes         ########   odam.nl         */
+/*   Created: 2022/12/13 16:16:44 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/12/15 16:25:05 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include "minishell.h"
+#include "../include/cdl_list.h"
+#include <stdlib.h>
 
-int	main(void)
+// add new node NODE to the front of LIST, and sets it as head
+void	cdl_listaddfront(t_dllist *list, t_dlnode *node)
 {
-	ft_printf("minishell\n");
+	cdl_listaddback(list, node);
+	cdl_listdecr(list);
 }

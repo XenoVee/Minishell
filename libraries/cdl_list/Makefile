@@ -6,72 +6,61 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/04/19 16:23:59 by rmaes         ########   odam.nl          #
+#    Updated: 2022/12/15 21:19:42 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 
 #Colors
-
 DEFAULT = \033[0;39m
 RED = \033[0;91m
 GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
 SOURCES_DIR = sources/
-FILES =	main.c
+FILES =		cdl_listaddback.c \
+			cdl_listaddfront.c \
+			cdl_listclear.c \
+			cdl_listdecr.c \
+			cdl_listdelnode.c \
+			cdl_listgetnode.c \
+			cdl_listincr.c \
+			cdl_listinit.c \
+			cdl_listpopnode.c \
+			cdl_nodenew.c
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
-
-INCLUDES = includes
-
 OBJECTS_DIR = objects/
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(FILES:.c=.o))
 
 CFLAGS = -Wall -Wextra -Werror
 CC = gcc
-NAME = minishell
+NAME = cdl_list.a
 
-LIBFT_FOLDER = libraries/libftprintf/
-LIBFT_NAME = libft.a
-LIBFT = $(addprefix $(LIBFT_FOLDER), $(LIBFT_NAME))
+all: $(OBJECTS_DIR) $(NAME) 
 
-LIST_FOLDER = libraries/cdl_list/
-LIST_NAME = cdl_list.a
-LIST = $(addprefix $(LIST_FOLDER), $(LIST_NAME))
-
-all: $(NAME)
-
-$(NAME): $(OBJECTS) $(LIBFT) $(LIST)
-	@echo "compiling: $(YELLOW)creating executable$(DEFAULT)"
-	@$(CC) -o $@ $^
+$(NAME): $(OBJECTS) 
+	@echo "compiling: $(YELLOW)creating library$(DEFAULT)"
+	@ar -rcsu $@ $^
 	@echo "$(GREEN)$@ successfully compiled!$(DEFAULT)"
 
 $(OBJECTS_DIR):
 	@mkdir objects
 
-$(LIBFT):
-	@make -C $(LIBFT_FOLDER)
-
-$(LIST):
-	@make -C $(LIST_FOLDER)
-
-$(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c 
-	@mkdir -p $(@D)
+$(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c
 	@echo "compiling: $(YELLOW)$@$(DEFAULT)"
-	@$(CC) -c $(CFLAGS) -I $(INCLUDES) -o $@ $^
+	@$(CC) -c $(CFLAGS) -o $@ $^
 
 clean:
-	@echo "cleaning:  $(RED)removing object files$(DEFAULT)"
+	@echo "cleaning:  $(RED)removing $(NAME) object files$(DEFAULT)"
 	@rm -f $(OBJECTS)
-	@make -C $(LIBFT_FOLDER) clean
-	@make -C $(LIST_FOLDER) clean
 
-fclean: clean
+rmlib:
 	@echo "cleaning:  $(RED)removing $(NAME)$(DEFAULT)"
 	@rm -f $(NAME)
-	@make -C $(LIBFT_FOLDER) rmlib
-	@make -C $(LIST_FOLDER) rmlib
+
+fclean: clean rmlib
+	
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   ft_listincr.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/19 12:54:03 by rmaes         ########   odam.nl         */
+/*   Created: 2022/12/13 16:19:07 by rmaes         #+#    #+#                 */
+/*   Updated: 2022/12/15 16:15:58 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include "minishell.h"
+#include "../include/cdl_list.h"
+#include <stdlib.h>
 
-int	main(void)
+// Shift up all elements of LIST by 1.
+// The first element becomes the last one.
+void	cdl_listincr(t_dllist *list)
 {
-	ft_printf("minishell\n");
+	list->head = list->head->next;
 }

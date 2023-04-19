@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   cdl_listclear.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/19 12:54:03 by rmaes         ########   odam.nl         */
+/*   Created: 2022/12/13 18:03:54 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/04/19 15:33:45 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include "minishell.h"
+#include "../include/cdl_list.h"
+#include <stdlib.h>
 
-int	main(void)
+// deletes and frees all nodes, and the list itself
+void	cdl_listclear(t_dllist *list)
 {
-	ft_printf("minishell\n");
+	while (list->head)
+		cdl_listdelnode(list, 0);
+	free(list);
 }
