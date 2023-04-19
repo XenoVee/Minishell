@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/04/19 18:00:55 by ohearn        ########   odam.nl          #
+#    Updated: 2023/04/19 20:54:38 by Owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,17 @@ MAIN_FILES = main.c
 MAIN_DIR = main/
 MAIN_DF = $(addprefix $(MAIN_DIR), $(MAIN_FILES))
 
-#tokenizer files
-TOKENIZER_FILES = tokenizer.c
-TOKENIZER_DIR = tokenizer/
-TOKENIZER_DF = $(addprefix $(TOKENIZER_DIR), $(TOKENIZER_FILES))
+#lexer files
+LEXER_FILES = tokenizer.c
+LEXER_DIR = lexer/
+LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
+
+UTILS_FILES = init_data.c
+UTILS_DIR = utils/
+UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 SOURCES_DIR = sources/
-FILES =	$(MAIN_DF) $(TOKENIZER_DF)
+FILES =	$(MAIN_DF) $(LEXER_DF) $(UTILS_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
 INCLUDES = includes

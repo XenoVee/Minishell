@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 15:06:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/19 16:52:07 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/19 20:55:51 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_token	init_tkn(void)
 	t_token	new;
 
 	new.type = 0;
+	new.status = 0;
 	new.string = NULL;
+	new.exists = 0;
 	return (new);
 }

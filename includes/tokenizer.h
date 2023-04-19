@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:44:45 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/19 19:12:24 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/19 20:37:09 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ typedef enum id
 	PIPE = 7,
 	DOLLARSGN = 8,
 }		t_id;
-
-typedef struct s_token
-{
-	int		type;
-	char	**string;
-}		t_token;
 
 /*Functions*/
 
