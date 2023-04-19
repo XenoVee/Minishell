@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/04/19 16:23:59 by rmaes         ########   odam.nl          #
+#    Updated: 2023/04/19 17:44:03 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,18 @@ RED = \033[0;91m
 GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
+#main files
+MAIN_FILES = main.c
+MAIN_DIR = main/
+MAIN_DF = $(addprefix $(MAIN_DIR), $(MAIN_FILES))
+
+#tokenizer files
+TOKENIZER_FILES = 
+TOKENIZER_DIR = tokenizer/
+TOKENIZER_DF = $(addprefix $(TOKENIZER_DIR), $(TOKENIZER_FILES))
+
 SOURCES_DIR = sources/
-FILES =	main.c
+FILES =	$(MAIN_DF) $(TOKENIZER_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
 INCLUDES = includes
