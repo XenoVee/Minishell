@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell.h                                        :+:    :+:            */
+/*   init_struct.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/19 17:40:20 by ohearn        ########   odam.nl         */
+/*   Created: 2023/04/19 15:06:11 by ohearn        #+#    #+#                 */
+/*   Updated: 2023/04/19 16:52:07 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell.h"
+#include "tokenizer.h"
 
-/*includes*/
-# include "../libraries/libftprintf/libft.h"
-# include "../libraries/cdl_list/include/cdl_list.h"
+t_token	init_tkn(void)
+{
+	t_token	new;
 
-/*Defines*/
-
-/*Structs*/
-
-/*Functions*/
-void	check_token(char *string);
-
-#endif
+	new.type = 0;
+	new.string = NULL;
+	return (new);
+}

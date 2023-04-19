@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell.h                                        :+:    :+:            */
+/*   error.h                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/19 17:40:20 by ohearn        ########   odam.nl         */
+/*   Created: 2023/04/19 16:46:11 by ohearn        #+#    #+#                 */
+/*   Updated: 2023/04/19 16:46:42 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-
-/*includes*/
-# include "../libraries/libftprintf/libft.h"
-# include "../libraries/cdl_list/include/cdl_list.h"
+#ifndef ERROR_H
+# define ERROR_H
 
 /*Defines*/
-
-/*Structs*/
-
-/*Functions*/
-void	check_token(char *string);
+# define ERR_MALLOC		"Malloc failed. Please try again."
 
 #endif
