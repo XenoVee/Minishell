@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/19 12:54:03 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/04/19 17:42:43 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 
 int	main(void)
 {
-	ft_printf("minishell\n");
+	ft_printf("minishell2\n");
+	test();
 }
