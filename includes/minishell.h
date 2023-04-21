@@ -16,6 +16,8 @@
 /*includes*/
 # include "../libraries/libftprintf/libft.h"
 # include "../libraries/cdl_list/include/cdl_list.h"
+# include "tokenizer.h"
+# include "structs.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdbool.h>
@@ -26,21 +28,6 @@
 /*Defines*/
 # define SUCCES 0
 # define FAILURE 1
-
-/*Structs*/
-typedef struct s_token
-{
-	int		type;
-	int		status;
-	char	*string;
-	bool	exists;
-
-}		t_token;
-
-typedef struct s_data
-{
-	t_token token;
-}		t_data;
 
 /*Functions*/
 void	check_token(char *string, int i);

@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   structs.h                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/21 09:58:14 by ohearn        ########   odam.nl         */
+/*   Created: 2023/04/21 09:56:49 by ohearn        #+#    #+#                 */
+/*   Updated: 2023/04/21 10:30:51 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-int	main(int ac, char **av)
+# include "../libraries/cdl_list/include/cdl_list.h"
+
+/*Structs*/
+typedef struct s_commands
 {
-	int		i;
-	t_data	data;
+	t_dllist	*args;
+	t_dllist	*outf;
+	t_dllist	*inf;
+}		t_commands;
 
-	i = 1;
-	if (ac < 2)
-	{
-		printf("try again\n");
-		return (-1);
-	}
-	if (!init_data(&data))
-		exit(FAILURE);
-	while (av[i])
-	{
-		check_token(av[i], 0);
-		i++;
-	}
-	ft_printf("minishell\n");
-	return (0);
-}
+typedef struct s_token
+{
+	int		type;
+	int		status;
+	char	*string;
+
+}		t_token;
+
+typedef struct s_data
+{
+	t_token	token;
+}		t_data;
+
+#endif

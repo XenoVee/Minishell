@@ -6,7 +6,7 @@
 /*   By: athena <athena@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/13 13:05:43 by athena        #+#    #+#                 */
-/*   Updated: 2023/04/19 17:43:21 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/21 10:30:21 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ t_dlnode	*cdl_listpopnode(t_dllist *list, int n);
 // creates and allocates a new t_dlnode, using the given content
 // the prev and next pointers are set to NULL
 // On allocation failure, returns NULL
-t_dlnode	*cdl_nodenew(int type, char *string);
+t_dlnode	*cdl_nodenew(void *content);
 
 #endif
