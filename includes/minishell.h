@@ -32,6 +32,6 @@
 /*Functions*/
 void	check_token(char *string, int i);
 bool	init_data(t_data *data);
-t_token	init_tkn(t_token new);
+t_token	init_tkn(void);
 
 #endif

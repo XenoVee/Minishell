@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/21 09:56:49 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/21 10:30:51 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/21 10:49:54 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTS_H
 
 # include "../libraries/cdl_list/include/cdl_list.h"
+# include "tokenizer.h"
 
 /*Structs*/
 typedef struct s_commands

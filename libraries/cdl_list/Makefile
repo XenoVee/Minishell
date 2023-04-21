@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2022/12/15 21:19:42 by rmaes         ########   odam.nl          #
+#    Updated: 2023/04/21 11:54:43 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 OBJECTS_DIR = objects/
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(FILES:.c=.o))
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 CC = gcc
 NAME = cdl_list.a
 
