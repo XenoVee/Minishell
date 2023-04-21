@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:43:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/19 19:15:15 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/20 09:21:19 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	check_token(char *string, int i)
 		else
 			printf ("Character is %c\n", string[i]);
 	}
+	if (string[i] == '>' && string[i + 1] == '>')
+		printf("Character is %c%c\n", string[i], string[i + 1]);
 	if (string[i] == '\'')
 		printf ("Character is %c\n", string[i]);
 	if (string[i] == '"')

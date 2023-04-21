@@ -6,17 +6,15 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 15:06:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/19 20:55:51 by Owen          ########   odam.nl         */
+/*   Updated: 2023/04/20 15:46:24 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "tokenizer.h"
 
-t_token	init_tkn(void)
+t_token	init_tkn(t_token new)
 {
-	t_token	new;
-
 	new.type = 0;
 	new.status = 0;
 	new.string = NULL;

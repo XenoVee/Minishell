@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/04/19 20:54:38 by Owen          ########   odam.nl          #
+#    Updated: 2023/04/20 15:39:58 by Owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ MAIN_DIR = main/
 MAIN_DF = $(addprefix $(MAIN_DIR), $(MAIN_FILES))
 
 #lexer files
-LEXER_FILES = tokenizer.c
+LEXER_FILES = 	init_struct.c\
+				tokenizer.c
 LEXER_DIR = lexer/
 LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
 
@@ -77,6 +78,7 @@ $(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c
 clean:
 	@echo "cleaning:  $(RED)removing object files$(DEFAULT)"
 	@rm -f $(OBJECTS)
+	@rm -rf $(OBJECTS_DIR)
 	@make -C $(LIBFT_FOLDER) clean
 	@make -C $(LIST_FOLDER) clean
 
