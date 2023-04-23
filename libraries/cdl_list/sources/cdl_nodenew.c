@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/13 16:15:18 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/04/21 11:41:11 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/23 11:48:19 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@ t_dlnode	*cdl_nodenew(void *content)
 {
 	t_dlnode	*node;
 
-	printf ("p.2\n");
 	node = malloc(sizeof(t_dlnode));
 	if (node == NULL)
 		return (NULL);
 	node->prev = NULL;
 	node->next = NULL;
 	node->content = content;
-	printf ("p.3\n");
 	return (node);
 }

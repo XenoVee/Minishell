@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:43:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/21 12:37:58 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/23 18:50:33 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_token	id_token(char **str)
 
 	token = init_tkn();
 	token.string = *str;
-	printf ("does it work? %s\n", token.string);
 	return (token);
 }
 
@@ -36,38 +35,46 @@ t_dllist	*tokenize(char *string)
 		printf ("error found\n");
 		exit(-1);
 	}
-	while (string)
+	if (string)
 	{
 		*token = id_token(&string);
-		printf ("p.1\n");
-		cdl_listaddback(token_list, cdl_nodenew(token));
-		printf ("p.6\n");
-		string++;
+		// printf("The string carried in token is: %s\n", token->string);
+		cdl_listaddback(token_list, cdl_nodenew(token->string));
+		// printf("Check %s\n", token_list->current->content);
 	}
 	return (token_list);
 }
 
-void	check_token(char *string, int i)
+void	check_token(char *string)
 {
 	t_dllist	*token_list;
 
-	if (string[i] == '<')
-	{
-		if (string[i + 1] == '<')
-			printf ("Character is %c%c\n", string[i], string[i + 1]);
-		else
-			printf ("Character is %c\n", string[i]);
-	}
-	if (string[i] == '>' && string[i + 1] == '>')
-		printf("Character is %c%c\n", string[i], string[i + 1]);
-	if (string[i] == '\'')
-		printf ("Character is %c\n", string[i]);
-	if (string[i] == '"')
-		printf ("Character is %c\n", string[i]);
-	if (string[i] == '|')
-		printf ("Character is %c\n", string[i]);
-	if (string[i] == '$')
-		printf ("Character is %c\n", string[i]);
 	token_list = tokenize(string);
+	// while (token_list->current->next != NULL)
+	printf("Token type is %s\n", token_list->current->content);
 	return ;
 }
+
+// void	comment_dump_wip(void)
+// {
+// 	int			temp;
+
+// 	temp = 0;
+// 	if (string[i] == '<')
+// 	{
+// 		if (string[i + 1] == '<')
+// 			printf ("Character is %c%c\n", string[i], string[i + 1]);
+// 		else
+// 			printf ("Character is %c\n", string[i]);
+// 	}
+// 	if (string[i] == '>' && string[i + 1] == '>')
+// 		printf("Character is %c%c\n", string[i], string[i + 1]);
+// 	if (string[i] == '\'')
+// 		printf ("Character is %c\n", string[i]);
+// 	if (string[i] == '\"')
+// 		printf ("Character is %c\n", string[i]);
+// 	if (string[i] == '|')
+// 		printf ("Character is %c\n", string[i]);
+// 	if (string[i] == '$')
+// 		printf ("Character is %c\n", string[i]);
+// }

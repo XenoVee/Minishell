@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2022/12/21 21:09:45 by rmaes         ########   odam.nl          #
+#    Updated: 2023/04/23 14:05:53 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ OBJECTS = $(addprefix $(OBJECTS_DIR), $(FILES:.c=.o))
 PRINTF_OBJECTS = $(PRINTF_SOURCES:.c=.o)
 GNL_OBJECTS = $(GNL_SOURCES:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 CC = gcc
 NAME = libft.a
 

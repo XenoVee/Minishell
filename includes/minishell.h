@@ -24,14 +24,17 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <limits.h>
+# include <signal.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
 /*Defines*/
 # define SUCCES 0
 # define FAILURE 1
 
 /*Functions*/
-void	check_token(char *string, int i);
-bool	init_data(t_data *data);
+void	check_token(char *string);
+bool	init_data(t_data data);
 t_token	init_tkn(void);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/04/21 11:51:56 by ohearn        ########   odam.nl          #
+#    Updated: 2023/04/23 13:50:45 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(LIST)
 	@echo "compiling: $(YELLOW)creating executable$(DEFAULT)"
-	@$(CC) -o $@ $^
+	@$(CC) -o $@ $^ -l readline
 	@echo "$(GREEN)$@ successfully compiled!$(DEFAULT)"
 
 $(OBJECTS_DIR):

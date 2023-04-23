@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/21 09:56:49 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/21 10:49:54 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/23 14:11:29 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,16 @@ typedef struct s_commands
 
 typedef struct s_token
 {
-	int		type;
-	int		status;
-	char	*string;
+	t_token_type	type;
+	int				status;
+	char			*string;
 
 }		t_token;
 
 typedef struct s_data
 {
 	t_token	token;
+	char	*user_input;
 }		t_data;
 
 #endif

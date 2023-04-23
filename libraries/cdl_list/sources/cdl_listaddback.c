@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/13 16:17:05 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/04/21 11:58:37 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/04/23 18:50:55 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 // add new node NODE to the back of LIST. If LIST is empty, it sets NODE as head
 void	cdl_listaddback(t_dllist *list, t_dlnode *node)
 {
-	printf ("p.4\n");
 	if (list == NULL || node == NULL)
 	{
 		printf ("Gotcha\n");
@@ -39,6 +38,5 @@ void	cdl_listaddback(t_dllist *list, t_dlnode *node)
 		list->head->prev->next = node;
 		list->head->prev = node;
 	}
-	printf ("p.5\n");
 	list->listlen++;
 }
