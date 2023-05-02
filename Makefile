@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/04/19 17:44:03 by rmaes         ########   odam.nl          #
+#    Updated: 2023/05/02 20:43:08 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,14 @@ TOKENIZER_FILES =
 TOKENIZER_DIR = tokenizer/
 TOKENIZER_DF = $(addprefix $(TOKENIZER_DIR), $(TOKENIZER_FILES))
 
+#executor files
+EXECUTOR_FILES = executor.c pathfinder.c
+EXECUTOR_DIR = executor/
+EXECUTOR_DF = $(addprefix $(EXECUTOR_DIR), $(EXECUTOR_FILES))
+
+
 SOURCES_DIR = sources/
-FILES =	$(MAIN_DF) $(TOKENIZER_DF)
+FILES =	$(MAIN_DF) $(TOKENIZER_DF) $(EXECUTOR_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
 INCLUDES = includes
