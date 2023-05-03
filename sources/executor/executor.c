@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/05/02 20:39:00 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/05/03 14:10:35 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	executor(char *cmd, char **envp, char **argv)
 		if (access(path, X_OK) != 0)
 			exit(2);
 		if (execve(path, &argv[1], envp) == -1)
-			perror("mini hell");
+			perror("minishell");
 		exit(1);
 	}
 	else
 	{
-		// sleep(1);
+		sleep(1);
 		return (1);
 	}
 }
