@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/02 20:27:08 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/05/03 14:29:45 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	char	command[] = "who";
-
 	executor(argv[1], envp, argv);
 }
 
