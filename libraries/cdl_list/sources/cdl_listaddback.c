@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/13 16:17:05 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/04/23 18:50:55 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/04 15:54:28 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	cdl_listaddback(t_dllist *list, t_dlnode *node)
 		printf ("p.4-1\n");
 		list->head = node;
 		list->current = node;
-		node->next = node;
-		node->prev = node;
+		node->next = NULL;
+		node->prev = NULL;
 	}
 	else
 	{
 		printf ("p.4-2\n");
-		node->next = list->head;
+		node->next = NULL;
 		node->prev = list->head->prev;
 		list->head->prev->next = node;
 		list->head->prev = node;
