@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   dl_list.h                                          :+:    :+:            */
+/*   list_iter.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/04 16:08:52 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/04 16:15:38 by ohearn        ########   odam.nl         */
+/*   Created: 2023/05/09 15:48:34 by ohearn        #+#    #+#                 */
+/*   Updated: 2023/05/09 15:49:03 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DL_LIST_H
-# define DL_LIST_H
+#include "../include/dl_list.h"
 
-# include <stddef.h>
-# include <limits.h>
-# include <stdlib.h>
-
-typedef struct s_dllist
+void	ft_lstiter(t_dllist *list, void (*f)(void *))
 {
-	void			*content;
-	struct s_dllist	*next;
-	struct s_dllist	*prev;
-}				t_dllist;
-
-#endif
+	if (!list || !f)
+		return ;
+	while (list)
+	{
+		f(list->content);
+		list = list->next;
+	}
+}

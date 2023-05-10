@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_listdecr.c                                      :+:    :+:            */
+/*   dl_create_list.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
+/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/12/13 16:19:07 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/12/15 16:16:09 by rmaes         ########   odam.nl         */
+/*   Created: 2023/05/04 16:42:39 by ohearn        #+#    #+#                 */
+/*   Updated: 2023/05/09 17:31:51 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cdl_list.h"
-#include <stdlib.h>
+#include "../include/dl_list.h"
 
-// Shift down all elements of LIST by 1.
-// The last element becomes the first one.
-void	cdl_listdecr(t_dllist *list)
+t_dllist	*dl_new_list(void)
 {
-	list->head = list->head->prev;
+	t_dllist	*list;
+
+	list = (t_dllist *)malloc(sizeof(t_dllist));
+	if (!list)
+		return (NULL);
+	list->content = NULL;
+	list->next = NULL;
+	list->prev = NULL;
+	return (list);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lists.c                                            :+:    :+:            */
+/*   dl_list_utils.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 15:54:44 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/04 16:15:13 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/10 12:51:33 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dl_list.h"
+#include "../include/dl_list.h"
 
 /*This is a placeholder in case I need more list related functions*/
 int	list_size(t_dllist *list)
@@ -26,6 +26,22 @@ int	list_size(t_dllist *list)
 		size++;
 	}
 	return (size);
+}
+
+void	dl_ndel(void *content)
+{
+	if (!content)
+		return ;
+	free(content);
+}
+
+void	dl_lstdelone(t_dllist *list, void (*del)(void *))
+{
+	if (!list)
+		return ;
+	if (del)
+		(del)(list->content);
+	free(list);
 }
 
 t_dllist	*search_last(t_dllist *list)

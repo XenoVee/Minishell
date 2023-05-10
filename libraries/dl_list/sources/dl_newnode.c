@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   create_list.c                                      :+:    :+:            */
+/*   dl_newnode.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/04 16:42:39 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/04 17:46:58 by ohearn        ########   odam.nl         */
+/*   Created: 2023/05/09 16:19:37 by ohearn        #+#    #+#                 */
+/*   Updated: 2023/05/09 17:20:16 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/dl_list.h"
 
-t_dllist	dl_new_list(void *content)
+t_dllist	*dll_nodenew(char *string)
 {
-	t_dllist	*list;
+	t_dllist	*node;
 
-	list = (t_dllist)malloc(sizeof(t_dllist));
-	if (list = NULL)
-		return (NULL);
-	list->content = content;
-	list->next = NULL;
-	list->prev = NULL;
-	return (list);
+	node = dl_new_list();
+	node->content = string;
+	return (node);
 }

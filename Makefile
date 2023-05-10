@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/04/23 13:50:45 by ohearn        ########   odam.nl          #
+#    Updated: 2023/05/09 16:10:12 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,8 +50,8 @@ LIBFT_FOLDER = libraries/libftprintf/
 LIBFT_NAME = libft.a
 LIBFT = $(addprefix $(LIBFT_FOLDER), $(LIBFT_NAME))
 
-LIST_FOLDER = libraries/cdl_list/
-LIST_NAME = cdl_list.a
+LIST_FOLDER = libraries/dl_list/
+LIST_NAME = dl_list.a
 LIST = $(addprefix $(LIST_FOLDER), $(LIST_NAME))
 
 all: $(NAME)

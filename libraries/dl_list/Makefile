@@ -6,7 +6,7 @@
 #    By: ohearn <ohearn@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2023/05/04 16:23:53 by ohearn        #+#    #+#                  #
-#    Updated: 2023/05/04 16:27:00 by ohearn        ########   odam.nl          #
+#    Updated: 2023/05/09 17:26:18 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,13 @@ GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
 SOURCES_DIR = sources/
-FILES =		cdl_listaddback.c \
-			cdl_listaddfront.c \
-			cdl_listclear.c \
-			cdl_listinit.c \
-			cdl_nodenew.c
+FILES =		dl_list_utils.c\
+			dl_create_list.c\
+			dl_newnode.c\
+			dl_list_add_back.c\
+			dl_list_clear.c\
+			dl_list_iter.c\
+
 
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 OBJECTS_DIR = objects/

@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:43:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/23 18:50:33 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/10 17:29:53 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,21 @@ t_token	id_token(char **str)
 	return (token);
 }
 
+t_token		get_next_token(char *str)
+{
+	t_token		token;
+	char		**ret;
+	token.string = NULL;
+	ret = ft_split(str, ' ');
+	
+}
+
 t_dllist	*tokenize(char *string)
 {
 	t_dllist	*token_list;
 	t_token		*token;
 
-	token_list = cdl_listinit();
+	token_list = dl_new_list();
 	token = malloc(sizeof(token));
 	if (!token)
 	{
@@ -38,8 +47,9 @@ t_dllist	*tokenize(char *string)
 	if (string)
 	{
 		*token = id_token(&string);
-		// printf("The string carried in token is: %s\n", token->string);
-		cdl_listaddback(token_list, cdl_nodenew(token->string));
+		printf("The string carried in token is: %s\n", token->string);
+		// cdl_listaddback(token_list, cdl_nodenew(token->string));
+		dll_add_back(token_list, dll_nodenew(token->string));
 		// printf("Check %s\n", token_list->current->content);
 	}
 	return (token_list);
@@ -51,7 +61,7 @@ void	check_token(char *string)
 
 	token_list = tokenize(string);
 	// while (token_list->current->next != NULL)
-	printf("Token type is %s\n", token_list->current->content);
+	printf("Token type is %s\n", token_list->content);
 	return ;
 }
 

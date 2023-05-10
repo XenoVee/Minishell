@@ -6,14 +6,14 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/21 09:56:49 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/23 14:11:29 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/09 16:32:35 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-# include "../libraries/cdl_list/include/cdl_list.h"
+# include "../libraries/dl_list/include/dl_list.h"
 # include "tokenizer.h"
 
 /*Structs*/
