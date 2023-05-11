@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:43:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/10 17:29:53 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/11 19:04:45 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,19 @@ t_token	id_token(char **str)
 	return (token);
 }
 
-t_token		get_next_token(char *str)
+char	*split_string(char *str, char *delims)
+{
+	
+}
+
+t_token		get_next_token(char **str)
 {
 	t_token		token;
 	char		**ret;
+
 	token.string = NULL;
-	ret = ft_split(str, ' ');
-	
+	*str = split_string(*str, "\t\n\v\f\r");
+	return (token);
 }
 
 t_dllist	*tokenize(char *string)
@@ -40,11 +46,8 @@ t_dllist	*tokenize(char *string)
 	token_list = dl_new_list();
 	token = malloc(sizeof(token));
 	if (!token)
-	{
-		printf ("error found\n");
 		exit(-1);
-	}
-	if (string)
+	while (string)
 	{
 		*token = id_token(&string);
 		printf("The string carried in token is: %s\n", token->string);

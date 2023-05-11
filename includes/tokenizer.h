@@ -6,12 +6,14 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:44:45 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/04/21 10:49:19 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/11 17:20:25 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKENIZER_H
 # define TOKENIZER_H
+
+# define EOS 1
 
 /*Structs*/
 typedef enum e_id
@@ -34,5 +36,9 @@ typedef enum e_token_type
 	TOKEN_IN,
 	TOKEN_PIPE
 }	t_token_type;
+
+/*Functions*/
+void	free_token(t_token *token);
+int		is_delim(char c);
 
 #endif
