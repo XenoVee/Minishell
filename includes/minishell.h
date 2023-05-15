@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/02 20:14:03 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/05/15 15:29:17 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_token(char *string);
 void	test(void);
 
 /*executor*/
-int		executor(char *cmd, char **envp, char **argv);
+int		executor(char **cmd1, char **envp);
 char	*pathfinder(char *find);
 
 #endif
