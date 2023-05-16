@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/15 15:29:17 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/05/16 16:38:48 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	test(void);
 
 /*executor*/
 int		executor(char **cmd1, char **envp);
+int		executort(char **cmd1, char **cmd2, char **envp);
 char	*pathfinder(char *find);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/05/15 15:29:47 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/05/16 17:30:35 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,39 +26,44 @@ static int	execute(char **cmd, char **envp)
 	if (pid == 0)
 	{
 		path = pathfinder(cmd[0]);
+		ft_printf("%s\n", path);
 		if (path == NULL)
 			exit(1);
 		if (access(path, X_OK) != 0)
 			exit(2);
-		ft_printf("%s\n", path);
-		ft_printf("%s |-| %s |-| %s\n", cmd[0], cmd[1], cmd[2]);
 		if (execve(path, &cmd[0], envp) == -1)
 			perror("minaishell");
 		exit(1);
 	}
 	else
 	{
-		wait(NULL);
+		// wait(NULL);
 	}
 	return (0);
 }
 
+int	executort(char **cmd1, char **cmd2, char **envp)
+{
+
+	int	fd_b[2];
+	int	fd_pipe[2];
+
+	pipe(fd_pipe);
+	fd_b[0] = dup(0);
+	fd_b[1] = dup(1);
+	dup2(fd_pipe[1], 1);
+	dup2(fd_pipe[0], 0);
+	execute(cmd1, envp);
+	execute(cmd2, envp);
+	wait(NULL);
+	dup2(1, fd_b[1]);
+	dup2(fd_b[1], 0);
+	write(1, "test", 4);
+	return (1);
+}
+
 int	executor(char **cmd1, char **envp)
 {
-	// int	fd_b[2];
-	// int	fd_pipe[2];
-
-	// pipe(fd_pipe);
-	// fd_b[0] = dup(1);
-	// fd_b[1] = dup(0);
-	// dup2(fd_pipe[0], 1);
-	// dup2(fd_pipe[1], 0);
-	ft_printf("%s\n", cmd1[0]);
 	execute(cmd1, envp);
-	// cmd2 = NULL;
-	// execute(cmd2, envp, argv);
-	// dup2(fd_b[0], 1);
-	// dup2(fd_b[1], 0);
-	// write(1, "test", 4);
 	return (1);
 }
