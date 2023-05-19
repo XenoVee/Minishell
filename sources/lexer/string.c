@@ -6,11 +6,11 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/11 17:07:38 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/16 16:25:25 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/19 16:50:58 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/tokenizer.h"
+#include "../includes/minishell.h"
 
 /*string related functions*/
 int		is_delim(char c)

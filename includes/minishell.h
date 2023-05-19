@@ -17,7 +17,6 @@
 # include "../libraries/libftprintf/libft.h"
 # include "../libraries/dl_list/include/dl_list.h"
 # include "tokenizer.h"
-# include "structs.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdbool.h>

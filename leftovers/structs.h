@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/21 09:56:49 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/09 16:32:35 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/19 14:57:57 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../libraries/dl_list/include/dl_list.h"
 # include "tokenizer.h"
 
-/*Structs*/
+/*Structs (added to tokenizer)*/
 typedef struct s_commands
 {
 	t_dllist	*args;
@@ -27,9 +27,8 @@ typedef struct s_commands
 typedef struct s_token
 {
 	t_token_type	type;
-	int				status;
 	char			*string;
-
+	int				status;
 }		t_token;
 
 typedef struct s_data

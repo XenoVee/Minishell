@@ -6,29 +6,49 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:43:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/16 17:46:28 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/19 18:43:19 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 #include "tokenizer.h"
 #include <stdio.h>
 
 t_token_type	id_token(char **str)
-{
+{	
+	size_t					i;
+	static const t_token	comparison[] = {
+	{TOKEN_IN, "<", 0}, {DOUBLE_LESSER, "<<", 0},
+	{TOKEN_OUT, ">", 0}, {DOUBLE_GEATER, ">>", 0}, {TOKEN_PIPE, "|", 0},
+	{S_QUOTES, "/'", 0}, {D_QUOTES, "\"", 0}, {EMPTY, NULL, 0}};
 	
-	return (NONE);
+	i = 0;
+	if (**str == '\0')
+		return (END);
+	printf("string is %s\n", *str);
+	while (comparison[i].type != EMPTY)
+	{
+		if ((ft_strlen(*str) >= ft_strlen(comparison[i].string))
+		&& ft_strcmp(*str, comparison[i].string) == 0)
+		{
+			printf("Plinko\n");
+			(*str) += ft_strlen(comparison[i].string);
+			return (comparison[i].type);
+		}
+		i++;
+	}
+	return (TOKEN_ARG);
 }
 
 t_token		get_next_token(char **str)
 {
 	t_token		token;
-	char		**ret;
 
 	token.string = NULL;
 	*str = split_string(*str, "\t\n\v\f\r");
 	token.type = id_token(str);
-	if (token.type == NONE)
+	token.string = "placeholder text";
+	if (token.type == EMPTY)
 		return (token);
 	return (token);
 }
@@ -37,18 +57,23 @@ t_dllist	*tokenize(char *string)
 {
 	t_dllist	*token_list;
 	t_token		*token;
+	int			leave;
 
-	token_list = dl_new_list();
-	token = malloc(sizeof(token));
-	if (!token)
-		exit(-1);
-	while (string)
+	token_list = NULL;
+	leave = 0;
+	while (string && leave < 5)
 	{
-		*token = id_token(&string);
-		printf("The string carried in token is: %s\n", token->string);
+		token = malloc(sizeof(token));
+		if (!token)
+			exit(4);
+		*token = get_next_token(&string);
+		printf("The string carried in token is: %s\nIt's type is %i\n", token->string, token->type);
 		// cdl_listaddback(token_list, cdl_nodenew(token->string));
-		dll_add_back(token_list, dll_nodenew(token));
-		// printf("Check %s\n", token_list->current->content);
+		dll_add_back(&token_list, dl_new_list(token));
+		printf("Check %s\n", token_list->content);
+		leave++;
+		if (token->type == END)
+			break;
 	}
 	return (token_list);
 }
@@ -59,7 +84,7 @@ void	check_token(char *string)
 
 	token_list = tokenize(string);
 	// while (token_list->current->next != NULL)
-	printf("Token type is %s\nToken content is %s\n", token_list->content, token_list);
+	printf("Token type is %s\nToken content is %s\n", token_list->content, token_list->content);
 	return ;
 }
 

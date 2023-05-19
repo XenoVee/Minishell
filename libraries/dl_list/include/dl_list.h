@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/04 16:08:52 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/10 12:51:29 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/19 16:35:17 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ typedef struct s_dllnode
 
 /*functions*/
 
-t_dllist	*dl_new_list(void);
+t_dllist	*dl_new_list(void *content);
 t_dllist	*search_last(t_dllist *list);
 t_dllist	*dll_nodenew(char *string);
 void		dl_ndel(void *content);
-void		dll_add_back(t_dllist	*list, t_dllist *new);
+void		dll_add_back(t_dllist **list, t_dllist *new);
 void		dl_lstdelone(t_dllist *list, void (*del)(void *));
 void		dll_clear(t_dllist **list, void (*del)(void *));
 void		dl_lstiter(t_dllist *list, void (*f)(void *));
