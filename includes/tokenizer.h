@@ -14,6 +14,7 @@
 # define TOKENIZER_H
 
 # define EOS 1
+# define DELIMS " \t\r\n\v\f"
 
 /*Structs*/
 typedef enum e_token_type
@@ -53,12 +54,6 @@ typedef struct s_token
 	char			*string;
 	int				status;
 }		t_token;
-
-typedef struct s_data
-{
-	t_token	token;
-	char	*user_input;
-}		t_data;
 
 /*Functions*/
 void	free_token(t_token *token);

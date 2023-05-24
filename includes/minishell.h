@@ -32,9 +32,9 @@
 # define FAILURE 1
 
 /*Functions*/
-int		mini_loop(t_data *data);
+int		mini_loop(void);
 void	parse_input(char *string);
-bool	init_data(t_data data);
+//bool	init_data(t_data data);
 t_token	init_tkn(void);
 
 #endif

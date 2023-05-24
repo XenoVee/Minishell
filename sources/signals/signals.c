@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/24 13:46:13 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/24 14:29:24 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/24 14:41:05 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,22 @@ void	sig_stuff(void)
 	sigaction(SIGQUIT, &ms, NULL);
 }
 
-int	mini_loop(t_data *data)
+int	mini_loop(void)
 {
 	t_dllist	*str_list;
-	char	*str;
+	char		*str;
 
 	str_list = NULL;
 	while (true)
 	{
 		sig_stuff();
-		data->user_input = readline("Minishell>$");
-		if (!data->user_input)
+		str = readline("Minishell>$");
+		if (!str)
 			break ;
-		add_history(data->user_input);
+		add_history(str);
 		dll_add_back(&str_list, dl_new_list(str));
-		parse_input(data->user_input);
-		free (data->user_input);
+		parse_input(str);
 	}
+	dll_clear(&str_list, free);
 	return (1);
 }

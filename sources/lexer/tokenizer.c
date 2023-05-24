@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:43:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/24 13:41:00 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/24 16:24:00 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@ t_token_type	id_token(char **str)
 	{TOKEN_IN, "<", 0}, {DOUBLE_LESSER, "<<", 0},
 	{TOKEN_OUT, ">", 0}, {DOUBLE_GEATER, ">>", 0}, {TOKEN_PIPE, "|", 0},
 	{S_QUOTES, "/'", 0}, {D_QUOTES, "\"", 0}, {EMPTY, NULL, 0}};
-	
+
 	i = 0;
 	if (**str == '\0')
 		return (END);
-	// printf("string is %s\n", *str);
 	while (comparison[i].type != EMPTY)
 	{
 		if ((ft_strlen(*str) >= ft_strlen(comparison[i].string))
-		&& ft_strcmp(*str, comparison[i].string) == 0)
+			&& ft_strcmp(*str, comparison[i].string) == 0)
 		{
 			printf("Plinko\n");
 			(*str) += ft_strlen(comparison[i].string);
@@ -40,16 +39,18 @@ t_token_type	id_token(char **str)
 	return (TOKEN_ARG);
 }
 
-t_token		get_next_token(char **str)
+t_token	get_next_token(char **str)
 {
 	t_token		token;
 
 	token.string = NULL;
-	*str = split_string(*str, "\t\n\v\f\r ");
+	*str = split_string(*str, DELIMS);
 	token.type = id_token(str);
-	token.string = ":D";
 	if (token.type == EMPTY)
 		return (token);
+	if (token.type == TOKEN_ARG || token.type == S_QUOTES
+		|| token.type == D_QUOTES)
+		token.string = assign_string(str, token.type);
 	return (token);
 }
 
@@ -67,12 +68,14 @@ t_dllist	*tokenize(char *string)
 		if (!token)
 			exit(4);
 		*token = get_next_token(&string);
-		//printf("The string carried in token is: %s\nIt's type is %i\n", token->string, token->type);
+		printf("The string carried in token is: %s\nIt's type is %i\n", token->string, token->type);
 		dll_add_back(&token_list, dl_new_list(token));
-		printf("Check %s\n", token->string);
 		leave++;
 		if (token->type == END)
-			break;
+		{
+			printf("Exit condition found\n");
+			break ;
+		}
 	}
 	return (token_list);
 }
@@ -83,7 +86,8 @@ void	parse_input(char *string)
 
 	token_list = tokenize(string);
 	//while (token_list->current->next != NULL)
-	printf("Token type is %s\nToken content is %s\n", token_list->content, token_list->content);
+	//printf("Token type is %s\nToken content is %s\n",
+	//token_list->content, token_list->content);
 	return ;
 }
 
