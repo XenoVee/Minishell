@@ -32,7 +32,8 @@
 # define FAILURE 1
 
 /*Functions*/
-void	check_token(char *string);
+int		mini_loop(t_data *data);
+void	parse_input(char *string);
 bool	init_data(t_data data);
 t_token	init_tkn(void);
 

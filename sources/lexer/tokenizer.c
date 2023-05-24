@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:43:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/19 18:43:19 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/24 13:41:00 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_token_type	id_token(char **str)
 	i = 0;
 	if (**str == '\0')
 		return (END);
-	printf("string is %s\n", *str);
+	// printf("string is %s\n", *str);
 	while (comparison[i].type != EMPTY)
 	{
 		if ((ft_strlen(*str) >= ft_strlen(comparison[i].string))
@@ -45,9 +45,9 @@ t_token		get_next_token(char **str)
 	t_token		token;
 
 	token.string = NULL;
-	*str = split_string(*str, "\t\n\v\f\r");
+	*str = split_string(*str, "\t\n\v\f\r ");
 	token.type = id_token(str);
-	token.string = "placeholder text";
+	token.string = ":D";
 	if (token.type == EMPTY)
 		return (token);
 	return (token);
@@ -67,10 +67,9 @@ t_dllist	*tokenize(char *string)
 		if (!token)
 			exit(4);
 		*token = get_next_token(&string);
-		printf("The string carried in token is: %s\nIt's type is %i\n", token->string, token->type);
-		// cdl_listaddback(token_list, cdl_nodenew(token->string));
+		//printf("The string carried in token is: %s\nIt's type is %i\n", token->string, token->type);
 		dll_add_back(&token_list, dl_new_list(token));
-		printf("Check %s\n", token_list->content);
+		printf("Check %s\n", token->string);
 		leave++;
 		if (token->type == END)
 			break;
@@ -78,12 +77,12 @@ t_dllist	*tokenize(char *string)
 	return (token_list);
 }
 
-void	check_token(char *string)
+void	parse_input(char *string)
 {
 	t_dllist	*token_list;
 
 	token_list = tokenize(string);
-	// while (token_list->current->next != NULL)
+	//while (token_list->current->next != NULL)
 	printf("Token type is %s\nToken content is %s\n", token_list->content, token_list->content);
 	return ;
 }

@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/05/19 16:49:36 by ohearn        ########   odam.nl          #
+#    Updated: 2023/05/24 14:21:47 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,12 +30,19 @@ LEXER_FILES = 	string.c\
 LEXER_DIR = lexer/
 LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
 
-UTILS_FILES = init_data.c
+#signal files
+SIGNAL_FILES = signals.c
+SIGNAL_DIR = signals/
+SIGNAL_DF = $(addprefix $(SIGNAL_DIR), $(SIGNAL_FILES))
+
+#utils files
+UTILS_FILES = 	init_data.c\
+				signals.c
 UTILS_DIR = utils/
 UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 SOURCES_DIR = sources/
-FILES =	$(MAIN_DF) $(LEXER_DF) $(UTILS_DF)
+FILES =	$(MAIN_DF) $(LEXER_DF) $(UTILS_DF) $(SIGNALS_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
 INCLUDES = includes

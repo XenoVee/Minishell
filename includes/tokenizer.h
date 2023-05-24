@@ -36,8 +36,8 @@ typedef enum e_token_type
 typedef enum e_status
 {
 	DEFAULT = 0,
-	S_QUOTES,
-	D_QUOTES,
+	S_Q,
+	D_Q,
 }	t_status;
 
 typedef struct s_commands
@@ -63,7 +63,7 @@ typedef struct s_data
 /*Functions*/
 void	free_token(t_token *token);
 int		is_delim(char c);
-char	*find_char(char *str, char c);
-char	*split_string(char *str, char *delims);
+char	*find_char(const char *str, char c);
+char	*split_string(const char *str, const char *delims);
 
 #endif
