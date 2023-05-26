@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/05/24 14:46:21 by ohearn        ########   odam.nl          #
+#    Updated: 2023/05/26 18:16:12 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,12 @@ SIGNALS_DF = $(addprefix $(SIGNALS_DIR), $(SIGNALS_FILES))
 UTILS_FILES = 	init_data.c
 UTILS_DIR = utils/
 UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
+
+#executor files
+EXECUTOR_FILES = executor.c pathfinder.c
+EXECUTOR_DIR = executor/
+EXECUTOR_DF = $(addprefix $(EXECUTOR_DIR), $(EXECUTOR_FILES))
+
 
 SOURCES_DIR = sources/
 FILES =	$(MAIN_DF) $(LEXER_DF) $(UTILS_DF) $(SIGNALS_DF)

@@ -36,5 +36,11 @@ int		mini_loop(void);
 void	parse_input(char *string);
 //bool	init_data(t_data data);
 t_token	init_tkn(void);
+void	check_token(char *string);
+void	test(void);
+
+/*executor*/
+int		executor(char *cmd, char **envp, char **argv);
+char	*pathfinder(char *find);
 
 #endif
