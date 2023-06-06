@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/05 16:54:45 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/06 17:13:28 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ char	*pathfinder(char *find);
 char	*expand(char **envp, char *var);
 
 /*builtins*/
-void	echo(char *str, char **envp);
+void	echo(char *str, char **envp, int mode);
 
 #endif

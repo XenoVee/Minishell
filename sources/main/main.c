@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/06 16:24:35 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/06 17:17:40 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,16 @@
 // 	exit(0);
 // }
 
+void leaks(void)
+{
+	system("leaks minishell -q");
+}
+
 int	main(int argc, char **argv, char **envp)
 {
-	echo(argv[1], envp);
+	atexit(leaks);
+	echo(argv[1], envp, 0);
+	echo(argv[1], envp, 1);
 	argc++;
 }
 	// char *cmd1[3];

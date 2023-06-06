@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:02:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/06 16:26:11 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/06 17:18:12 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ static char	*cutvar(char *str)
 		ret[i] = str[i];
 		i++;
 	}
+	ret[i] = '\0';
 	return (ret);
 }
 
-static int	varhandler(char *print, int *j, char *str, char **envp)
+static int	varhandler(char **print, int *j, char *str, char **envp)
 {
 	char	*var;
 	char	*exp;
@@ -45,21 +46,27 @@ static int	varhandler(char *print, int *j, char *str, char **envp)
 
 	var = cutvar(str);
 	exp = expand(envp, var);
+	if (exp == NULL)
+	{
+		i = ft_strlen(var);
+		free(var);
+		return (i);
+	}
 	i = 0;
-	print = ft_realloc(print, sizeof(char)
-			* (ft_strlen(print) + ft_strlen(exp) + 2));
+	*print = ft_realloc(*print, sizeof(char)
+			* (ft_strlen(*print) + ft_strlen(exp) + 2));
 	while (exp[i])
 	{
-		print[*j] = exp[i];
+		print[0][*j] = exp[i];
 		i++;
 		*j += 1;
 	}
 	i = ft_strlen(var);
 	free(var);
-	return (1);
+	return (i);
 }
 
-void	echo(char *str, char **envp)
+void	echo(char *str, char **envp, int mode)
 {
 	int		i;
 	int		j;
@@ -67,13 +74,13 @@ void	echo(char *str, char **envp)
 
 	i = 0;
 	j = 0;
-	print = malloc(sizeof(char) * (ft_strlen(str) + 2));
+	print = malloc(sizeof(char) * (ft_strlen(str) + 1));
 	while (str[i])
 	{
-		if (str[i] == '$' && str[ft_max(0, i - 1)] != '\\')
+		if (str[i] == '$' && mode == 1)
 		{
 			i++;
-			i = varhandler(print, &j, &str[i], envp);
+			i += varhandler(&print, &j, &str[i], envp);
 		}
 		else
 		{
@@ -85,4 +92,5 @@ void	echo(char *str, char **envp)
 	print[j] = '\n';
 	print[j + 1] = '\0';
 	write(1, print, ft_strlen(print));
+	free(print);
 }
