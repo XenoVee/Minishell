@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/05 16:59:16 by rmaes         ########   odam.nl          #
+#    Updated: 2023/06/06 16:11:02 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ OBJECTS_DIR = objects/
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(FILES:.c=.o))
 
 CFLAGS = -Wall -Wextra -Werror
-CC = gcc
+CC = gcc -g
 NAME = minishell
 
 LIBFT_FOLDER = libraries/libftprintf/

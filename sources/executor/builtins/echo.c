@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:02:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/05 17:03:14 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/06 16:26:11 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	varhandler(char *print, int *j, char *str, char **envp)
 	exp = expand(envp, var);
 	i = 0;
 	print = ft_realloc(print, sizeof(char)
-			* (ft_strlen(print) + ft_strlen(exp) + 1));
+			* (ft_strlen(print) + ft_strlen(exp) + 2));
 	while (exp[i])
 	{
 		print[*j] = exp[i];
@@ -67,9 +67,7 @@ void	echo(char *str, char **envp)
 
 	i = 0;
 	j = 0;
-	printf("%s\n\n", str);
-	print = malloc(sizeof(char) * (ft_strlen(str) + 1));
-	print[ft_strlen(str)] = '\0';
+	print = malloc(sizeof(char) * (ft_strlen(str) + 2));
 	while (str[i])
 	{
 		if (str[i] == '$' && str[ft_max(0, i - 1)] != '\\')
@@ -84,5 +82,7 @@ void	echo(char *str, char **envp)
 			j++;
 		}
 	}
-	write(1, &print, ft_strlen(print));
+	print[j] = '\n';
+	print[j + 1] = '\0';
+	write(1, print, ft_strlen(print));
 }

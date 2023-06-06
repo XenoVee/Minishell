@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/05/16 17:30:35 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/05/31 14:22:45 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static int	execute(char **cmd, char **envp)
 	}
 	else
 	{
-		// wait(NULL);
 	}
 	return (0);
 }
