@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/05/02 20:43:08 by rmaes         ########   odam.nl          #
+#    Updated: 2023/06/05 16:59:16 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
 #main files
-MAIN_FILES = main.c
+MAIN_FILES = main.c error.c
 MAIN_DIR = main/
 MAIN_DF = $(addprefix $(MAIN_DIR), $(MAIN_FILES))
 
@@ -28,8 +28,13 @@ TOKENIZER_FILES =
 TOKENIZER_DIR = tokenizer/
 TOKENIZER_DF = $(addprefix $(TOKENIZER_DIR), $(TOKENIZER_FILES))
 
+
+#builtins
+BUILTIN_FILES = echo.c
+BUILTIN_DIR = builtins/
+BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
 #executor files
-EXECUTOR_FILES = executor.c pathfinder.c
+EXECUTOR_FILES = $(BUILTIN_DF) executor.c pathfinder.c expansion.c 
 EXECUTOR_DIR = executor/
 EXECUTOR_DF = $(addprefix $(EXECUTOR_DIR), $(EXECUTOR_FILES))
 
@@ -58,6 +63,7 @@ LIST = $(addprefix $(LIST_FOLDER), $(LIST_NAME))
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(LIST)
+	@echo $(EXECUTOR_DF)
 	@echo "compiling: $(YELLOW)creating executable$(DEFAULT)"
 	@$(CC) -o $@ $^
 	@echo "$(GREEN)$@ successfully compiled!$(DEFAULT)"

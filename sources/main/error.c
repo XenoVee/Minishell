@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   error.h                                            :+:    :+:            */
+/*   error.c                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/19 16:46:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/05 16:54:12 by rmaes         ########   odam.nl         */
+/*   Created: 2023/06/05 16:50:47 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/06/05 17:00:36 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#include "minishell.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-/*includes*/
-# include <errno.h>
-
-/*Defines*/
-# define ERR_MALLOC		"Malloc call failed"
-
-#endif
+void	error(char *errmsg)
+{
+	ft_putstr_fd("Error\n", 2);
+	if (errno == 0)
+		ft_putendl_fd(errmsg, 2);
+	else
+		perror(errmsg);
+	exit(EXIT_FAILURE);
+}
