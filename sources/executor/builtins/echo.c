@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:02:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/06 17:18:12 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/08 13:31:34 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ static int	varhandler(char **print, int *j, char *str, char **envp)
 	{
 		i = ft_strlen(var);
 		free(var);
-		return (i);
+		return (i - 1);
 	}
 	i = 0;
 	*print = ft_realloc(*print, sizeof(char)
-			* (ft_strlen(*print) + ft_strlen(exp) + 2));
+			* (ft_strlen(*print) + ft_strlen(exp) + 1));
 	while (exp[i])
 	{
 		print[0][*j] = exp[i];
@@ -77,11 +77,8 @@ void	echo(char *str, char **envp, int mode)
 	print = malloc(sizeof(char) * (ft_strlen(str) + 1));
 	while (str[i])
 	{
-		if (str[i] == '$' && mode == 1)
-		{
-			i++;
-			i += varhandler(&print, &j, &str[i], envp);
-		}
+		if (str[i] == '$' && mode & M_EXP)
+			i += 1 + varhandler(&print, &j, &str[i + 1], envp);
 		else
 		{
 			print[j] = str[i];
@@ -89,8 +86,9 @@ void	echo(char *str, char **envp, int mode)
 			j++;
 		}
 	}
-	print[j] = '\n';
-	print[j + 1] = '\0';
+	print[j] = '\0';
 	write(1, print, ft_strlen(print));
+	if (!(mode & M_N))
+		write(1, "\n", 1);
 	free(print);
 }

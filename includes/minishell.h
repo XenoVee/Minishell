@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/06 17:13:28 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/08 11:30:59 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libraries/libftprintf/libft.h"
 # include "../libraries/cdl_list/include/cdl_list.h"
 # include "error.h"
+# include "builtins.h"
 
 /*Defines*/
 
@@ -32,8 +33,5 @@ int		executor(char **cmd1, char **envp);
 int		executort(char **cmd1, char **cmd2, char **envp);
 char	*pathfinder(char *find);
 char	*expand(char **envp, char *var);
-
-/*builtins*/
-void	echo(char *str, char **envp, int mode);
 
 #endif

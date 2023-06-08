@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/06 16:11:02 by rmaes         ########   odam.nl          #
+#    Updated: 2023/06/08 13:49:00 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ TOKENIZER_DF = $(addprefix $(TOKENIZER_DIR), $(TOKENIZER_FILES))
 
 
 #builtins
-BUILTIN_FILES = echo.c
+BUILTIN_FILES = echo.c env.c
 BUILTIN_DIR = builtins/
 BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
 #executor files
@@ -63,7 +63,6 @@ LIST = $(addprefix $(LIST_FOLDER), $(LIST_NAME))
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(LIST)
-	@echo $(EXECUTOR_DF)
 	@echo "compiling: $(YELLOW)creating executable$(DEFAULT)"
 	@$(CC) -o $@ $^
 	@echo "$(GREEN)$@ successfully compiled!$(DEFAULT)"
