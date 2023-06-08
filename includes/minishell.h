@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/08 14:26:33 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/08 14:51:47 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include "../libraries/cdl_list/include/cdl_list.h"
 # include "error.h"
 # include "builtins.h"
+# include "error.h"
+# include "builtins.h"
 
 /*Defines*/
 
@@ -27,8 +29,11 @@
 void	check_token(char *string);
 void	test(void);
 void	error(char *errmsg);
+void	error(char *errmsg);
 
 /*executor*/
+int		executor(char **cmd1, char **envp);
+int		executort(char **cmd1, char **cmd2, char **envp);
 int		executor(char **cmd1, char **envp);
 int		executort(char **cmd1, char **cmd2, char **envp);
 char	*pathfinder(char *find);

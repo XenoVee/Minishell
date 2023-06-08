@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   builtins.h                                         :+:    :+:            */
+/*   error.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/08 11:30:09 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/08 14:51:07 by rmaes         ########   odam.nl         */
+/*   Created: 2023/06/05 16:50:47 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/06/05 17:00:36 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#include "minishell.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-/*enums*/
-
-// bitmask
-enum e_mask
+void	error(char *errmsg)
 {
-	M_NONE = 0,
-	M_N = 1,
-	M_EXP = 2,
-	M_EXP_N = 3,
-};
-
-/*functions*/
-void	bi_echo(char *str, char **envp, int mode);
-void	bi_env(char **envp);
-void	bi_exit(void);
-void	bi_unset(char *var, char **envp);
-
-#endif
-#endif
+	ft_putstr_fd("Error\n", 2);
+	if (errno == 0)
+		ft_putendl_fd(errmsg, 2);
+	else
+		perror(errmsg);
+	exit(EXIT_FAILURE);
+}

@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/02 18:50:31 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/05/02 20:31:26 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/05/05 14:46:09 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <errno.h>
 
 char	*pathfinder(char *find)
 {

@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/08 14:37:35 by rmaes         ########   odam.nl          #
+#    Updated: 2023/06/08 14:49:52 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,11 @@ TOKENIZER_FILES =
 TOKENIZER_DIR = tokenizer/
 TOKENIZER_DF = $(addprefix $(TOKENIZER_DIR), $(TOKENIZER_FILES))
 
+
+#builtins
+BUILTIN_FILES = echo.c env.c
+BUILTIN_DIR = builtins/
+BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
 
 #builtins
 BUILTIN_FILES = echo.c env.c unset.c exit.c
