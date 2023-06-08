@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:02:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/08 13:31:34 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/08 14:36:18 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	varhandler(char **print, int *j, char *str, char **envp)
 	return (i);
 }
 
-void	echo(char *str, char **envp, int mode)
+void	bi_echo(char *str, char **envp, int mode)
 {
 	int		i;
 	int		j;

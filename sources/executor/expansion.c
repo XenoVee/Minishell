@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 15:04:06 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/08 14:25:24 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/08 14:32:09 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*envsearch(char **envp, char *var)
 		explen = ft_explen(envp[i]);
 		if (strlen == explen)
 			if (ft_strncmp(envp[i], var, ft_max(explen, strlen)) == 0)
-				return (&envp[i][strlen + 1]);
+				return (envp[i]);
 		i++;
 	}
 	return (NULL);
@@ -49,5 +49,5 @@ char	*expand(char **envp, char *var)
 	ret = envsearch(envp, var);
 	if (ret == NULL)
 		return (NULL);
-	return (ret[ft_strlen(var)]);
+	return (&ret[ft_strlen(var) + 1]);
 }
