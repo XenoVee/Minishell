@@ -6,15 +6,23 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 14:14:33 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/08 14:38:59 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/08 15:44:10 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include <stdio.h>
 
 void	bi_unset(char *var, char **envp)
 {
-	char	*del;
+	int		i;
 
-	del = envsearch(envp, var);
+	i = envsearch(envp, var);
+	if (i == -1)
+		return ;
+	while (envp[i])
+	{
+		envp[i] = envp[i + 1];
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/08 14:41:05 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/08 15:44:14 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	bi_exit();
-	bi_echo(argv[1], envp, M_EXP);
+	bi_env(envp);
+	bi_unset(argv[1], envp);
+	bi_env(envp);
 	argc++;
 }
 

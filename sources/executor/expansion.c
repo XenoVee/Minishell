@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 15:04:06 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/08 14:32:09 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/08 15:36:06 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_explen(char *str)
 	return (i);
 }
 
-char	*envsearch(char **envp, char *var)
+int	envsearch(char **envp, char *var)
 {
 	unsigned int	i;
 	unsigned int	explen;
@@ -36,18 +36,18 @@ char	*envsearch(char **envp, char *var)
 		explen = ft_explen(envp[i]);
 		if (strlen == explen)
 			if (ft_strncmp(envp[i], var, ft_max(explen, strlen)) == 0)
-				return (envp[i]);
+				return (i);
 		i++;
 	}
-	return (NULL);
+	return (-1);
 }
 
 char	*expand(char **envp, char *var)
 {
-	char	*ret;
+	int		i;
 
-	ret = envsearch(envp, var);
-	if (ret == NULL)
+	i = envsearch(envp, var);
+	if (i == -1)
 		return (NULL);
-	return (&ret[ft_strlen(var) + 1]);
+	return (&envp[i][ft_strlen(var) + 1]);
 }
