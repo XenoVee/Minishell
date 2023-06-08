@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   error.h                                            :+:    :+:            */
+/*   builtins.h                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/19 16:46:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/05 16:54:12 by rmaes         ########   odam.nl         */
+/*   Created: 2023/06/08 11:30:09 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/06/08 13:49:20 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef BUILTINS_H
+# define BUILTINS_H
 
-/*includes*/
-# include <errno.h>
+/*enums*/
 
-/*Defines*/
-# define ERR_MALLOC		"Malloc call failed"
+// bitmask
+enum e_mask
+{
+	M_NONE = 0,
+	M_N = 1,
+	M_EXP = 2,
+	M_EXP_N = 3,
+};
+
+/*functions*/
+void	echo(char *str, char **envp, int mode);
+void	env(char **envp);
 
 #endif

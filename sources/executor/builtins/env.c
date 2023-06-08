@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   error.h                                            :+:    :+:            */
+/*   env.c                                              :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/19 16:46:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/05 16:54:12 by rmaes         ########   odam.nl         */
+/*   Created: 2023/06/08 13:45:01 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/06/08 13:52:11 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#include "minishell.h"
+#include <unistd.h>
 
-/*includes*/
-# include <errno.h>
+void	env(char **envp)
+{
+	int		i;
 
-/*Defines*/
-# define ERR_MALLOC		"Malloc call failed"
-
-#endif
+	i = 0;
+	while (envp[i])
+	{
+		write (1, envp[i], ft_strlen(envp[i]));
+		write (1, "\n", 1);
+		i++;
+	}
+}
