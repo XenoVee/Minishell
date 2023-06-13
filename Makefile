@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/05 16:59:16 by rmaes         ########   odam.nl          #
+#    Updated: 2023/06/13 12:02:42 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,18 +29,23 @@ TOKENIZER_DIR = tokenizer/
 TOKENIZER_DF = $(addprefix $(TOKENIZER_DIR), $(TOKENIZER_FILES))
 
 
+#environment variables files
+ENV_FILES = env.c ft_getenv.c
+ENV_DIR = env/
+ENV_DF = $(addprefix $(ENV_DIR), $(ENV_FILES))
+
 #builtins
 BUILTIN_FILES = echo.c
 BUILTIN_DIR = builtins/
 BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
 #executor files
-EXECUTOR_FILES = $(BUILTIN_DF) executor.c pathfinder.c expansion.c 
+EXECUTOR_FILES = $(BUILTIN_DF) executor.c pathfinder.c
 EXECUTOR_DIR = executor/
 EXECUTOR_DF = $(addprefix $(EXECUTOR_DIR), $(EXECUTOR_FILES))
 
 
 SOURCES_DIR = sources/
-FILES =	$(MAIN_DF) $(TOKENIZER_DF) $(EXECUTOR_DF)
+FILES =	$(MAIN_DF) $(TOKENIZER_DF) $(EXECUTOR_DF) $(ENV_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
 INCLUDES = includes

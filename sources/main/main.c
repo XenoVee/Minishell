@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/05 16:58:49 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/13 12:01:55 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,19 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	echo(argv[1], envp);
+	char	**envpc;
+	int		i;
+
+	i = 0;
+	envpc = envcpy(envp);
 	argc++;
+	if (argv[0])
+		;
+	while (envpc[i])
+	{
+		printf("%s\n", envpc[i]);
+		i++;
+	}
 }
 	// char *cmd1[3];
 	// cmd1[0] = ft_strdup("ls");

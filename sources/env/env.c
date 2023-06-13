@@ -1,43 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   expansion.c                                        :+:    :+:            */
+/*   env.c                                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/05 15:04:06 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/05 15:50:42 by rmaes         ########   odam.nl         */
+/*   Created: 2023/06/13 11:44:27 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/06/13 12:02:56 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <stdio.h>
+#include <stdlib.h>
 
-static int	ft_explen(char *str)
+static int	n_env(char **envp)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '=')
+	while (envp[i])
 		i++;
 	return (i);
 }
 
-char	*expand(char **envp, char *var)
+char	**envcpy(char **envp)
 {
-	unsigned int	i;
-	unsigned int	explen;
-	unsigned int	strlen;
+	int		i;
+	int		j;
+	char	**envpc;
 
+	envpc = ft_calloc(n_env(envp) + 1, sizeof(char *));
 	i = 0;
-	strlen = ft_strlen(var);
+	j = 0;
 	while (envp[i])
 	{
-		explen = ft_explen(envp[i]);
-		if (strlen == explen)
-			if (ft_strncmp(envp[i], var, ft_max(explen, strlen)) == 0)
-				return (&envp[i][strlen + 1]);
+		envpc[i] = malloc(ft_strlen(envp[i]) + 1);
+		while (envp[i][j])
+		{
+			envpc[i][j] = envp[i][j];
+			j++;
+		}
+		envpc[i][j] = '\0';
+		j = 0;
 		i++;
 	}
-	return (NULL);
+	return (envpc);
 }
