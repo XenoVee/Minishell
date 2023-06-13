@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:02:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/13 12:07:58 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/13 12:14:09 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	varhandler(char **print, int *j, char *str, char **envp)
 	int		i;
 
 	var = cutvar(str);
-	exp = ft_getenv(envp, var);
+	exp = expand(envp, var);
 	if (exp == NULL)
 	{
 		i = ft_strlen(var);
@@ -66,7 +66,7 @@ static int	varhandler(char **print, int *j, char *str, char **envp)
 	return (i);
 }
 
-void	echo(char *str, char **envp, int mode)
+void	bi_echo(char *str, char **envp, int mode)
 {
 	int		i;
 	int		j;

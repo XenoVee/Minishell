@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/13 12:06:14 by rmaes         ########   odam.nl          #
+#    Updated: 2023/06/13 12:12:05 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
 #main files
+MAIN_FILES = main.c error.c
 MAIN_FILES = main.c error.c
 MAIN_DIR = main/
 MAIN_DF = $(addprefix $(MAIN_DIR), $(MAIN_FILES))
@@ -35,7 +36,7 @@ ENV_DIR = env/
 ENV_DF = $(addprefix $(ENV_DIR), $(ENV_FILES))
 
 #builtins
-BUILTIN_FILES = echo.c env.c
+BUILTIN_FILES = echo.c env.c unset.c exit.c
 BUILTIN_DIR = builtins/
 BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
 #executor files
