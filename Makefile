@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/13 12:02:42 by rmaes         ########   odam.nl          #
+#    Updated: 2023/06/13 12:06:14 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ ENV_DIR = env/
 ENV_DF = $(addprefix $(ENV_DIR), $(ENV_FILES))
 
 #builtins
-BUILTIN_FILES = echo.c
+BUILTIN_FILES = echo.c env.c
 BUILTIN_DIR = builtins/
 BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
 #executor files
@@ -54,7 +54,7 @@ OBJECTS_DIR = objects/
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(FILES:.c=.o))
 
 CFLAGS = -Wall -Wextra -Werror
-CC = gcc
+CC = gcc -g
 NAME = minishell
 
 LIBFT_FOLDER = libraries/libftprintf/
@@ -68,7 +68,6 @@ LIST = $(addprefix $(LIST_FOLDER), $(LIST_NAME))
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(LIST)
-	@echo $(EXECUTOR_DF)
 	@echo "compiling: $(YELLOW)creating executable$(DEFAULT)"
 	@$(CC) -o $@ $^
 	@echo "$(GREEN)$@ successfully compiled!$(DEFAULT)"

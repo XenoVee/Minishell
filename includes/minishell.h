@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/13 12:01:30 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/13 12:06:59 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libraries/libftprintf/libft.h"
 # include "../libraries/cdl_list/include/cdl_list.h"
 # include "error.h"
+# include "builtins.h"
 
 /*Defines*/
 

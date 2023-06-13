@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:02:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/13 11:48:25 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/13 12:07:58 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ static char	*cutvar(char *str)
 		ret[i] = str[i];
 		i++;
 	}
+	ret[i] = '\0';
 	return (ret);
 }
 
-static int	varhandler(char *print, int *j, char *str, char **envp)
+static int	varhandler(char **print, int *j, char *str, char **envp)
 {
 	char	*var;
 	char	*exp;
@@ -45,21 +46,27 @@ static int	varhandler(char *print, int *j, char *str, char **envp)
 
 	var = cutvar(str);
 	exp = ft_getenv(envp, var);
+	if (exp == NULL)
+	{
+		i = ft_strlen(var);
+		free(var);
+		return (i - 1);
+	}
 	i = 0;
-	print = ft_realloc(print, sizeof(char)
-			* (ft_strlen(print) + ft_strlen(exp) + 1));
+	*print = ft_realloc(*print, sizeof(char)
+			* (ft_strlen(*print) + ft_strlen(exp) + 1));
 	while (exp[i])
 	{
-		print[*j] = exp[i];
+		print[0][*j] = exp[i];
 		i++;
 		*j += 1;
 	}
 	i = ft_strlen(var);
 	free(var);
-	return (1);
+	return (i);
 }
 
-void	echo(char *str, char **envp)
+void	echo(char *str, char **envp, int mode)
 {
 	int		i;
 	int		j;
@@ -67,16 +74,11 @@ void	echo(char *str, char **envp)
 
 	i = 0;
 	j = 0;
-	printf("%s\n\n", str);
 	print = malloc(sizeof(char) * (ft_strlen(str) + 1));
-	print[ft_strlen(str)] = '\0';
 	while (str[i])
 	{
-		if (str[i] == '$' && str[ft_max(0, i - 1)] != '\\')
-		{
-			i++;
-			i = varhandler(print, &j, &str[i], envp);
-		}
+		if (str[i] == '$' && mode & M_EXP)
+			i += 1 + varhandler(&print, &j, &str[i + 1], envp);
 		else
 		{
 			print[j] = str[i];
@@ -84,5 +86,9 @@ void	echo(char *str, char **envp)
 			j++;
 		}
 	}
-	write(1, &print, ft_strlen(print));
+	print[j] = '\0';
+	write(1, print, ft_strlen(print));
+	if (!(mode & M_N))
+		write(1, "\n", 1);
+	free(print);
 }
