@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/13 12:17:08 by rmaes         ########   odam.nl          #
+#    Updated: 2023/06/13 13:16:58 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ TOKENIZER_DF = $(addprefix $(TOKENIZER_DIR), $(TOKENIZER_FILES))
 
 #environment variables files
 ENVP_FILES = envp.c ft_getenv.c
-ENVP_DIR = env/
+ENVP_DIR = envp/
 ENVP_DF = $(addprefix $(ENVP_DIR), $(ENVP_FILES))
 
 #builtins
@@ -46,7 +46,7 @@ EXECUTOR_DF = $(addprefix $(EXECUTOR_DIR), $(EXECUTOR_FILES))
 
 
 SOURCES_DIR = sources/
-FILES =	$(MAIN_DF) $(TOKENIZER_DF) $(EXECUTOR_DF) $(ENV_DF)
+FILES =	$(MAIN_DF) $(TOKENIZER_DF) $(EXECUTOR_DF) $(ENVP_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
 INCLUDES = includes

@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/13 12:13:28 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/13 13:12:50 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ void	error(char *errmsg);
 int		executor(char **cmd1, char **envp);
 int		executort(char **cmd1, char **cmd2, char **envp);
 char	*pathfinder(char *find);
-char	*ft_getenv(char **envp, char *var);
 
 /*env*/
 char	**envcpy(char **envp);
+int		envsearch(char **envp, char *var);
+char	*ft_getenv(char **envp, char *var);
+int		n_env(char **envp);
 
 #endif

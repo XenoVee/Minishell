@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/13 12:15:45 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/13 13:26:32 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,13 @@ void	leaks(void)
 int	main(int argc, char **argv, char **envp)
 {
 	char	**envpc;
-	int		i;
 
-	i = 0;
 	envpc = envcpy(envp);
 	argc++;
 	if (argv[0])
 		;
-	while (envpc[i])
-	{
-		printf("%s\n", envpc[i]);
-		i++;
-	}
+	bi_unset("SPACETEST", &envpc);
+	bi_env(envpc);
 }
 
 	// char *cmd1[3];
