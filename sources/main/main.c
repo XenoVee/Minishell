@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/15 14:52:09 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/15 14:57:08 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,6 @@ int	main(int ac, char **av, char **envp)
 	ft_memset(&data, 0, sizeof(t_data));
 	if (!init_data(data))
 		exit(FAILURE);
-	while (av[i])
-	{
-		check_token(av[i], 0);
-		i++;
-	}
 	mini_loop(&data);
 	ft_printf("minishell\n");
 	return (0);
