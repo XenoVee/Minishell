@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:43:04 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/15 15:23:55 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/15 16:24:47 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ t_token	get_next_token(char **str)
 		return (token);
 	if (token.type == TOKEN_ARG || token.type == S_QUOTES
 		|| token.type == D_QUOTES)
-		//token.string = assign_string(str, token.type);
-		printf("lmao\n");
+		token.string = assign_string(str, token.type);
 	return (token);
 }
 
