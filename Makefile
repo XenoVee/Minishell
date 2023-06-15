@@ -6,7 +6,11 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
+<<<<<<< HEAD
 #    Updated: 2023/06/15 14:39:56 by ohearn        ########   odam.nl          #
+=======
+#    Updated: 2023/06/08 14:49:52 by rmaes         ########   odam.nl          #
+>>>>>>> master
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +27,7 @@ MAIN_FILES = main.c error.c
 MAIN_DIR = main/
 MAIN_DF = $(addprefix $(MAIN_DIR), $(MAIN_FILES))
 
+<<<<<<< HEAD
 #lexer files
 LEXER_FILES = 	string.c\
 				tokenizer_utils.c\
@@ -39,6 +44,12 @@ SIGNALS_DF = $(addprefix $(SIGNALS_DIR), $(SIGNALS_FILES))
 UTILS_FILES = 	init_data.c
 UTILS_DIR = utils/
 UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
+=======
+#tokenizer files
+TOKENIZER_FILES = 
+TOKENIZER_DIR = tokenizer/
+TOKENIZER_DF = $(addprefix $(TOKENIZER_DIR), $(TOKENIZER_FILES))
+>>>>>>> master
 
 
 #builtins
