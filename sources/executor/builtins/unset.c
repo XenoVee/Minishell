@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   error.h                                            :+:    :+:            */
+/*   unset.c                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/19 16:46:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/05 16:54:12 by rmaes         ########   odam.nl         */
+/*   Created: 2023/06/08 14:14:33 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/06/08 14:38:59 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#include "minishell.h"
 
-/*includes*/
-# include <errno.h>
+void	bi_unset(char *var, char **envp)
+{
+	char	*del;
 
-/*Defines*/
-# define ERR_MALLOC		"Malloc call failed"
-
-#endif
+	del = envsearch(envp, var);
+}

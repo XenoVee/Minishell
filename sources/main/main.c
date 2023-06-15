@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/26 18:14:54 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/15 14:52:09 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,32 @@
 #include <stdlib.h>
 #include <string.h>
 
-// int	main(int argc, char *argv[], char *envp[])
-// {
-// 	int	fd[2];
-// 	char *str;
-// 	int	pid;
-
-// 	pid = fork();
-// 	ft_printf("%i\n", pid);
-// 	if (pid == 0)
-// 	{
-// 		char	*array[2];
-// 		array[0] = strdup("bonus");
-// 		// array[1] = strdup("-la");
-// 		array[1] = NULL;
-// 		if (execve("/Users/rmaes/Projects/minitalk/server", NULL, envp) == -1)
-// 			perror("ERROR");
-// 		exit(0);
-// 	}
-// 	else
-// 	{
-// 		while (1) {
-// 			ft_printf("test\n");
-// 			sleep(1);
-// 		}
-// 	}
-// 	close(fd[1]);
-// 	close(fd[0]);
-// 	exit(0);
-// }
-
 int	main(int ac, char **av, char **envp)
 {
-	int	i;
+	t_data	data;
+	char	*test;
 
-	i = 0;
-	if (argc < 2)
+	(void)ac;
+	(void)av;
+	printf("Start!\n");
+	ft_memset(&data, 0, sizeof(t_data));
+	if (!init_data(data))
+		exit(FAILURE);
+	while (av[i])
 	{
-		printf("try again\n");
-		return (-1);
-	}
-	while (argv[i])
-	{
-		check_token(argv[i]);
+		check_token(av[i], 0);
 		i++;
 	}
+	mini_loop(&data);
 	ft_printf("minishell\n");
 	return (0);
 }
+// void	leaks(void)
+// {
+// 	system("leaks minishell -q");
+// }
 
-//lsof -c minishell
+// int	main(int argc, char **argv, char **envp)
+// {
+// 	executor(argv[1], envp, argv);
+// }

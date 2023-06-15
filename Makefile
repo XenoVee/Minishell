@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/05/26 18:16:12 by ohearn        ########   odam.nl          #
+#    Updated: 2023/06/15 14:39:56 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
 #main files
-MAIN_FILES = main.c
+MAIN_FILES = main.c error.c
 MAIN_DIR = main/
 MAIN_DF = $(addprefix $(MAIN_DIR), $(MAIN_FILES))
 
@@ -40,8 +40,18 @@ UTILS_FILES = 	init_data.c
 UTILS_DIR = utils/
 UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
+
+#builtins
+BUILTIN_FILES = echo.c env.c
+BUILTIN_DIR = builtins/
+BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
+
+#builtins
+BUILTIN_FILES = echo.c env.c unset.c exit.c
+BUILTIN_DIR = builtins/
+BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
 #executor files
-EXECUTOR_FILES = executor.c pathfinder.c
+EXECUTOR_FILES = $(BUILTIN_DF) executor.c pathfinder.c expansion.c 
 EXECUTOR_DIR = executor/
 EXECUTOR_DF = $(addprefix $(EXECUTOR_DIR), $(EXECUTOR_FILES))
 
@@ -55,8 +65,8 @@ INCLUDES = includes
 OBJECTS_DIR = objects/
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(FILES:.c=.o))
 
-CFLAGS = -Wall -Wextra -Werror -g
-CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+CC = gcc -g
 NAME = minishell
 
 LIBFT_FOLDER = libraries/libftprintf/

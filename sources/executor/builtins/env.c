@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   pathfinder.c                                       :+:    :+:            */
+/*   env.c                                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/02 18:50:31 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/05/05 14:46:09 by rmaes         ########   odam.nl         */
+/*   Created: 2023/06/08 13:45:01 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/06/08 14:52:52 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
-#include <errno.h>
 
-char	*pathfinder(char *find)
+void	bi_env(char **envp)
 {
-	char	*path;
-	char	**split;
 	int		i;
-	char	*check;
 
-	path = getenv("PATH");
-	split = ft_split(path, ':');
-	find = ft_strjoin("/", find);
 	i = 0;
-	while (split[i])
+	while (envp[i])
 	{
-		check = ft_strjoin(split[i], find);
-		if (access(check, F_OK) == 0)
-		{
-			free (find);
-			return (check);
-		}
-		free(check);
+		write (1, envp[i], ft_strlen(envp[i]));
+		write (1, "\n", 1);
 		i++;
 	}
-	perror("minishell");
-	exit(1);
 }
