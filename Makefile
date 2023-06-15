@@ -6,11 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-<<<<<<< HEAD
-#    Updated: 2023/06/15 14:39:56 by ohearn        ########   odam.nl          #
-=======
-#    Updated: 2023/06/08 14:49:52 by rmaes         ########   odam.nl          #
->>>>>>> master
+#    Updated: 2023/06/15 15:14:59 by ohearn        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +23,6 @@ MAIN_FILES = main.c error.c
 MAIN_DIR = main/
 MAIN_DF = $(addprefix $(MAIN_DIR), $(MAIN_FILES))
 
-<<<<<<< HEAD
 #lexer files
 LEXER_FILES = 	string.c\
 				tokenizer_utils.c\
@@ -44,23 +39,17 @@ SIGNALS_DF = $(addprefix $(SIGNALS_DIR), $(SIGNALS_FILES))
 UTILS_FILES = 	init_data.c
 UTILS_DIR = utils/
 UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
-=======
+
 #tokenizer files
 TOKENIZER_FILES = 
 TOKENIZER_DIR = tokenizer/
 TOKENIZER_DF = $(addprefix $(TOKENIZER_DIR), $(TOKENIZER_FILES))
->>>>>>> master
-
-
-#builtins
-BUILTIN_FILES = echo.c env.c
-BUILTIN_DIR = builtins/
-BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
 
 #builtins
 BUILTIN_FILES = echo.c env.c unset.c exit.c
 BUILTIN_DIR = builtins/
 BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
+
 #executor files
 EXECUTOR_FILES = $(BUILTIN_DF) executor.c pathfinder.c expansion.c 
 EXECUTOR_DIR = executor/

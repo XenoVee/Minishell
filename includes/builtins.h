@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 11:30:09 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/08 14:51:07 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/15 15:16:35 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,4 @@ void	bi_env(char **envp);
 void	bi_exit(void);
 void	bi_unset(char *var, char **envp);
 
-#endif
 #endif

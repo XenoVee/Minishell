@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/24 13:46:13 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/24 14:41:05 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/15 15:29:09 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	mini_loop(void)
 			break ;
 		add_history(str);
 		dll_add_back(&str_list, dl_new_list(str));
+		if (ft_strncmp(str, "exit", 5))
+			break ;
 		parse_input(str);
 	}
 	dll_clear(&str_list, free);

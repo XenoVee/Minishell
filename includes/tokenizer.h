@@ -55,6 +55,13 @@ typedef struct s_token
 	int				status;
 }		t_token;
 
+typedef struct s_data
+{
+	t_token	token;
+	char	*user_input;
+}		t_data;
+
+
 /*Functions*/
 void	free_token(t_token *token);
 int		is_delim(char c);

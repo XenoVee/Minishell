@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/15 15:01:12 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/15 15:22:57 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,21 @@
 
 int	main(int ac, char **av, char **envp)
 {
-	t_data	data;
-	char	*test;
+	//t_data	data;
+	//char	*test;
 
 	(void)ac;
 	(void)av;
+	(void)envp;
 	printf("Start!\n");
-	ft_memset(&data, 0, sizeof(t_data));
-	if (!init_data(data))
-		exit(FAILURE);
-	mini_loop(&data);
+	//ft_memset(&data, 0, sizeof(t_data));
+	//if (!init_data(data))
+	//	exit(FAILURE);
+	//mini_loop(&data);
+	mini_loop();
 	ft_printf("minishell\n");
 	return (0);
+}
 // int	main(int argc, char *argv[], char *envp[])
 // {
 // 	int	fd[2];
@@ -59,17 +62,17 @@ int	main(int ac, char **av, char **envp)
 // 	exit(0);
 // }
 
-void	leaks(void)
-{
-	system("leaks minishell -q");
-}
+// void	leaks(void)
+// {
+// 	system("leaks minishell -q");
+// }
 
-int	main(int argc, char **argv, char **envp)
-{
-	bi_exit();
-	bi_echo(argv[1], envp, M_EXP);
-	argc++;
-}
+// int	main(int argc, char **argv, char **envp)
+// {
+// 	bi_exit();
+// 	bi_echo(argv[1], envp, M_EXP);
+// 	argc++;
+// }
 // void	leaks(void)
 // {
 // 	system("leaks minishell -q");
