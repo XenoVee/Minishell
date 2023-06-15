@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/11 17:07:38 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/26 17:53:23 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/05/26 19:18:09 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	*find_char(const char *str, char c)
 	return (NULL);
 }
 /*Returns a pointer to the next word*/
+
 char	*split_string(const char *str, const char *delims)
 {
 	while (*str != '\0' && find_char(delims, *str))

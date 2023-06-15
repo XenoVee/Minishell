@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			*/
-/*														::::::::			*/
-/*   minishell.h										:+:	:+:			*/
-/*													 +:+					*/
-/*   By: ohearn <ohearn@student.codam.nl>			 +#+					 */
-/*												   +#+					  */
-/*   Created: 2023/04/18 17:43:14 by ohearn		#+#	#+#				 */
-/*   Updated: 2023/04/19 20:37:54 by Owen		  ########   odam.nl		 */
-/*																			*/
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   minishell.h                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
+/*   Updated: 2023/05/26 18:20:51 by ohearn        ########   odam.nl         */
+/*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
@@ -36,8 +36,6 @@ int		mini_loop(void);
 void	parse_input(char *string);
 //bool	init_data(t_data data);
 t_token	init_tkn(void);
-void	check_token(char *string);
-void	test(void);
 
 /*executor*/
 int		executor(char *cmd, char **envp, char **argv);
