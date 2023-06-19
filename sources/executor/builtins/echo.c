@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:02:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/13 13:11:00 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/14 16:12:18 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*cutvar(char *str)
 	char	*ret;
 
 	i = 0;
-	while (str[i] != ' ' && str[i])
+	while ((str[i] != ' ' && str[i] != '=') && str[i])
 	{
 		i++;
 	}
@@ -29,7 +29,7 @@ static char	*cutvar(char *str)
 	if (!ret)
 		error(ERR_MALLOC);
 	i = 0;
-	while (str[i] != ' ' && str[i])
+	while ((str[i] != ' ' && str[i] != '=') && str[i])
 	{
 		ret[i] = str[i];
 		i++;
@@ -50,7 +50,7 @@ static int	varhandler(char **print, int *j, char *str, char **envp)
 	{
 		i = ft_strlen(var);
 		free(var);
-		return (i - 1);
+		return (i);
 	}
 	i = 0;
 	*print = ft_realloc(*print, sizeof(char)

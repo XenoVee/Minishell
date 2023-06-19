@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/14 12:56:50 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/19 14:37:03 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 void	leaks(void)
 {
 	system("leaks minishell -q");
+	atexit (leaks);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -60,8 +61,10 @@ int	main(int argc, char **argv, char **envp)
 	argc++;
 	if (argv[0])
 		;
-	bi_unset("SPACETEST", &envpc);
+	// bi_echo(argv[1], envp, M_EXP);
+	bi_export(argv[1], &envpc);
 	bi_env(envpc);
+	exit (EXIT_SUCCESS);
 }
 
 	// char *cmd1[3];
