@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/20 15:16:44 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/20 15:29:46 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /*includes*/
 # include "../libraries/libftprintf/libft.h"
 # include "../libraries/dl_list/include/dl_list.h"
+# include "../libraries/cdl_list/include/cd_list.h"
 # include "tokenizer.h"
 # include <stdio.h>
 # include <unistd.h>
@@ -36,13 +37,13 @@
 # define FAILURE 1
 
 /*Functions*/
-int		mini_loop(void);
-void	parse_input(char *string);
-//bool	init_data(t_data data);
-t_token	init_tkn(void);
-void	check_token(char *string);
-void	test(void);
-void	error(char *errmsg);
+int			mini_loop(void);
+void		parse_input(char *string);
+//bool		init_data(t_data data);
+t_token		init_tkn(void);
+void		check_token(char *string);
+void		test(void);
+void		error(char *errmsg);
 
 /*executor*/
 int			executor(char **cmd1, char **envp);
