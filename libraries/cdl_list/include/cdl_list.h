@@ -6,7 +6,7 @@
 /*   By: athena <athena@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/13 13:05:43 by athena        #+#    #+#                 */
-/*   Updated: 2023/06/19 14:48:15 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/19 15:13:26 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void		cdl_listclear(t_dllist *list);
 // The last element becomes the first one.
 void		cdl_listdecr(t_dllist *list);
 
-// deletes and frees the N'th node of LIST, and returns a pointer to the content
-void		*cdl_listdelnode(t_dllist *list, int n);
+// deletes and frees the N'th node of LIST and its content
+void		cdl_listdelnode(t_dllist *list, int n);
 
 // retuns a pointer to the N'th node of LIST (head is node 0).
 // Because it is a circular list, it will loop around would N
@@ -73,6 +73,6 @@ t_dlnode	*cdl_listpopnode(t_dllist *list, int n);
 // creates and allocates a new t_dlnode, using the given content
 // the prev and next pointers are set to NULL
 // On allocation failure, returns NULL
-t_dlnode	*cdl_nodenew(int type, char *string);
+t_dlnode	*cdl_nodenew(char *n, char *v);
 
 #endif

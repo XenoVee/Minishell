@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/19 14:37:03 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/20 14:56:53 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,21 @@
 void	leaks(void)
 {
 	system("leaks minishell -q");
-	atexit (leaks);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
-	char	**envpc;
+	t_dllist	*env;
 
-	envpc = envcpy(envp);
+	atexit (leaks);
+	env = envcpy(envp);
 	argc++;
 	if (argv[0])
 		;
-	// bi_echo(argv[1], envp, M_EXP);
-	bi_export(argv[1], &envpc);
-	bi_env(envpc);
+	// bi_echo(argv[1], env, M_EXP);
+	bi_export(argv[1], env);
+	// bi_unset(argv[1], env);
+	bi_env(env);
 	exit (EXIT_SUCCESS);
 }
 

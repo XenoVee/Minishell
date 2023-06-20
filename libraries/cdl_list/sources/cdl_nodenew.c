@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/13 16:15:18 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/04/19 17:42:41 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/19 15:24:52 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // creates and allocates a new t_dlnode, using the given content
 // the prev and next pointers are set to NULL
 // On allocation failure, returns NULL
-t_dlnode	*cdl_nodenew(int type, char *string)
+t_dlnode	*cdl_nodenew(char *n, char *v)
 {
 	t_dlnode	*node;
 
@@ -25,7 +25,7 @@ t_dlnode	*cdl_nodenew(int type, char *string)
 		return (NULL);
 	node->prev = NULL;
 	node->next = NULL;
-	node->type = type;
-	node->content = string;
+	node->name = n;
+	node->value = v;
 	return (node);
 }

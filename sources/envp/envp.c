@@ -6,45 +6,32 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 11:44:27 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/13 13:23:27 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/20 14:14:28 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-int	n_env(char **envp)
+t_dllist	*envcpy(char **envp)
 {
-	int	i;
+	t_dllist	*env;
+	int			i;
+	char		**tmp;
 
 	i = 0;
-	while (envp[i])
-		i++;
-	return (i);
-}
-
-char	**envcpy(char **envp)
-{
-	int		i;
-	int		j;
-	char	**envpc;
-
-	envpc = ft_calloc(n_env(envp) + 1, sizeof(char *));
-	// manage malloc fail
-	i = 0;
-	j = 0;
+	env = cdl_listinit();
+	if (env == NULL)
+		error(ERR_MALLOC);
 	while (envp[i])
 	{
-		envpc[i] = malloc(ft_strlen(envp[i]) + 1);
-		// manage malloc fail
-		while (envp[i][j])
-		{
-			envpc[i][j] = envp[i][j];
-			j++;
-		}
-		envpc[i][j] = '\0';
-		j = 0;
+		tmp = ft_split(envp[i], '=');
+		if (tmp == NULL)
+			error(ERR_MALLOC);
+		cdl_listaddback(env, cdl_nodenew(tmp[0], tmp[1]));
+		free (tmp);
 		i++;
 	}
-	return (envpc);
+	return (env);
 }

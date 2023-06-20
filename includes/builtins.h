@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 11:30:09 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/14 16:12:33 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/19 15:41:45 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ enum e_cpyiter
 };
 
 /*functions*/
-void	bi_echo(char *str, char **envp, int mode);
-void	bi_env(char **envp);
-void	bi_unset(char *var, char ***envp);
-void	bi_export(char *var, char ***envp);
+void	bi_echo(char *str, t_dllist *env, int mode);
+void	bi_env(t_dllist *env);
+void	bi_unset(char *var, t_dllist *env);
+void	bi_export(char *var, t_dllist *env);
 
 #endif
