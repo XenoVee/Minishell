@@ -6,22 +6,23 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 13:45:01 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/08 14:52:52 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/20 15:19:11 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <unistd.h>
+#include <stdio.h>
 
-void	bi_env(char **envp)
+void	bi_env(t_dllist *env)
 {
-	int		i;
-
-	i = 0;
-	while (envp[i])
+	env->current = env->head;
+	while (env->current->next != env->head)
 	{
-		write (1, envp[i], ft_strlen(envp[i]));
-		write (1, "\n", 1);
-		i++;
+		if (env->current->value)
+			printf("%s=%s\n", env->current->name, env->current->value);
+		env->current = env->current->next;
 	}
+	if (env->current->value)
+		printf("%s=%s\n", env->current->name, env->current->value);
 }

@@ -3,24 +3,24 @@
 /*                                                        ::::::::            */
 /*   dl_create_list.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/04 16:42:39 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/19 17:55:51 by ohearn        ########   odam.nl         */
+/*   Created: 2022/12/13 17:02:37 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/06/20 15:17:52 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/dl_list.h"
+#include "../include/cdl_list.h"
+#include <stdlib.h>
 
-t_dllist	*dl_new_list(void *content)
+//deletes and frees the N'th node of LIST, and returns a pointer to the content
+void	*cdl_listdelnode(t_dllist *list, int n)
 {
-	t_dllist	*list;
+	t_dlnode	*node;
+	void		*content;
 
-	list = (t_dllist *)malloc(sizeof(t_dllist));
-	if (!list)
-		return (NULL);
-	list->content = content;
-	list->next = NULL;
-	list->prev = NULL;
-	return (list);
+	node = cdl_listpopnode(list, n);
+	content = node->content;
+	free(node);
+	return (content);
 }

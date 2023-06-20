@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/15 15:20:01 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/20 15:16:44 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include <readline/history.h>
 # include "error.h"
 # include "builtins.h"
+# include "error.h"
+# include "builtins.h"
 
 /*Defines*/
 # define SUCCES 0
@@ -41,15 +43,16 @@ t_token	init_tkn(void);
 void	check_token(char *string);
 void	test(void);
 void	error(char *errmsg);
-void	error(char *errmsg);
 
 /*executor*/
-int		executor(char **cmd1, char **envp);
-int		executort(char **cmd1, char **cmd2, char **envp);
-int		executor(char **cmd1, char **envp);
-int		executort(char **cmd1, char **cmd2, char **envp);
-char	*pathfinder(char *find);
-char	*expand(char **envp, char *var);
-char	*envsearch(char **envp, char *var);
+int			executor(char **cmd1, char **envp);
+int			executort(char **cmd1, char **cmd2, char **envp);
+char		*pathfinder(char *find);
+
+/*env*/
+t_dllist	*envcpy(char **envp);
+int			envsearch(t_dllist *env, char *var);
+char		*ft_getenv(t_dllist *env, char *var);
+t_dlnode	*ft_getenvnode(t_dllist *env, char *var);
 
 #endif

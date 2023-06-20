@@ -1,53 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   expansion.c                                        :+:    :+:            */
+/*   ft_getenv.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 15:04:06 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/08 14:52:26 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/20 14:24:40 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <stdio.h>
 
-static int	ft_explen(char *str)
+int	envsearch(t_dllist *env, char *var)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '=')
-		i++;
-	return (i);
-}
-
-char	*envsearch(char **envp, char *var)
-{
-	unsigned int	i;
+	t_dlnode		*node;
 	unsigned int	explen;
 	unsigned int	strlen;
+	int				i;
 
-	i = 0;
+	i = -1;
+	node = env->head;
 	strlen = ft_strlen(var);
-	while (envp[i])
+	explen = -1;
+	while (node != env->head || i == -1)
 	{
-		explen = ft_explen(envp[i]);
+		if (i < 0)
+			i = 0;
+		explen = ft_strlen(node->name);
 		if (strlen == explen)
-			if (ft_strncmp(envp[i], var, ft_max(explen, strlen)) == 0)
-				return (envp[i]);
+			if (ft_strncmp(node->name, var, ft_max(explen, strlen)) == 0)
+				return (i);
 		i++;
+		node = node->next;
 	}
-	return (NULL);
+	return (-1);
 }
 
-char	*expand(char **envp, char *var)
+t_dlnode	*ft_getenvnode(t_dllist *env, char *var)
 {
-	char	*ret;
+	t_dlnode	*node;
+	int			n;
 
-	ret = envsearch(envp, var);
-	if (ret == NULL)
+	n = envsearch(env, var);
+	if (n == -1)
 		return (NULL);
-	return (&ret[ft_strlen(var) + 1]);
+	node = cdl_listgetnode(env, n);
+	return (node);
+}
+
+char	*ft_getenv(t_dllist *env, char *var)
+{
+	t_dlnode	*node;
+
+	node = ft_getenvnode(env, var);
+	if (node == NULL)
+		return (NULL);
+	return (node->value);
 }

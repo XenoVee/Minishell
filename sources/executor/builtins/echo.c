@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:02:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/08 14:52:45 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/20 15:18:59 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*cutvar(char *str)
 	char	*ret;
 
 	i = 0;
-	while (str[i] != ' ' && str[i])
+	while ((str[i] != ' ' && str[i] != '=') && str[i])
 	{
 		i++;
 	}
@@ -29,7 +29,7 @@ static char	*cutvar(char *str)
 	if (!ret)
 		error(ERR_MALLOC);
 	i = 0;
-	while (str[i] != ' ' && str[i])
+	while ((str[i] != ' ' && str[i] != '=') && str[i])
 	{
 		ret[i] = str[i];
 		i++;
@@ -38,19 +38,19 @@ static char	*cutvar(char *str)
 	return (ret);
 }
 
-static int	varhandler(char **print, int *j, char *str, char **envp)
+static int	varhandler(char **print, int *j, char *str, t_dllist *env)
 {
 	char	*var;
 	char	*exp;
 	int		i;
 
 	var = cutvar(str);
-	exp = expand(envp, var);
+	exp = ft_getenv(env, var);
 	if (exp == NULL)
 	{
 		i = ft_strlen(var);
 		free(var);
-		return (i - 1);
+		return (i);
 	}
 	i = 0;
 	*print = ft_realloc(*print, sizeof(char)
@@ -66,7 +66,7 @@ static int	varhandler(char **print, int *j, char *str, char **envp)
 	return (i);
 }
 
-void	bi_echo(char *str, char **envp, int mode)
+void	bi_echo(char *str, t_dllist *env, int mode)
 {
 	int		i;
 	int		j;
@@ -78,7 +78,7 @@ void	bi_echo(char *str, char **envp, int mode)
 	while (str[i])
 	{
 		if (str[i] == '$' && mode & M_EXP)
-			i += 1 + varhandler(&print, &j, &str[i + 1], envp);
+			i += 1 + varhandler(&print, &j, &str[i + 1], env);
 		else
 		{
 			print[j] = str[i];

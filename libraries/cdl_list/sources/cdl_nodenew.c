@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   unset.c                                            :+:    :+:            */
+/*   cdl_nodenew.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/08 14:14:33 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/20 14:10:44 by rmaes         ########   odam.nl         */
+/*   Created: 2022/12/13 16:15:18 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/06/19 15:24:52 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include <stdio.h>
+#include "../include/cdl_list.h"
 #include <stdlib.h>
 
-void	bi_unset(char *var, t_dllist *env)
+// creates and allocates a new t_dlnode, using the given content
+// the prev and next pointers are set to NULL
+// On allocation failure, returns NULL
+t_dlnode	*cdl_nodenew(char *n, char *v)
 {
-	int	i;
+	t_dlnode	*node;
 
-	i = envsearch(env, var);
-	if (i == -1)
-		exit(EXIT_FAILURE);
-	cdl_listdelnode(env, i);
+	node = malloc(sizeof(t_dlnode));
+	if (node == NULL)
+		return (NULL);
+	node->prev = NULL;
+	node->next = NULL;
+	node->name = n;
+	node->value = v;
+	return (node);
 }
