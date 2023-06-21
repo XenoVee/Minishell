@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/21 15:14:53 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/21 16:09:53 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include "error.h"
 # include "builtins.h"
 # include "error.h"
-# include "builtins.h"
+# include "executor.h"
 
 /*Defines*/
 # define SUCCES 0
@@ -44,11 +44,6 @@ t_token		init_tkn(void);
 void		check_token(char *string);
 void		test(void);
 void		error(char *errmsg);
-
-/*executor*/
-int			executor(char **cmd1, char **envp);
-int			executort(char **cmd1, char **cmd2, char **envp);
-char		*pathfinder(char *find);
 
 /*env*/
 t_cdllist	*envcpy(char **envp);

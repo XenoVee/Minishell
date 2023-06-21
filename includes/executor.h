@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   builtins.h                                         :+:    :+:            */
+/*   executor.h                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/08 11:30:09 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/21 16:09:48 by rmaes         ########   odam.nl         */
+/*   Created: 2023/06/21 15:39:36 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/06/21 16:08:42 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#ifndef EXECUTOR_H
+# define EXECUTOR_H
 
-/*enums*/
+# include "minishell.h"
 
-// bitmask
-enum e_mask
+/*Defines*/
+enum e_strlens
 {
-	M_NONE = 0,
-	M_N = 1,
-	M_EXP = 2,
-	M_EXP_N = 3,
+	NAME=0,
+	VALUE,
 };
 
-/*functions*/
-void	bi_echo(char *str, t_dllist *env, int mode);
-void	bi_env(t_dllist *env);
-void	bi_unset(char *var, t_dllist *env);
-void	bi_export(char *var, t_dllist *env);
+/*Functions*/
+int		executor(char **cmd1, t_dllist *env);
+char	*pathfinder(char *find);
+char	**arrayize(t_dllist *env);
 
 #endif
