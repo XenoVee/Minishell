@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/20 15:29:46 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/21 15:14:53 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*includes*/
 # include "../libraries/libftprintf/libft.h"
 # include "../libraries/dl_list/include/dl_list.h"
-# include "../libraries/cdl_list/include/cd_list.h"
+# include "../libraries/cdl_list/include/cdl_list.h"
 # include "tokenizer.h"
 # include <stdio.h>
 # include <unistd.h>
@@ -51,9 +51,9 @@ int			executort(char **cmd1, char **cmd2, char **envp);
 char		*pathfinder(char *find);
 
 /*env*/
-t_dllist	*envcpy(char **envp);
-int			envsearch(t_dllist *env, char *var);
-char		*ft_getenv(t_dllist *env, char *var);
-t_dlnode	*ft_getenvnode(t_dllist *env, char *var);
+t_cdllist	*envcpy(char **envp);
+int			envsearch(t_cdllist *env, char *var);
+char		*ft_getenv(t_cdllist *env, char *var);
+t_cdlnode	*ft_getenvnode(t_cdllist *env, char *var);
 
 #endif
