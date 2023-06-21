@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/13 12:13:51 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/21 16:06:54 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,37 @@
 #include <stdlib.h>
 #include <signal.h>
 
-static int	execute(char **cmd, char **envp)
+char	**arrayize(t_dllist *env)
+{
+	char	**array;
+	int		i;
+	int		len[2];
+
+	i = 0;
+	array = malloc(sizeof(char *) * (env->listlen + 1));
+	array[env->listlen] = NULL;
+	env->current = env->head;
+	if (!array)
+		error(ERR_MALLOC);
+	while (env->current != env->head || i == 0)
+	{
+		len[NAME] = ft_strlen(env->current->name);
+		len[VALUE] = ft_strlen(env->current->value);
+		array[i] = malloc(sizeof(char) * (len[NAME] + len[VALUE] + 2));
+		ft_strlcpy(array[i], env->current->name, len[NAME] + 1);
+		ft_strlcat(array[i], "=", len[NAME] + 2);
+		ft_strlcat(array[i], env->current->value, len[NAME] + len[VALUE] + 2);
+		i++;
+		env->current = env->current->next;
+	}
+	return (array);
+}
+
+static int	execute(char **cmd, t_dllist *env)
 {
 	char	*path;
 	int		pid;
+	char	**envp;
 
 	pid = fork();
 	if (pid == 0)
@@ -29,6 +56,7 @@ static int	execute(char **cmd, char **envp)
 		ft_printf("%s\n", path);
 		if (path == NULL)
 			exit(1);
+		envp = arrayize(env);
 		if (access(path, X_OK) != 0)
 			exit(2);
 		if (execve(path, &cmd[0], envp) == -1)
@@ -41,29 +69,9 @@ static int	execute(char **cmd, char **envp)
 	return (0);
 }
 
-// int	executort(char **cmd1, char **cmd2, char **envp)
-// {
-
-// 	int	fd_b[2];
-// 	int	fd_pipe[2];
-
-// 	pipe(fd_pipe);
-// 	fd_b[0] = dup(0);
-// 	fd_b[1] = dup(1);
-// 	dup2(fd_pipe[1], 1);
-// 	dup2(fd_pipe[0], 0);
-// 	execute(cmd1, envp);
-// 	execute(cmd2, envp);
-// 	wait(NULL);
-// 	dup2(1, fd_b[1]);
-// 	dup2(fd_b[1], 0);
-// 	write(1, "test", 4);
-// 	return (1);
-// }
-
-int	executor(char **cmd1, char **envp)
+int	executor(char **cmd1, t_dllist *env)
 {
-	execute(cmd1, envp);
+	execute(cmd1, env);
 	wait(NULL);
 	return (1);
 }
