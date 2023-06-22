@@ -6,30 +6,36 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
+<<<<<<< HEAD
 /*   Updated: 2023/06/21 16:11:19 by rmaes         ########   odam.nl         */
+=======
+/*   Updated: 2023/06/22 16:38:01 by Owen          ########   odam.nl         */
+>>>>>>> Owen
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "lexer.h"
+#include "loop.h"
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>
 
-int	main(int ac, char **av, char **envp)
+int	main(int ac, char **av, char **env)
 {
-	//t_data	data;
-	//char	*test;
+	t_data	data;
+	//char	**envcpy;
 
 	(void)ac;
 	(void)av;
-	(void)envp;
-	printf("Start!\n");
-	//ft_memset(&data, 0, sizeof(t_data));
-	//if (!init_data(data))
-	//	exit(FAILURE);
-	//mini_loop(&data);
-	mini_loop();
-	ft_printf("minishell\n");
+	(void)env;
+	//printf("Start!\n");
+	ft_memset(&data, 0, sizeof(t_data));
+	if (!init_data(&data))
+		exit(FAILURE);
+	mini_loop(&data);
+	//mini_loop();
+	//ft_printf("minishell\n");
 	return (0);
 }
 // int	main(int argc, char *argv[], char *envp[])

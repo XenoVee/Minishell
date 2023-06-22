@@ -6,16 +6,39 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 20:42:45 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/15 15:23:27 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/22 17:19:11 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "tokenizer.h"
+#include "lexer.h"
 
-// bool	init_data(t_data data)
+// static bool	init_env(t_data *data, char **env)
 // {
-// 	data.token = init_tkn();
-// 	data.user_input = ft_calloc(1, sizeof(char));
+// 	int	i;
+	
+// 	i = 0;
+// 	data->env = ft_calloc(env_var_count(env) + 1, sizeof * data->env);
+// 	if (!data->env)
+// 		return (false);
+// 	while (env[i])
+// 	{
+// 		data->env = ft_strdup(env[i]);
+// 		if (!data->env[i])
+// 			return (false);
+// 		i++;
+// 	}
 // 	return (true);
 // }
+
+bool	init_data(t_data *data)
+{
+	// if (!init_env(data, env) == false)
+	// 	return (NULL);
+	data->lexer = NULL;
+	data->token = NULL;
+	data->user_input = NULL;
+	data->cmd = NULL;
+	//g_exit_code = 0;
+	return (true);
+}
