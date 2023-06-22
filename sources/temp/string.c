@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/11 17:07:38 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/15 16:33:13 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/21 14:28:58 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,21 @@ char	*find_char(const char *str, char c)
 	i = 0;
 	while (str[i])
 	{
+		//printf("does it enter tho?\n");
 		if (str[i] == c)
-		{
-			printf("Bingo\n");
 			return ((char *)str + i);
-		}
 		i++;
 	}
+	//printf("Character was %c\n", c);
 	return (NULL);
 }
-
 /*Returns a pointer to the next word*/
 char	*split_string(const char *str, const char *delims)
 {
-	while (*str != '\0' && find_char(delims, *str))
-	{
-		printf("Does it loop?\n");
+	//printf("string is %s\n", str);
+	//printf("status update: entered split_string\n");
+	while (*str != '\0' && find_char(delims, *str) == NULL)
 		str++;
-	}
 	return ((char *)str);
 }
 
@@ -52,9 +49,12 @@ char	*assign_string(char **str, t_token_type tkn)
 {
 	char	*leftover;
 
+	(void)tkn;
 	leftover = *str - 1;
-	while (leftover++)
-	{
-		
-	}
+	printf("test: Original string is %s\nThe new string is %s\n", *str, leftover);
+	// while (leftover++)
+	// {
+	// 	if (*leftover == '\0')
+	// }
+	return (NULL);
 }

@@ -10,11 +10,13 @@
 /*																			*/
 /* ************************************************************************** */
 
-#ifndef TOKENIZER_H
-# define TOKENIZER_H
+#ifndef LEXER_H
+# define LEXER_H
 
-# define EOS 1
-# define DELIMS " \t\r\n\v\f"
+# define EOS 		1
+# define DELIMS 	" \t\r\n\v\f"
+# define END_STR	" \t\r\n\v\f<>|"
+# include "../libraries/dl_list/include/dl_list.h"
 
 /*Structs*/
 typedef enum e_token_type
@@ -29,7 +31,6 @@ typedef enum e_token_type
 	DOUBLE_GEATER,
 	S_QUOTES,
 	D_QUOTES,
-	PIPE,
 	DOLLARSGN,
 	END,
 }	t_token_type;
@@ -43,9 +44,9 @@ typedef enum e_status
 
 typedef struct s_commands
 {
-	t_dllist	*args;
-	t_dllist	*outf;
-	t_dllist	*inf;
+	t_dllist		*args;
+	t_dllist		*outf;
+	t_dllist		*inf;
 }		t_commands;
 
 typedef struct s_token
@@ -55,17 +56,33 @@ typedef struct s_token
 	int				status;
 }		t_token;
 
+typedef struct s_lexer
+{
+	int				pos;
+	t_token_type	type;
+	int				start;
+	char			*content;
+	int				end;
+	struct s_lexer	*next;
+	struct s_lexer	*prev;
+}	t_lexer;
+
 typedef struct s_data
 {
-	t_token	token;
-	char	*user_input;
+	t_token		*token;
+	t_lexer		*lexer;
+	char		*user_input;
+	char		*current_dir;
+	char		*old_dir;
+	t_commands	*cmd;
 }		t_data;
 
 
 /*Functions*/
-void	free_token(t_token *token);
-int		is_delim(char c);
-char	*find_char(const char *str, char c);
-char	*split_string(const char *str, const char *delims);
+// void		free_token(t_token *token);
+// int		is_delim(char c);
+// char		*find_char(const char *str, char c);
+// char		*split_string(const char *str, const char *delims);
+bool		build_lexer(t_data *data);
 
 #endif

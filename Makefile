@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/15 15:14:59 by ohearn        ########   odam.nl          #
+#    Updated: 2023/06/21 21:50:22 by Owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,10 @@ LEXER_FILES = 	string.c\
 LEXER_DIR = lexer/
 LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
 
-#signal files
-SIGNALS_FILES = signals.c
-SIGNALS_DIR = signals/
-SIGNALS_DF = $(addprefix $(SIGNALS_DIR), $(SIGNALS_FILES))
+#minishell files
+MINISHELL_FILES = loop.c
+MINISHELL_DIR = minishell/
+MINISHELL_DF = $(addprefix $(MINISHELL_DIR), $(MINISHELL_FILES))
 
 #utils files
 UTILS_FILES = 	init_data.c
@@ -41,9 +41,9 @@ UTILS_DIR = utils/
 UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 #tokenizer files
-TOKENIZER_FILES = 
-TOKENIZER_DIR = tokenizer/
-TOKENIZER_DF = $(addprefix $(TOKENIZER_DIR), $(TOKENIZER_FILES))
+LEXER_FILES = lexer.c
+LEXER_DIR = lexer/
+LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
 
 #builtins
 BUILTIN_FILES = echo.c env.c unset.c exit.c
@@ -57,7 +57,7 @@ EXECUTOR_DF = $(addprefix $(EXECUTOR_DIR), $(EXECUTOR_FILES))
 
 
 SOURCES_DIR = sources/
-FILES =	$(MAIN_DF) $(LEXER_DF) $(UTILS_DF) $(SIGNALS_DF)
+FILES =	$(MAIN_DF) $(LEXER_DF) $(UTILS_DF) $(MINISHELL_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
 INCLUDES = includes
