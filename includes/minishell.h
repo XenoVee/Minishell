@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/21 15:59:07 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/22 16:37:30 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <limits.h>
 # include "error.h"
 # include "builtins.h"
+# include "lexer.h"
 
 /*global variable*/
 //extern int		g_exit_code;
@@ -33,14 +34,14 @@
 # define FAILURE 1
 
 /*Functions*/
-void	parse_input(t_data *data);
+//void	parse_input(t_data *data);
 bool	init_data(t_data *data);
 t_token	init_tkn(void);
-void	check_token(char *string);
-void	test(void);
+//void	check_token(char *string);
+//void	test(void);
+//void	error(char *errmsg);
 void	error(char *errmsg);
-void	error(char *errmsg);
-int		env_var_count(char **env);
+//int		env_var_count(char **env);
 
 /*utils*/
 void	null_exit(void);

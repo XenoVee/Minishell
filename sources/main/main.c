@@ -6,11 +6,13 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/21 13:42:02 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/22 16:38:01 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "lexer.h"
+#include "loop.h"
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>

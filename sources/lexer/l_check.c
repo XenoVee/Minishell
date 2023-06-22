@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   loop.h                                             :+:    :+:            */
+/*   l_check.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/21 15:51:28 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/22 16:38:40 by Owen          ########   odam.nl         */
+/*   Created: 2023/06/22 21:58:29 by Owen          #+#    #+#                 */
+/*   Updated: 2023/06/22 23:14:16 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LOOP_H
-# define LOOP_H
+#include "lexer.h"
 
-# include <signal.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include "lexer.h"
-
-/*Functions*/
-int		mini_loop(t_data *data);
-//int		mini_loop(void);
-
-#endif
+/*to-do: make something that makes sure
+everything that leaves here is 100% A-OKAY*/

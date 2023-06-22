@@ -17,6 +17,7 @@
 # define DELIMS 	" \t\r\n\v\f"
 # define END_STR	" \t\r\n\v\f<>|"
 # include "../libraries/dl_list/include/dl_list.h"
+# include <stdbool.h>
 
 /*Structs*/
 typedef enum e_token_type
@@ -84,5 +85,6 @@ typedef struct s_data
 // char		*find_char(const char *str, char c);
 // char		*split_string(const char *str, const char *delims);
 bool		build_lexer(t_data *data);
+int			skip_delims(char *str, int i);
 
 #endif

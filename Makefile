@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/21 21:50:22 by Owen          ########   odam.nl          #
+#    Updated: 2023/06/22 17:22:15 by Owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ UTILS_DIR = utils/
 UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 #tokenizer files
-LEXER_FILES = lexer.c
+LEXER_FILES = 	l_utils.c\
+				lexer.c
 LEXER_DIR = lexer/
 LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
 

@@ -6,12 +6,12 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 20:42:45 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/21 21:31:54 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/22 17:19:11 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "tokenizer.h"
+#include "lexer.h"
 
 // static bool	init_env(t_data *data, char **env)
 // {
