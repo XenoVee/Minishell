@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   dl_newnode.c                                       :+:    :+:            */
+/*   exit.c                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/09 16:19:37 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/19 16:36:18 by ohearn        ########   odam.nl         */
+/*   Created: 2023/06/23 13:37:00 by Owen          #+#    #+#                 */
+/*   Updated: 2023/06/24 14:25:59 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/dl_list.h"
+#include "minishell.h"
+#include "cleanup.h"
 
-t_dllist	*dll_nodenew(char *string)
+/*Exits the shell and frees the data struct*/
+void	exit_ms(t_data *data, int num)
 {
-	t_dllist	*node;
-
-	node = dl_new_list(string);
-	return (node);
+	if (data)
+	{
+		free_data(data);
+	}
+	exit(num);
 }

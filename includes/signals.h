@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   error.h                                            :+:    :+:            */
+/*   signals.h                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/19 16:46:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/24 14:12:07 by Owen          ########   odam.nl         */
+/*   Created: 2023/06/23 14:01:38 by Owen          #+#    #+#                 */
+/*   Updated: 2023/06/24 14:30:56 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef SIGNALS_H
+# define SIGNALS_H
 
-/*includes*/
-# include <errno.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
+# include <signal.h>
+#include "readline/readline.h"
+#include "readline/history.h"
+#include <stdio.h>
+#include <unistd.h>
 # include "../libraries/libftprintf/libft.h"
 
-/*Defines*/
-# define ERR_MALLOC		"Malloc call failed"
-# define SUCCES 0
-# define FAILURE 1
-
-
 /*Functions*/
-void	error(char *errmsg);
-bool	print_error_msg(char *str);
+void		set_signals_interactive(void);
+void		set_signals_noninteractive(void);
 
 #endif

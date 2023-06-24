@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   list_iter.c                                        :+:    :+:            */
+/*   cleanup.h                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/09 15:48:34 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/09 15:49:03 by ohearn        ########   odam.nl         */
+/*   Created: 2023/06/24 01:19:21 by Owen          #+#    #+#                 */
+/*   Updated: 2023/06/24 14:25:35 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/dl_list.h"
+#ifndef CLEANUP_H
+# define CLEANUP_H
 
-void	ft_lstiter(t_dllist *list, void (*f)(void *))
-{
-	if (!list || !f)
-		return ;
-	while (list)
-	{
-		f(list->content);
-		list = list->next;
-	}
-}
+# include "lexer.h"
+
+/*Functions*/
+void	free_pointer(void *pointer);
+void	free_data(t_data *data);
+
+#endif

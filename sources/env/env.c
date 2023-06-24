@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 13:57:47 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/19 20:11:33 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/23 11:31:52 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ int	env_var_count(char **env)
 
 	i = 0;
 	while (env && env[i])
-		i++:
+		i++;
 	return (i);
 }

@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/22 23:20:37 by Owen          ########   odam.nl          #
+#    Updated: 2023/06/24 14:30:36 by Owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,34 +19,40 @@ GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
 #main files
-MAIN_FILES = main.c error.c
-MAIN_FILES = main.c error.c
+MAIN_FILES = init_data.c main.c error.c loop.c
+MAIN_FILES = init_data.c main.c error.c loop.c
 MAIN_DIR = main/
 MAIN_DF = $(addprefix $(MAIN_DIR), $(MAIN_FILES))
 
 #lexer files
-LEXER_FILES = 	string.c\
+# LEXER_FILES = 	string.c\
+# 				tokenizer_utils.c\
+# 				tokenizer.c
+# LEXER_DIR = lexer/
+# LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
+
+#minishell files
+# MINISHELL_FILES = loop.c
+# MINISHELL_DIR = minishell/
+# MINISHELL_DF = $(addprefix $(MINISHELL_DIR), $(MINISHELL_FILES))
+
+#utils files
+UTILS_FILES = cleanup.c
+UTILS_DIR = utils/
+UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
+
+#tokenizer files
+LEXER_FILES = 	parse_input_str.c\
+				token_list.c\
 				tokenizer_utils.c\
 				tokenizer.c
 LEXER_DIR = lexer/
 LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
 
-#minishell files
-MINISHELL_FILES = loop.c
-MINISHELL_DIR = minishell/
-MINISHELL_DF = $(addprefix $(MINISHELL_DIR), $(MINISHELL_FILES))
-
-#utils files
-UTILS_FILES = 	init_data.c
-UTILS_DIR = utils/
-UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
-
-#tokenizer files
-LEXER_FILES = 	l_utils.c\
-				lexer.c
-LEXER_DIR = lexer/
-LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
-
+#signal files
+SIGNAL_FILES =	signals.c
+SIGNAL_DIR = signals/
+SIGNALS_DF = $(addprefix $(SIGNAL_DIR), $(SIGNAL_FILES))
 
 #environment variables files
 ENVP_FILES = envp.c ft_getenv.c
@@ -63,9 +69,12 @@ EXECUTOR_FILES = $(BUILTIN_DF) executor.c pathfinder.c
 EXECUTOR_DIR = executor/
 EXECUTOR_DF = $(addprefix $(EXECUTOR_DIR), $(EXECUTOR_FILES))
 
+ENDING_FILES = exit.c
+ENDING_DIR = ending/
+ENDING_DF =$(addprefix $(ENDING_DIR), $(ENDING_FILES))
 
 SOURCES_DIR = sources/
-FILES =	$(MAIN_DF) $(LEXER_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF)
+FILES =	$(MAIN_DF) $(LEXER_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
 INCLUDES = includes
@@ -81,8 +90,8 @@ LIBFT_FOLDER = libraries/libftprintf/
 LIBFT_NAME = libft.a
 LIBFT = $(addprefix $(LIBFT_FOLDER), $(LIBFT_NAME))
 
-LIST_FOLDER = libraries/dl_list/
-LIST_NAME = dl_list.a
+LIST_FOLDER = libraries/cdl_list/
+LIST_NAME = cdl_list.a
 LIST = $(addprefix $(LIST_FOLDER), $(LIST_NAME))
 
 all: $(NAME)

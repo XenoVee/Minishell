@@ -6,11 +6,12 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/21 21:35:20 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/22 19:49:38 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/23 13:05:44 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
+#include "error.h"
 #include "minishell.h"
 
 /*This needs to be reworked*/
@@ -63,21 +64,22 @@ t_lexer	*init_lexer(t_data *data, int *i, int pos)
 	new = (t_lexer *)malloc(sizeof(t_lexer));
 	if (!new)
 		exit (42);
-	new->type = id_token(data->user_input + *i);
+	new->token = id_token(data->user_input + *i);
 	//printf("the token is %i\n", new->type);
 	new->start = *i;
-	if (new->type == DOUBLE_LESSER || new->type == DOUBLE_GEATER)
+	if (new->token == DOUBLE_LESSER || new->token == DOUBLE_GEATER)
 		end = *i +2;
 	else 
 		end = skip_token(data->user_input, *i);
 	new->pos = pos;
 	new->content = ft_substr(data->user_input, *i, end - *i + 1);
 	printf("substring is %s\n", new->content);
+	//if (new->content[0] == '$')
+		/*expand*/
 	new->next = NULL;
 	new->prev = NULL;
 	new->end = end;
 	*i = end;
-	//printf("i is now %i\n", *i);
 	return (new);
 }
 

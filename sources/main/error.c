@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:50:47 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/05 17:00:36 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/23 13:13:07 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,12 @@ void	error(char *errmsg)
 	else
 		perror(errmsg);
 	exit(EXIT_FAILURE);
+}
+
+bool	print_error_msg(char *str)
+{
+	ft_putstr_fd("minishell: syntax error near unexpected token '", STDERR_FILENO);
+	ft_putstr_fd(str, STDERR_FILENO);
+	ft_putstr_fd("'\n", STDERR_FILENO);
+	return (false);
 }

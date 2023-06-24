@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   dl_list_clear.c                                    :+:    :+:            */
+/*   structs.h                                          :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
+/*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/05/09 15:25:30 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/05/24 14:26:02 by ohearn        ########   odam.nl         */
+/*   Created: 2023/06/24 14:15:35 by Owen          #+#    #+#                 */
+/*   Updated: 2023/06/24 14:16:09 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/dl_list.h"
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-void	dll_clear(t_dllist **list, void (*del)(void *))
-{
-	t_dllist	*tmp;
+/*to-do: move the structs from lexer into this header file*/
 
-	if (!list)
-		return ;
-	while (*list)
-	{
-		tmp = (*list)->next;
-		dl_lstdelone(*list, del);
-		*list = tmp;
-	}
-	*list = NULL;
-}
+#endif
