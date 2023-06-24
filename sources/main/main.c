@@ -6,13 +6,14 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/24 13:30:03 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/24 21:07:51 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "error.h"
 #include "lexer.h"
+#include "structs.h"
 #include "loop.h"
 #include <errno.h>
 #include <stdlib.h>
@@ -21,7 +22,6 @@
 int	main(int ac, char **av, char **env)
 {
 	t_data	data;
-	//char	**envcpy;
 
 	(void)ac;
 	(void)av;

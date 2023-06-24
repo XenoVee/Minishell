@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:44:45 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/24 13:38:32 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/24 21:11:02 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,60 +19,8 @@
 # define END_STR	" \t\r\n\v\f<>|"
 # include <stdbool.h>
 # include <stdlib.h>
+# include "structs.h"
 # include "../libraries/libftprintf/libft.h"
-
-/*Structs*/
-typedef enum e_token_type
-{
-	SPACES = 1,
-	WORD,
-	VAR,
-	PIPE,
-	INPUT,
-	TRUNC,
-	HEREDOC,
-	APPEND,
-	END
-}	t_token_type;
-
-typedef enum e_status
-{
-	DEFAULT = 0,
-	S_QUOTES,
-	D_QUOTES,
-}	t_status;
-
-typedef struct s_token
-{
-	t_token_type	type;
-	char			*string;
-	char			*string_cpy;
-	bool			var;
-	int				status;
-	struct s_token	*next;
-	struct s_token	*prev;
-}		t_token;
-
-typedef struct s_commands
-{
-	char				*path;
-	char				*command;
-	char				**args;
-	struct s_command	*next;
-	struct s_command	*prev;
-	
-}		t_commands;
-
-typedef struct s_data
-{
-	t_token		*token;
-	char		**env_cpy;
-	char		*user_input;
-	char		*current_dir;
-	char		*old_dir;
-	t_commands	*cmd;
-}		t_data;
-
 
 /*Functions*/
 //bool		build_lexer(t_data *data);
@@ -80,6 +28,8 @@ typedef struct s_data
 bool		parse_input_str(t_data *data);
 int			tokenizer(t_data *data, char *str);
 int			save_part(t_data *data, int *i, char *str, int start);
+bool		check_for_var(t_token **t_list);
+
 
 /*list functions*/
 t_token		*new_token(char *str, char *str_cpy, int type, int status);

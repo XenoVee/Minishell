@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   l_check.c                                          :+:    :+:            */
+/*   expander.h                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/22 21:58:29 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/23 13:12:54 by Owen          ########   odam.nl         */
+/*   Created: 2023/06/24 21:01:22 by Owen          #+#    #+#                 */
+/*   Updated: 2023/06/25 01:02:02 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexer.h"
-#include "error.h"
+#ifndef EXPANDER_H
+# define EXPANDER_H
 
-/*to-do: make something that makes sure
-everything that leaves here is 100% A-OKAY*/
+# include <stdbool.h>
 
-bool	check_lexer(t_data *data)
-{
-	t_lexer	*scan;
-	if (!data->lexer)
-		return (false);
-	scan = data->lexer;
-	if (scan->token == '|')
-		return (print_error_msg("|"));
-	
-}
+/*Functions*/
+
+
+#endif

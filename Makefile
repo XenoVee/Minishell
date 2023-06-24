@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/24 14:30:36 by Owen          ########   odam.nl          #
+#    Updated: 2023/06/24 19:09:35 by Owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ UTILS_DIR = utils/
 UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 #tokenizer files
-LEXER_FILES = 	parse_input_str.c\
+LEXER_FILES = 	check_for_var.c\
+				parse_input_str.c\
 				token_list.c\
 				tokenizer_utils.c\
 				tokenizer.c

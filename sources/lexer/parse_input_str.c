@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 14:54:15 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/24 11:44:24 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/24 21:11:15 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,11 @@ bool	parse_input_str(t_data *data)
 	}
 	if (data->token->type == END)
 		return (false);
+	if (check_for_var(&data->token) == false)
+	{
+		printf("something went wrong\n");
+		return (false);
+	}
+	printf("poggers\n");
 	return (true);
 }

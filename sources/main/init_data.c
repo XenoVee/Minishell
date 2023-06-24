@@ -6,12 +6,12 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 20:42:45 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/23 13:49:45 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/24 21:10:29 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "lexer.h"
+#include "structs.h"
 
 int	env_var_count(char **env)
 {
