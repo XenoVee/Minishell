@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/14 11:15:03 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 14:15:58 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 14:57:55 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,46 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+static char	**sort_array(t_dllist *env)
+{
+	char	**cpy;
+	char	*tmp;
+	int		i;
+	int		sorted;
+
+	sorted = 0;
+	i = 0;
+	cpy = arrayize(env);
+	while (!sorted)
+	{
+		sorted = 1;
+		i = 0;
+		while (i < env->listlen - 1)
+		{
+			if (ft_strcmp(cpy[i], cpy[i + 1]) > 0)
+			{
+				tmp = cpy[i];
+				cpy[i] = cpy[i + 1];
+				cpy[i + 1] = tmp;
+				sorted = 0;
+			}
+			i++;
+		}
+	}
+	return (cpy);
+}
+
 static void	export_list(t_dllist *env)
 {
-	
+	char **cpy;
+
+	cpy = sort_array(env);
+	int	i;
+	i = 0;
+	while (cpy[i])
+	{
+		printf("%s\n", cpy[i])
+	}
 }
 
 void	bi_export(char *var, t_dllist *env)
