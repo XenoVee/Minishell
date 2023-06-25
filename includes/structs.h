@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 14:15:35 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/24 21:08:44 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/25 14:04:18 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_commands
 typedef struct s_data
 {
 	t_token		*token;
-	char		**env_cpy;
+	t_dllist	*env;
 	char		*user_input;
 	char		*current_dir;
 	char		*old_dir;
