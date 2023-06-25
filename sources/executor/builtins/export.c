@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/14 11:15:03 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 14:57:55 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 15:34:53 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 
 static char	**sort_array(t_dllist *env)
 {
-	char	**cpy;
-	char	*tmp;
-	int		i;
-	int		sorted;
+	char			**cpy;
+	char			*tmp;
+	unsigned long	i;
+	int				sorted;
 
 	sorted = 0;
 	i = 0;
@@ -30,7 +30,7 @@ static char	**sort_array(t_dllist *env)
 		i = 0;
 		while (i < env->listlen - 1)
 		{
-			if (ft_strcmp(cpy[i], cpy[i + 1]) > 0)
+			if (ft_strcmp(cpy[i], cpy[i + 1]) < 0)
 			{
 				tmp = cpy[i];
 				cpy[i] = cpy[i + 1];
@@ -45,15 +45,31 @@ static char	**sort_array(t_dllist *env)
 
 static void	export_list(t_dllist *env)
 {
-	char **cpy;
+	char	**cpy;
+	int		i;
 
 	cpy = sort_array(env);
-	int	i;
 	i = 0;
 	while (cpy[i])
 	{
-		printf("%s\n", cpy[i])
+		printf("declare -x %s\n", cpy[i]);
+		i++;
 	}
+}
+
+static void	addnewvar(t_dllist *env, char **s)
+{
+	cdl_listdecr(env);
+	cdl_listaddback(env, cdl_nodenew(s[0], s[1]));
+	cdl_listincr(env);
+}
+
+static void	editvar(t_dllist *env, char **s, int i)
+{
+	env->current = cdl_listgetnode(env, i);
+	free (env->current->value);
+	env->current->value = s[1];
+	free (s[0]);
 }
 
 void	bi_export(char *var, t_dllist *env)
@@ -62,25 +78,15 @@ void	bi_export(char *var, t_dllist *env)
 	int		i;
 
 	if (var == NULL)
+	{
 		export_list(env);
+		return ;
+	}
 	s = ft_split(var, '=');
 	i = envsearch(env, s[0]);
 	if (i == -1)
-	{
-		cdl_listdecr(env);
-		cdl_listaddback(env, cdl_nodenew(s[0], s[1]));
-		cdl_listincr(env);
-		free (s);
-		return ;
-	}
+		addnewvar(env, s);
 	else if (s[1])
-	{
-		env->current = cdl_listgetnode(env, i);
-		free (env->current->value);
-		free (s[0]);
-		free (s);
-		env->current->value = s[1];
-		return ;
-	}
-	return ;
+		editvar(env, s, i);
+	free (s);
 }

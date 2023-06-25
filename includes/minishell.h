@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/25 14:29:04 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/25 15:25:13 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,10 @@ bool		init_data(t_data *data, char **env);
 void		error(char *errmsg);
 
 /*utils*/
-void	null_exit(void);
-void	*null_check(void *ptr);
+void		null_exit(void);
+void		*null_check(void *ptr);
 
 /*string*/
 //char	*assign_string(char **str, t_token_type tkn);
-
-/*enviroment*/
-
-/*env*/
-
 
 #endif

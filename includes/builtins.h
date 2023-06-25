@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/25 13:56:35 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 13:56:49 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 15:25:47 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define BUILTINS_H
 
 /*enums*/
-
 // bitmask
 enum e_mask
 {
