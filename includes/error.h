@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 16:46:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/24 14:12:07 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/25 14:00:51 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define ERR_MALLOC		"Malloc call failed"
 # define SUCCES 0
 # define FAILURE 1
-
 
 /*Functions*/
 void	error(char *errmsg);
