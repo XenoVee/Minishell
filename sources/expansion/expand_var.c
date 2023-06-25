@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 21:00:58 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/25 01:50:00 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/25 10:11:10 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,11 @@ int	expand_var(t_token **list)
 				update_status(&temp, temp->string[i]);
 				if (temp->string[i] == '$' && next_char_sep(temp->string[i + 1]) == false
 					&& var_between_quotes(temp->string, i) == false)
+				{
 					printf("Imma go sleep now\n");
+					replace_var(&temp, temp->string + i, i);
 					/*Need something to do stuff idk, it's 1:49 and I need slee*/
+				}
 				else
 					i++;
 			}
