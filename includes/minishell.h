@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/25 14:18:06 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 14:29:04 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <limits.h>
+# include "structs.h"
 # include "error.h"
 # include "builtins.h"
-# include "error.h"
 # include "executor.h"
 # include "lexer.h"
 
 /*global variable*/
-//extern int		g_exit_code;
+extern int		g_exit_code;
 
 /*Functions*/
 void		exit_ms(t_data *data, int num);
