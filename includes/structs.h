@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 14:15:35 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/25 14:18:02 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 14:25:05 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTS_H
 
 /*to-do: move the structs from lexer into this header file*/
+# include "env.h"
 /*Structs*/
 typedef enum e_token_type
 {
