@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/25 15:33:23 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 15:43:46 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ int	main(int argc, char **argv, char **envp)
 	t_dllist	*env;
 
 	env = envcpy(envp);
-	bi_export(argv[1], env);
-	bi_env(env);
+	bi_cd(env, argv[1]);
 	argc++;
 	if (argv[0])
 		;
