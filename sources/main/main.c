@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/24 21:07:51 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/25 13:59:37 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	main(int ac, char **av, char **env)
 void	leaks(void)
 {
 	system("leaks minishell -q");
-	atexit (leaks);
 }
 
 // int	main(int argc, char **argv, char **envp)
