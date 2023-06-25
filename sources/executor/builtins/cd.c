@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/25 13:21:34 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 13:43:13 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 13:53:19 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,22 @@ static void	setpwd(t_dllist *env, char *n, int l)
 void	bi_cd(t_dllist *env, char *arg)
 {
 	setpwd(env, "OLDPWD=", 8);
-	if (chdir(arg) != 0)
+	if (arg != NULL)
 	{
-		perror("minishell");
-		return ;
+		if (chdir(arg) != 0)
+		{
+			perror("minishell");
+			return ;
+		}
+	}
+	if (arg == NULL)
+	{
+		if (chdir(ft_getenv(env, "HOME")) != 0)
+		{
+			perror("minishell");
+			return ;
+		}
 	}
 	setpwd(env, "PWD=", 5);
+	bi_env(env);
 }

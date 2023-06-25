@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/25 13:31:58 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 13:47:58 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_dllist	*env;
 
-	atexit (leaks);
 	env = envcpy(envp);
+	atexit (leaks);
 	bi_cd(env, argv[1]);
 	if (argv[1])
 		;
