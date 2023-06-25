@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 15:04:06 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 15:49:13 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 15:53:38 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	varlen(char *var)
 	{
 		i++;
 	}
+	return (i);
 }
 
 int	envsearch(t_dllist *env, char *var)
