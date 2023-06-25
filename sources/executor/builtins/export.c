@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/14 11:15:03 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/20 14:58:10 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 13:35:48 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	export_list(t_dllist *env)
-{
-	exit(EXIT_FAILURE);
-	env->current = env->head;
-}
-
 void	bi_export(char *var, t_dllist *env)
 {
 	char	**s;
 	int		i;
 
-	if (var == NULL)
-		export_list(env);
 	s = ft_split(var, '=');
 	i = envsearch(env, s[0]);
 	if (i == -1)
@@ -34,15 +26,17 @@ void	bi_export(char *var, t_dllist *env)
 		cdl_listdecr(env);
 		cdl_listaddback(env, cdl_nodenew(s[0], s[1]));
 		cdl_listincr(env);
-		exit(EXIT_SUCCESS);
+		free (s);
+		return ;
 	}
 	else if (s[1])
 	{
 		env->current = cdl_listgetnode(env, i);
 		free (env->current->value);
+		free (s[0]);
+		free (s);
 		env->current->value = s[1];
-		exit(EXIT_SUCCESS);
+		return ;
 	}
-	else
-		exit(EXIT_SUCCESS);
+	return ;
 }

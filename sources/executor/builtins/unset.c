@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 14:14:33 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/20 14:10:44 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/23 16:28:08 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	bi_unset(char *var, t_dllist *env)
 
 	i = envsearch(env, var);
 	if (i == -1)
-		exit(EXIT_FAILURE);
+		return ;
 	cdl_listdelnode(env, i);
 }
