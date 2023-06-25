@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:44:45 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/25 14:00:47 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 14:17:10 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 # include "../libraries/libftprintf/libft.h"
 
 /*Functions*/
-//bool		build_lexer(t_data *data);
-//int		skip_delims(char *str, int i);
 bool		parse_input_str(t_data *data);
 int			tokenizer(t_data *data, char *str);
 int			save_part(t_data *data, int *i, char *str, int start);
