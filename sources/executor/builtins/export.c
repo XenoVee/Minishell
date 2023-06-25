@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/14 11:15:03 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 13:35:48 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 14:15:58 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+static void	export_list(t_dllist *env)
+{
+	
+}
+
 void	bi_export(char *var, t_dllist *env)
 {
 	char	**s;
 	int		i;
 
+	if (var == NULL)
+		export_list(env);
 	s = ft_split(var, '=');
 	i = envsearch(env, s[0]);
 	if (i == -1)
