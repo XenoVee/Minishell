@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/21 16:06:54 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/23 14:40:30 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static int	execute(char **cmd, t_dllist *env)
 	if (pid == 0)
 	{
 		path = pathfinder(cmd[0]);
-		ft_printf("%s\n", path);
 		if (path == NULL)
 			exit(1);
 		envp = arrayize(env);
@@ -69,9 +68,9 @@ static int	execute(char **cmd, t_dllist *env)
 	return (0);
 }
 
-int	executor(char **cmd1, t_dllist *env)
+int	executor(char **cmd, t_dllist *env)
 {
-	execute(cmd1, env);
+	execute(cmd, env);
 	wait(NULL);
 	return (1);
 }

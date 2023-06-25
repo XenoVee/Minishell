@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   executor.h                                         :+:    :+:            */
+/*   pwd.c                                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/21 15:39:36 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/23 14:33:17 by rmaes         ########   odam.nl         */
+/*   Created: 2023/06/25 13:11:01 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/06/25 13:24:25 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTOR_H
-# define EXECUTOR_H
+#include "minishell.h"
+#include <stdio.h>
+#include <libc.h>
 
-# include "minishell.h"
-
-/*Defines*/
-enum e_strlens
+void	bi_pwd(void)
 {
-	NAME=0,
-	VALUE,
-};
+	char	*path;
 
-/*Functions*/
-int		executor(char **cmd, t_dllist *env);
-char	*pathfinder(char *find);
-char	**arrayize(t_dllist *env);
-
-#endif
+	path = getcwd(NULL, 0);
+	printf("%s\n", path);
+	free (path);
+}

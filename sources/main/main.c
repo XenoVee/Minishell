@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/21 16:06:58 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 13:31:58 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,17 @@
 void	leaks(void)
 {
 	system("leaks minishell -q");
-	atexit (leaks);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
 	t_dllist	*env;
 
+	atexit (leaks);
 	env = envcpy(envp);
-	executor(&argv[1], env);
+	bi_cd(env, argv[1]);
+	if (argv[1])
+		;
 	argc++;
 	exit (EXIT_SUCCESS);
 }

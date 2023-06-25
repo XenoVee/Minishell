@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 11:30:09 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/21 15:39:11 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 13:29:57 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ void	bi_echo(char *str, t_dllist *env, int mode);
 void	bi_env(t_dllist *env);
 void	bi_unset(char *var, t_dllist *env);
 void	bi_export(char *var, t_dllist *env);
+void	bi_pwd(void);
+void	bi_cd(t_dllist *env, char *arg);
 
 #endif

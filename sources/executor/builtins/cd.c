@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   export.c                                           :+:    :+:            */
+/*   cd.c                                               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/14 11:15:03 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 13:35:48 by rmaes         ########   odam.nl         */
+/*   Created: 2023/06/25 13:21:34 by rmaes         #+#    #+#                 */
+/*   Updated: 2023/06/25 13:43:13 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include <libc.h>
 
-void	bi_export(char *var, t_dllist *env)
+static void	setpwd(t_dllist *env, char *n, int l)
 {
-	char	**s;
-	int		i;
+	char	*cwd;
+	char	*var;
 
-	s = ft_split(var, '=');
-	i = envsearch(env, s[0]);
-	if (i == -1)
+	cwd = getcwd(NULL, 0);
+	var = malloc(sizeof(char) * (ft_strlen(cwd) + l));
+	ft_strlcpy(var, n, l);
+	ft_strlcat(var, cwd, ft_strlen(cwd) + l);
+	bi_export(var, env);
+	free (var);
+	free (cwd);
+}
+
+void	bi_cd(t_dllist *env, char *arg)
+{
+	setpwd(env, "OLDPWD=", 8);
+	if (chdir(arg) != 0)
 	{
-		cdl_listdecr(env);
-		cdl_listaddback(env, cdl_nodenew(s[0], s[1]));
-		cdl_listincr(env);
-		free (s);
+		perror("minishell");
 		return ;
 	}
-	else if (s[1])
-	{
-		env->current = cdl_listgetnode(env, i);
-		free (env->current->value);
-		free (s[0]);
-		free (s);
-		env->current->value = s[1];
-		return ;
-	}
-	return ;
+	setpwd(env, "PWD=", 5);
 }
