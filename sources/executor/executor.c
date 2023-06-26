@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/26 18:10:33 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/26 21:11:40 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,9 @@ static int	execute(t_commands *cmd, t_dllist *env, int *pipenew, int *pipeold)
 
 	if (cmd->next)
 		pipe(pipenew);
-	printf("%p\n", env);
 	pid = fork();
 	if (pid == 0)
 	{
-		printf("%p\n", env);
 		if (cmd->prev)
 		{
 			dup2(pipeold[0], STDIN);
@@ -96,11 +94,30 @@ static int	execute(t_commands *cmd, t_dllist *env, int *pipenew, int *pipeold)
 	return (0);
 }
 
+int	single_builtin(t_commands *cmd)
+{
+	if (cmd->next)
+		return (0);
+	if (0 == (ft_strcmp("echo", cmd->args[0])
+			* ft_strcmp("cd", cmd->args[0])
+			* ft_strcmp("pwd", cmd->args[0])
+			* ft_strcmp("export", cmd->args[0])
+			* ft_strcmp("unset", cmd->args[0])
+			* ft_strcmp("env", cmd->args[0])
+			* ft_strcmp("exit", cmd->args[0])))
+		return (1);
+	return (0);
+}
+
 int	executor(t_commands *cmd, t_dllist *env)
 {
 	int	pipenew[2];
 	int	pipeold[2];
 
+	if (single_builtin(cmd))
+	{
+		printf("it works \n");
+	}
 	while (cmd)
 	{
 		execute(cmd, env, pipenew, pipeold);
