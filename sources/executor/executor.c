@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 13:55:17 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/26 18:10:33 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <signal.h>
+#include <stdio.h>
 
 char	**arrayize(t_dllist *env)
 {
@@ -43,34 +44,67 @@ char	**arrayize(t_dllist *env)
 	return (array);
 }
 
-static int	execute(char **cmd, t_dllist *env)
+static int	execute(t_commands *cmd, t_dllist *env, int *pipenew, int *pipeold)
 {
 	char	*path;
 	int		pid;
 	char	**envp;
 
+	if (cmd->next)
+		pipe(pipenew);
+	printf("%p\n", env);
 	pid = fork();
 	if (pid == 0)
 	{
-		path = pathfinder(cmd[0]);
+		printf("%p\n", env);
+		if (cmd->prev)
+		{
+			dup2(pipeold[0], STDIN);
+			close(pipeold[0]);
+			close(pipeold[1]);
+		}
+		if (cmd->next)
+		{
+			close(pipenew[0]);
+			dup2(pipenew[1], STDOUT);
+			close(pipenew[1]);
+		}
+		path = pathfinder(cmd->args[0]);
 		if (path == NULL)
 			exit(1);
 		envp = arrayize(env);
 		if (access(path, X_OK) != 0)
 			exit(2);
-		if (execve(path, &cmd[0], envp) == -1)
+		if (execve(path, cmd->args, envp) == -1)
 			perror("minishell");
 		exit(1);
 	}
 	else
 	{
+		if (cmd->prev)
+		{
+			close(pipeold[0]);
+			close(pipeold[1]);
+		}
+		if (cmd->next)
+		{
+			pipeold[0] = pipenew[0];
+			pipeold[1] = pipenew[1];
+		}
+		wait(NULL);
 	}
 	return (0);
 }
 
-int	executor(char **cmd, t_dllist *env)
+int	executor(t_commands *cmd, t_dllist *env)
 {
-	execute(cmd, env);
-	wait(NULL);
-	return (1);
+	int	pipenew[2];
+	int	pipeold[2];
+
+	while (cmd)
+	{
+		execute(cmd, env, pipenew, pipeold);
+		cmd = cmd->next;
+	}
+	return (5);
 }
