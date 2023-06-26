@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/25 13:21:34 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 13:53:19 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 15:44:03 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,4 @@ void	bi_cd(t_dllist *env, char *arg)
 		}
 	}
 	setpwd(env, "PWD=", 5);
-	bi_env(env);
 }

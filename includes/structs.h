@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 14:15:35 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/26 14:18:04 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/26 14:30:49 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_token
 	struct s_token	*prev;
 }		t_token;
 
-
 typedef struct s_commands
 {
 	char				*path;
@@ -57,7 +56,6 @@ typedef struct s_commands
 	char				**args;
 	struct s_command	*next;
 	struct s_command	*prev;
-	
 }		t_commands;
 
 typedef struct s_data
@@ -69,6 +67,5 @@ typedef struct s_data
 	char		*old_dir;
 	t_commands	*cmd;
 }		t_data;
-
 
 #endif

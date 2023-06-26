@@ -6,12 +6,25 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 15:04:06 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 13:48:34 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/25 15:53:38 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <stdio.h>
+
+static int	varlen(char *var)
+{
+	int	i;
+
+	i = 0;
+	while (var[i] && var[i] != ' ' && var[i] != '\t' && var[i] != '\r'
+		&& var[i] != '\n' && var[i] != '\v' && var[i] != '\f')
+	{
+		i++;
+	}
+	return (i);
+}
 
 int	envsearch(t_dllist *env, char *var)
 {
@@ -22,7 +35,7 @@ int	envsearch(t_dllist *env, char *var)
 
 	i = -1;
 	node = env->head;
-	strlen = ft_strlen(var);
+	strlen = varlen(var);
 	explen = -1;
 	while (node != env->head || i == -1)
 	{
