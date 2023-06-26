@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/24 13:46:13 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/24 21:07:34 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/26 12:55:15 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "../includes/structs.h"
 #include "../includes/loop.h"
 #include "signals.h"
+#include "cleanup.h"
 
 int	mini_loop(t_data *data)
 {
@@ -27,6 +28,7 @@ int	mini_loop(t_data *data)
 			break ;
 		if (parse_input_str(data) == true)
 			printf("happy :D\n");
+		free_data(data);
 	}
 	return (0);
 }

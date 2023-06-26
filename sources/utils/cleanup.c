@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 01:20:27 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/24 14:21:28 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/26 14:25:02 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	free_data(t_data *data)
 		free_pointer(data->user_input);
 		data->user_input = NULL;
 	}
-	// if (data && data->token)
-	// 	/*make list clear function for token list*/
+	if (data && data->token)
+		lst_clear_tkn(&data->token, &free_pointer);
 	// if (data && data->cmd)
 	// 	/*make list clean function for command list*/
 }

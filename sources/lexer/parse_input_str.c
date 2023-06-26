@@ -6,11 +6,12 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 14:54:15 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/24 21:11:15 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/26 14:20:53 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
+#include "expander.h"
 #include <readline/readline.h>
 #include <readline/history.h>
 
@@ -57,6 +58,6 @@ bool	parse_input_str(t_data *data)
 		printf("something went wrong\n");
 		return (false);
 	}
-	printf("poggers\n");
+	expand_var(data, &data->token);
 	return (true);
 }

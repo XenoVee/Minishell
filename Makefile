@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/25 13:58:07 by Owen          ########   odam.nl          #
+#    Updated: 2023/06/26 14:06:30 by Owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,13 @@ LEXER_FILES = 	check_for_var.c\
 LEXER_DIR = lexer/
 LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
 
+#expander files
+EXPANDER_FILES =	expand_get_string.c\
+					expand_utils.c\
+					expand_var.c
+EXPANDER_DIR = expansion/
+EXPANDER_DF = $(addprefix $(EXPANDER_DIR), $(EXPANDER_FILES))
+
 #signal files
 SIGNAL_FILES =	signals.c
 SIGNAL_DIR = signals/
@@ -75,7 +82,7 @@ ENDING_DIR = ending/
 ENDING_DF =$(addprefix $(ENDING_DIR), $(ENDING_FILES))
 
 SOURCES_DIR = sources/
-FILES =	$(MAIN_DF) $(LEXER_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
+FILES =	$(MAIN_DF) $(LEXER_DF) $(EXPANDER_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
 INCLUDES = includes
