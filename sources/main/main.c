@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/25 15:43:46 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/26 14:33:29 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,23 @@
 #include <string.h>
 #include "builtins.h"
 
-int	main(int argc, char **argv, char **envp)
+int	main(int ac, char **av, char **env)
+{
+	t_data	data;
+
+	if (ac > 1)
+	{
+		second_main(ac, av, env);
+		return (1);
+	}
+	ft_memset(&data, 0, sizeof(t_data));
+	if (!init_data(&data, env))
+		exit_ms(NULL, 0);
+	mini_loop(&data);
+	return (0);
+}
+
+int	second_main(int argc, char **argv, char **envp)
 {
 	t_dllist	*env;
 
