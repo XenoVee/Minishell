@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/26 21:11:40 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/27 15:54:14 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,20 @@ int	single_builtin(t_commands *cmd)
 {
 	if (cmd->next)
 		return (0);
-	if (0 == (ft_strcmp("echo", cmd->args[0])
-			* ft_strcmp("cd", cmd->args[0])
-			* ft_strcmp("pwd", cmd->args[0])
-			* ft_strcmp("export", cmd->args[0])
-			* ft_strcmp("unset", cmd->args[0])
-			* ft_strcmp("env", cmd->args[0])
-			* ft_strcmp("exit", cmd->args[0])))
+	if (!ft_strcmp("echo", cmd->args[0]))
 		return (1);
+	if (!ft_strcmp("cd", cmd->args[0]))
+		return (2);
+	if (!ft_strcmp("pwd", cmd->args[0]))
+		return (3);
+	if (!ft_strcmp("export", cmd->args[0]))
+		return (4);
+	if (!ft_strcmp("unset", cmd->args[0]))
+		return (5);
+	if (!ft_strcmp("env", cmd->args[0]))
+		return (6);
+	if (!ft_strcmp("exit", cmd->args[0]))
+		return (7);
 	return (0);
 }
 
@@ -113,15 +119,33 @@ int	executor(t_commands *cmd, t_dllist *env)
 {
 	int	pipenew[2];
 	int	pipeold[2];
+	int	b;
 
-	if (single_builtin(cmd))
+	b = single_builtin(cmd);
+	if (b == 1)
+		bi_echo(cmd);
+	else if (b == 2)
+		printf("oops\n");
+		// bi_cd();
+	else if (b == 3)
+		bi_pwd();
+	else if (b == 4)
+		printf("oops\n");
+		// bi_export();
+	else if (b == 5)
+		printf("oops\n");
+		// bi_unset();
+	else if (b == 6)
+		bi_env(env);
+	else if (b == 7)
+		;
+	else
 	{
-		printf("it works \n");
+		while (cmd)
+		{
+			execute(cmd, env, pipenew, pipeold);
+			cmd = cmd->next;
+		}
 	}
-	while (cmd)
-	{
-		execute(cmd, env, pipenew, pipeold);
-		cmd = cmd->next;
-	}
-	return (5);
+	return (0);
 }

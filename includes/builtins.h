@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/25 13:56:35 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 15:25:47 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/27 15:24:00 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 # define BUILTINS_H
 
 /*enums*/
-// bitmask
-enum e_mask
+enum e_flag
 {
-	M_NONE = 0,
-	M_N = 1,
-	M_EXP = 2,
-	M_EXP_N = 3,
+	FALSE = 0,
+	TRUE,
 };
 
 /*functions*/
-void	bi_echo(char *str, t_dllist *env, int mode);
+void	bi_echo(t_commands *cmd);
 void	bi_env(t_dllist *env);
 void	bi_unset(char *var, t_dllist *env);
 void	bi_export(char *var, t_dllist *env);

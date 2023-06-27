@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:02:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/20 15:18:59 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/27 16:17:54 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,80 +15,31 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static char	*cutvar(char *str)
+void	bi_echo(t_commands *cmd)
 {
-	int		i;
-	char	*ret;
+	int	i;
+	int	j;
+	int	newline;
 
-	i = 0;
-	while ((str[i] != ' ' && str[i] != '=') && str[i])
+	newline = TRUE;
+	i = 1;
+	while (cmd->args[i] && cmd->args[i][0] == '-')
 	{
-		i++;
-	}
-	ret = malloc(sizeof(char) * (i + 1));
-	if (!ret)
-		error(ERR_MALLOC);
-	i = 0;
-	while ((str[i] != ' ' && str[i] != '=') && str[i])
-	{
-		ret[i] = str[i];
-		i++;
-	}
-	ret[i] = '\0';
-	return (ret);
-}
-
-static int	varhandler(char **print, int *j, char *str, t_dllist *env)
-{
-	char	*var;
-	char	*exp;
-	int		i;
-
-	var = cutvar(str);
-	exp = ft_getenv(env, var);
-	if (exp == NULL)
-	{
-		i = ft_strlen(var);
-		free(var);
-		return (i);
-	}
-	i = 0;
-	*print = ft_realloc(*print, sizeof(char)
-			* (ft_strlen(*print) + ft_strlen(exp) + 1));
-	while (exp[i])
-	{
-		print[0][*j] = exp[i];
-		i++;
-		*j += 1;
-	}
-	i = ft_strlen(var);
-	free(var);
-	return (i);
-}
-
-void	bi_echo(char *str, t_dllist *env, int mode)
-{
-	int		i;
-	int		j;
-	char	*print;
-
-	i = 0;
-	j = 0;
-	print = malloc(sizeof(char) * (ft_strlen(str) + 1));
-	while (str[i])
-	{
-		if (str[i] == '$' && mode & M_EXP)
-			i += 1 + varhandler(&print, &j, &str[i + 1], env);
-		else
-		{
-			print[j] = str[i];
-			i++;
+		j = 1;
+		while (cmd->args[i][j] == 'n')
 			j++;
-		}
+		if (!cmd->args[i][j])
+			newline = FALSE;
+		else
+			break ;
+		i++;
 	}
-	print[j] = '\0';
-	write(1, print, ft_strlen(print));
-	if (!(mode & M_N))
-		write(1, "\n", 1);
-	free(print);
+	while (cmd->args[i] && cmd->args[i++])
+	{
+		printf("%s", cmd->args[i - 1]);
+		if (cmd->args[i])
+			printf(" ");
+	}
+	if (newline == TRUE)
+		printf("\n");
 }
