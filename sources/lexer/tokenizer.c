@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 15:17:22 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/24 21:11:25 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/27 17:35:11 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	tokenizer(t_data *data, char *str)
 	int		start;
 	int		end;
 	int		status;
-	t_token	*temp;
 
 	i = -1;
 	start = 0;
@@ -55,12 +54,6 @@ int	tokenizer(t_data *data, char *str)
 		status = set_status(status, str, i);
 		if (status == DEFAULT)
 			start = save_part(data, &i, str, start);
-	}
-	temp = data->token;
-	while (temp)
-	{
-		printf("string in this one is %s\n", temp->string);
-		temp = temp->next;
 	}
 	if (status != DEFAULT)
 	{

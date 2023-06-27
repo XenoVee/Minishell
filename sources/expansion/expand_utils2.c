@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 14:54:20 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/27 16:43:30 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/27 17:44:42 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ char	*id_variable(char *string)
 
 	i = 0;
 	start = 0;
-	printf("string is %s\n", string);
 	while (string[i])
 	{
 		if (string[i] == '$')
@@ -38,7 +37,6 @@ char	*id_variable(char *string)
 	var = ft_substr(string, start, size);
 	if (!var)
 		return (NULL);
-	printf("var is now : %s\n", var);
 	return (var);
 }
 
