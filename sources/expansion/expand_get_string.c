@@ -6,12 +6,13 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/25 17:12:04 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/26 14:08:50 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/27 16:50:45 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expander.h"
 #include <unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 void	copy_new_var(char *new, char *var, int *j)
@@ -19,6 +20,7 @@ void	copy_new_var(char *new, char *var, int *j)
 	int	copy;
 
 	copy = 0;
+	printf("var is %s\n", var);
 	while (var[copy])
 	{
 		new[*j] = var[copy];
@@ -27,7 +29,7 @@ void	copy_new_var(char *new, char *var, int *j)
 	}
 }
 
-char	*get_new_string(char *old, char *new, int len, int index)
+char	*get_new_string(char *old, char *var, int len, int index)
 {
 	char	*new_string;
 	int		i;
@@ -42,11 +44,13 @@ char	*get_new_string(char *old, char *new, int len, int index)
 	{
 		if (old[i] == '$' && i == index)
 		{
-			copy_new_var(new, new_string, &j);
-			i = i + var_length(old + index);
+			copy_new_var(new_string, var, &j);
+			i = i + var_length(old + index) + 1;
+			if (old[i] == '\0')
+				break ;
 		}
-		new[j++] = old[i++];
+		new_string[j++] = old[i++];
 	}
-	new[j] = '\0';
+	new_string[j] = '\0';
 	return (new_string);
 }

@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 14:15:35 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/26 14:30:49 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/27 15:12:05 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_token
 	t_token_type	type;
 	char			*string;
 	char			*string_cpy;
-	bool			var;
+	bool			valid_var;
 	int				status;
 	struct s_token	*next;
 	struct s_token	*prev;

@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/26 14:33:29 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/27 13:41:54 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,19 @@
 #include <stdlib.h>
 #include <string.h>
 #include "builtins.h"
+
+int	second_main(int argc, char **argv, char **envp)
+{
+	t_dllist	*env;
+
+	(void)argc;
+	env = envcpy(envp);
+	bi_cd(env, argv[1]);
+	//argc++;
+	if (argv[0])
+		;
+	return (1);
+}
 
 int	main(int ac, char **av, char **env)
 {
@@ -34,15 +47,4 @@ int	main(int ac, char **av, char **env)
 		exit_ms(NULL, 0);
 	mini_loop(&data);
 	return (0);
-}
-
-int	second_main(int argc, char **argv, char **envp)
-{
-	t_dllist	*env;
-
-	env = envcpy(envp);
-	bi_cd(env, argv[1]);
-	argc++;
-	if (argv[0])
-		;
 }

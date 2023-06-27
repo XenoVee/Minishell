@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 14:54:15 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/26 14:20:53 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/27 13:46:23 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static bool	is_space(char *str)
 
 bool	parse_input_str(t_data *data)
 {
+	t_token	*temp;
+
 	if (data->user_input == NULL)
 		exit(42);
 	else if (ft_strcmp(data->user_input, "\0") == 0)
@@ -59,5 +61,11 @@ bool	parse_input_str(t_data *data)
 		return (false);
 	}
 	expand_var(data, &data->token);
+	temp = data->token;
+	while (temp)
+	{
+		printf("string in this one is %s\n", temp->string);
+		temp = temp->next;
+	}
 	return (true);
 }

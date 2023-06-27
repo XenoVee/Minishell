@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/26 14:31:43 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/27 15:52:28 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@
 # include "builtins.h"
 # include "executor.h"
 # include "lexer.h"
-
-/*global variable*/
-extern int		g_exit_code;
 
 /*Functions*/
 void		exit_ms(t_data *data, int num);

@@ -6,11 +6,14 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 21:00:58 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/26 14:19:47 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/27 16:51:58 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expander.h"
+#include "minishell.h"
+#include "cleanup.h"
+#include <stdio.h>
 
 void	update_status(t_token **node, char c)
 {
@@ -43,6 +46,26 @@ bool	var_between_quotes(char *string, int i)
 	return (false);
 }
 
+char	*get_value(t_data *data, t_token *temp, char *string)
+{
+	char	*var;
+	char	*value;
+
+	var = id_variable(string);
+	if (var && valid_var(data, var) == true)
+	{
+		if (temp)
+			temp->valid_var = true; 
+		value = ft_getenv(data->env, var);
+	}
+	else if (var && var[0] == '?')
+		value = "oopsie";
+	else
+		value = NULL;
+	free_pointer(var);
+	return (value);
+}
+
 /*sleepcoded, check later*/
 int	expand_var(t_data *data, t_token **list)
 {
@@ -59,14 +82,20 @@ int	expand_var(t_data *data, t_token **list)
 			{
 				update_status(&temp, temp->string[i]);
 				if (temp->string[i] == '$' && next_char_sep(temp->string[i + 1]) == false
-					&& var_between_quotes(temp->string, i) == false)
-					replace_var(&temp, ft_getenv(data->env, temp->string + 1), i);
-					/*Need something to do stuff idk, it's 1:49 and I need sleep*/
+					&& var_between_quotes(temp->string, i) == false && 
+					(temp->status == DEFAULT || temp->status == D_QUOTES))
+				{
+					//printf("What it needs is: %s\nWhat it gets is: %s\n", temp->string + 1, ft_getenv(data->env, temp->string + 1));
+					//replace_var(&temp, ft_getenv(data->env, temp->string + 1), i);
+					replace_var(&temp, get_value(data, temp, temp->string + i), i);
+				}
 				else
 					i++;
 			}
 		}
 		temp = temp->next;
 	}
+	if (handle_quotes(data) == false)
+		return (0);
 	return (0);
 }

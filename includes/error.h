@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 16:46:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/25 14:00:51 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/27 15:52:36 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 # define ERR_MALLOC		"Malloc call failed"
 # define SUCCES 0
 # define FAILURE 1
+
+/*global variable*/
+extern int		g_exit_code;
 
 /*Functions*/
 void	error(char *errmsg);

@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/26 14:30:38 by Owen          ########   odam.nl          #
+#    Updated: 2023/06/27 15:55:49 by Owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,10 @@ LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
 #expander files
 EXPANDER_FILES =	expand_get_string.c\
 					expand_utils.c\
-					expand_var.c
+					expand_utils2.c\
+					expand_var.c\
+					quotes_utils.c\
+					quotes.c
 EXPANDER_DIR = expansion/
 EXPANDER_DF = $(addprefix $(EXPANDER_DIR), $(EXPANDER_FILES))
 
