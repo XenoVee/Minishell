@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/14 11:15:03 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 15:34:53 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/28 15:38:46 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,26 +67,33 @@ static void	addnewvar(t_dllist *env, char **s)
 static void	editvar(t_dllist *env, char **s, int i)
 {
 	env->current = cdl_listgetnode(env, i);
-	free (env->current->value);
+	if (env->current->value)
+		free (env->current->value);
 	env->current->value = s[1];
 	free (s[0]);
 }
 
-void	bi_export(char *var, t_dllist *env)
+void	bi_export(t_commands *cmd, t_dllist *env)
 {
 	char	**s;
+	int		n;
 	int		i;
 
-	if (var == NULL)
+	i = 1;
+	if (cmd->args[i] == NULL)
 	{
 		export_list(env);
 		return ;
 	}
-	s = ft_split(var, '=');
-	i = envsearch(env, s[0]);
-	if (i == -1)
-		addnewvar(env, s);
-	else if (s[1])
-		editvar(env, s, i);
-	free (s);
+	while (cmd->args[i])
+	{
+		s = ft_split(cmd->args[i], '=');
+		n = envsearch(env, s[0]);
+		if (n == -1)
+			addnewvar(env, s);
+		else if (s[1])
+			editvar(env, s, n);
+		free (s);
+		i++;
+	}
 }

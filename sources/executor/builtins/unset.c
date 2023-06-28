@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 14:14:33 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/23 16:28:08 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/28 15:45:03 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	bi_unset(char *var, t_dllist *env)
+void	bi_unset(t_commands *cmd, t_dllist *env)
 {
+	int	n;
 	int	i;
 
-	i = envsearch(env, var);
-	if (i == -1)
-		return ;
-	cdl_listdelnode(env, i);
+	i = 1;
+	while (cmd->args[i])
+	{
+		n = envsearch(env, cmd->args[i]);
+		if (n == -1)
+			return ;
+		cdl_listdelnode(env, n);
+		i++;
+	}
 }

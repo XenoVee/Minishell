@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/27 15:54:14 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/28 15:31:50 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,18 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <stdio.h>
+
+static size_t	safestrlen(char *s)
+{
+	int	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i++])
+		;
+	return (i);
+}
 
 char	**arrayize(t_dllist *env)
 {
@@ -33,11 +45,13 @@ char	**arrayize(t_dllist *env)
 	while (env->current != env->head || i == 0)
 	{
 		len[NAME] = ft_strlen(env->current->name);
-		len[VALUE] = ft_strlen(env->current->value);
+		len[VALUE] = safestrlen(env->current->value);
 		array[i] = malloc(sizeof(char) * (len[NAME] + len[VALUE] + 2));
 		ft_strlcpy(array[i], env->current->name, len[NAME] + 1);
-		ft_strlcat(array[i], "=", len[NAME] + 2);
-		ft_strlcat(array[i], env->current->value, len[NAME] + len[VALUE] + 2);
+		if (len[VALUE])
+			ft_strlcat(array[i], "=", len[NAME] + 2);
+		if (len[VALUE])
+			ft_strlcat(array[i], env->current->value, len[NAME] + len[VALUE] + 2);
 		i++;
 		env->current = env->current->next;
 	}
@@ -94,51 +108,36 @@ static int	execute(t_commands *cmd, t_dllist *env, int *pipenew, int *pipeold)
 	return (0);
 }
 
-int	single_builtin(t_commands *cmd)
+int	single_builtin(t_commands *cmd, t_dllist *env)
 {
 	if (cmd->next)
 		return (0);
 	if (!ft_strcmp("echo", cmd->args[0]))
-		return (1);
-	if (!ft_strcmp("cd", cmd->args[0]))
-		return (2);
-	if (!ft_strcmp("pwd", cmd->args[0]))
-		return (3);
-	if (!ft_strcmp("export", cmd->args[0]))
-		return (4);
-	if (!ft_strcmp("unset", cmd->args[0]))
-		return (5);
-	if (!ft_strcmp("env", cmd->args[0]))
-		return (6);
-	if (!ft_strcmp("exit", cmd->args[0]))
+		bi_echo(cmd);
+	else if (!ft_strcmp("cd", cmd->args[0]))
+		bi_cd(env, cmd);
+	else if (!ft_strcmp("pwd", cmd->args[0]))
+		bi_pwd();
+	else if (!ft_strcmp("export", cmd->args[0]))
+		bi_export(cmd, env);
+	else if (!ft_strcmp("unset", cmd->args[0]))
+		bi_unset(cmd, env);
+	else if (!ft_strcmp("env", cmd->args[0]))
+		bi_env(env);
+	else if (!ft_strcmp("exit", cmd->args[0]))
 		return (7);
-	return (0);
+	else
+		return (0);
+	return (1);
 }
 
 int	executor(t_commands *cmd, t_dllist *env)
 {
 	int	pipenew[2];
 	int	pipeold[2];
-	int	b;
 
-	b = single_builtin(cmd);
-	if (b == 1)
-		bi_echo(cmd);
-	else if (b == 2)
-		printf("oops\n");
-		// bi_cd();
-	else if (b == 3)
-		bi_pwd();
-	else if (b == 4)
-		printf("oops\n");
-		// bi_export();
-	else if (b == 5)
-		printf("oops\n");
-		// bi_unset();
-	else if (b == 6)
-		bi_env(env);
-	else if (b == 7)
-		;
+	if (single_builtin(cmd, env))
+		return (0);
 	else
 	{
 		while (cmd)

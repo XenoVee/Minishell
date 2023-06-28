@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 15:04:06 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/25 15:53:38 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/28 15:47:49 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int	varlen(char *var)
 	return (i);
 }
 
+// Finds variable var in the env list, and returns where in the list it is
+// !!segfaults when var is NULL, ON PURPOSE, because that shouldnt happen
 int	envsearch(t_dllist *env, char *var)
 {
 	t_dlnode		*node;
