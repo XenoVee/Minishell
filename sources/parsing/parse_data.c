@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   parsing.h                                          :+:    :+:            */
+/*   parse_data.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/06/27 17:46:18 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/28 11:12:44 by Owen          ########   odam.nl         */
+/*   Created: 2023/06/27 17:54:01 by Owen          #+#    #+#                 */
+/*   Updated: 2023/06/28 00:11:35 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "parsing.h"
 
-# include "structs.h"
-# include <fcntl.h>
+void	parse_data(t_data *data, t_token *token)
+{
+	t_token	*temp;
 
-void		parse_data(t_data *data, t_token *token);
-t_commands	*lst_new_command(void);
-void		lst_add_back_cmd(t_commands **list, t_commands *new);
-t_commands	*lst_last_cmd(t_commands *list);
-
-#endif
+	if (token->type == END)
+		return ;
+	temp = token;
+	while (temp->next != NULL)
+	{
+		if (temp == token)
+			lst_add_back_cmd(&data->cmd, lst_new_command());
+		if (temp->type == HEREDOC)
+			parse_heredoc(data, &data->cmd, &temp);
+		if (temp->type == WORD || temp->type == VAR)
+			parse_word(&data->cmd, &temp);
+		
+	}
+}

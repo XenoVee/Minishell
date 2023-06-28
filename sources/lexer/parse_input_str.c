@@ -6,16 +6,17 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 14:54:15 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/27 13:46:23 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/28 20:10:23 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 #include "expander.h"
+#include "parsing.h"
 #include <readline/readline.h>
 #include <readline/history.h>
 
-static bool	is_space(char *str)
+bool	is_space(char *str)
 {
 	int	i;
 
@@ -62,10 +63,11 @@ bool	parse_input_str(t_data *data)
 	}
 	expand_var(data, &data->token);
 	temp = data->token;
-	while (temp)
+	while (temp->next != NULL)
 	{
 		printf("string in this one is %s\n", temp->string);
 		temp = temp->next;
 	}
+	parse_data(data, data->token);
 	return (true);
 }

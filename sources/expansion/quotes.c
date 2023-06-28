@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 16:11:45 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/27 13:43:31 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/28 10:38:20 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ int	count_length(char *string, int count, int i)
 			else if (string[i] == '\"')
 				status = D_QUOTES;
 			i++;
+			continue ;
 		}
 		else if ((string[i] == '\'' && status == S_QUOTES) || (string[i] == '\"' && status == D_QUOTES))
 		{
 			status = DEFAULT;
 			i++;
+			continue ;
 		}
 		count++;
 		i++;

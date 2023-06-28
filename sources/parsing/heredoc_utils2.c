@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   heredoc_utils2.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: Owen <Owen@student.codam.nl>                 +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2023/06/28 17:27:08 by Owen          #+#    #+#                 */
+/*   Updated: 2023/06/28 18:14:07 by Owen          ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "heredoc.h"
+#include "expander.h"
+
+char	*erase_replace_var_hd(char *string, char *var, int index)
+{
+	char	*new;
+	int		size;
+
+	size = (ft_strlen(string) - var_length(string + index) + ft_strlen(var));
+	new = get_new_string(string, var, size, index);
+	return (new);
+}
+
+char	*replace_str_hd(char *string, char *var, int index)
+{
+	char	*temp;
+
+	temp = NULL;
+	if (var == NULL)
+		*string = '\0';
+	else
+	{
+		temp = string;
+		string = erase_replace_var_hd(string, var, index);
+		free_pointer(temp);
+	}
+	free_pointer(var);
+	return (string);
+}

@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/25 01:49:40 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/27 16:51:46 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/28 15:04:18 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static bool	erase_variable(t_token **list, char *string, int index)
 	new = (char *)malloc(sizeof(char) * len + 1);
 	if (!new)
 		return (false);
-	printf("erasing var to replace it with new one\n");
 	while (string[i])
 	{
 		if (string[i] == '$' && i == index)
@@ -76,13 +75,10 @@ static bool erase_replace_var(t_token **list, char *string,
 	int		len;
 	char	*new;
 
-	//printf("var is: %s\n", var);
 	len = (ft_strlen(string) - var_length(string + index) + ft_strlen(var));
-	//printf("original string length is %zu len is %i\n",ft_strlen(string), len);
 	new = get_new_string(string, var, len, index);
 	if (!new)
 		return (false);
-	//printf("new is :%s\n", new);
 	if (list && *list)
 	{
 		free_pointer((*list)->string);
@@ -94,7 +90,6 @@ static bool erase_replace_var(t_token **list, char *string,
 
 void	replace_var(t_token **list, char *var, int index)
 {
-	printf("replacing var\nVar is %s\n", var);
 	if (var == NULL)
 	{
 		if (erase_variable(list, (*list)->string, index) == false)

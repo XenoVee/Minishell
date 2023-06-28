@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 21:00:58 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/27 16:51:58 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/28 15:06:37 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*get_value(t_data *data, t_token *temp, char *string)
 		value = ft_getenv(data->env, var);
 	}
 	else if (var && var[0] == '?')
-		value = "oopsie";
+		value = "need global var for this";
 	else
 		value = NULL;
 	free_pointer(var);
@@ -84,11 +84,7 @@ int	expand_var(t_data *data, t_token **list)
 				if (temp->string[i] == '$' && next_char_sep(temp->string[i + 1]) == false
 					&& var_between_quotes(temp->string, i) == false && 
 					(temp->status == DEFAULT || temp->status == D_QUOTES))
-				{
-					//printf("What it needs is: %s\nWhat it gets is: %s\n", temp->string + 1, ft_getenv(data->env, temp->string + 1));
-					//replace_var(&temp, ft_getenv(data->env, temp->string + 1), i);
 					replace_var(&temp, get_value(data, temp, temp->string + i), i);
-				}
 				else
 					i++;
 			}

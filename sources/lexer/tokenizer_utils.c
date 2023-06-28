@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 15:32:31 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/24 21:11:21 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/28 20:06:56 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,5 @@ int	save_part(t_data *data, int *i, char *str, int start)
 		}
 		start = (*i) + 1;
 	}
-	//printf("returning early\n");
 	return (start);
 }

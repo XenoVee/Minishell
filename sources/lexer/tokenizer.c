@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 15:17:22 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/27 17:35:11 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/28 20:04:19 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,13 @@
 int	set_status(int status, char *str, int i)
 {
 	if (str[i] == '\'' && status == DEFAULT)
-	{
-		//printf("status has been changed, it is %i\n", status);
 		status = S_QUOTES;
-	}
 	else if (str[i] == '\"' && status == DEFAULT)
-	{
-		//printf("status has been changed, it is %i\n", status);
 		status = D_QUOTES;
-	}
 	else if (str[i] == '\'' && status == S_QUOTES)
-	{
-		//printf("status has been changed, it is %i\n", status);
 		status = DEFAULT;
-	}
 	else if (str[i] == '\"' && status == D_QUOTES)
-	{
-		//printf("status has been changed, it is %i\n", status);
 		status = DEFAULT;
-	}
 	return (status);
 }
 

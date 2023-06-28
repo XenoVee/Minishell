@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 01:20:27 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/26 14:25:02 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/27 23:54:35 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	free_pointer(void *pointer)
 		pointer = NULL;
 	}
 }
+
+
 void	free_data(t_data *data)
 {
 	if (data && data->user_input)
@@ -32,7 +34,7 @@ void	free_data(t_data *data)
 	}
 	if (data && data->token)
 		lst_clear_tkn(&data->token, &free_pointer);
-	// if (data && data->cmd)
-	// 	/*make list clean function for command list*/
+	if (data && data->cmd)
+		lst_clear_cmd(data->cmd, &free_pointer);
 }
 
