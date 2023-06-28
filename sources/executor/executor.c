@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/28 15:31:50 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/28 16:36:39 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,26 @@ char	**arrayize(t_dllist *env)
 	}
 	return (array);
 }
+static int	builtin(t_commands *cmd, t_dllist *env)
+{
+	if (!ft_strcmp("echo", cmd->args[0]))
+		bi_echo(cmd);
+	else if (!ft_strcmp("cd", cmd->args[0]))
+		bi_cd(env, cmd);
+	else if (!ft_strcmp("pwd", cmd->args[0]))
+		bi_pwd();
+	else if (!ft_strcmp("export", cmd->args[0]))
+		bi_export(cmd, env);
+	else if (!ft_strcmp("unset", cmd->args[0]))
+		bi_unset(cmd, env);
+	else if (!ft_strcmp("env", cmd->args[0]))
+		bi_env(env);
+	else if (!ft_strcmp("exit", cmd->args[0]))
+		return (7);
+	else
+		return (0);
+	return (1);
+}
 
 static int	execute(t_commands *cmd, t_dllist *env, int *pipenew, int *pipeold)
 {
@@ -81,15 +101,20 @@ static int	execute(t_commands *cmd, t_dllist *env, int *pipenew, int *pipeold)
 			dup2(pipenew[1], STDOUT);
 			close(pipenew[1]);
 		}
-		path = pathfinder(cmd->args[0]);
-		if (path == NULL)
+		if (builtin(cmd, env))
+			exit(0);
+		else
+		{
+			path = pathfinder(cmd->args[0]);
+			if (path == NULL)
+				exit(1);
+			envp = arrayize(env);
+			if (access(path, X_OK) != 0)
+				exit(2);
+			if (execve(path, cmd->args, envp) == -1)
+				perror("minishell");
 			exit(1);
-		envp = arrayize(env);
-		if (access(path, X_OK) != 0)
-			exit(2);
-		if (execve(path, cmd->args, envp) == -1)
-			perror("minishell");
-		exit(1);
+		}
 	}
 	else
 	{
@@ -108,35 +133,12 @@ static int	execute(t_commands *cmd, t_dllist *env, int *pipenew, int *pipeold)
 	return (0);
 }
 
-int	single_builtin(t_commands *cmd, t_dllist *env)
-{
-	if (cmd->next)
-		return (0);
-	if (!ft_strcmp("echo", cmd->args[0]))
-		bi_echo(cmd);
-	else if (!ft_strcmp("cd", cmd->args[0]))
-		bi_cd(env, cmd);
-	else if (!ft_strcmp("pwd", cmd->args[0]))
-		bi_pwd();
-	else if (!ft_strcmp("export", cmd->args[0]))
-		bi_export(cmd, env);
-	else if (!ft_strcmp("unset", cmd->args[0]))
-		bi_unset(cmd, env);
-	else if (!ft_strcmp("env", cmd->args[0]))
-		bi_env(env);
-	else if (!ft_strcmp("exit", cmd->args[0]))
-		return (7);
-	else
-		return (0);
-	return (1);
-}
-
 int	executor(t_commands *cmd, t_dllist *env)
 {
 	int	pipenew[2];
 	int	pipeold[2];
 
-	if (single_builtin(cmd, env))
+	if (!(cmd->next) && builtin(cmd, env))
 		return (0);
 	else
 	{
