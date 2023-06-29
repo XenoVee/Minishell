@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/24 13:46:13 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/29 15:04:38 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 19:34:20 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include "signals.h"
 #include "cleanup.h"
 #include "error.h"
+
+extern int	g_exit_code;
 
 int	mini_loop(t_data *data)
 {
