@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/28 16:36:39 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/29 13:04:52 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	builtin(t_commands *cmd, t_dllist *env)
 	else if (!ft_strcmp("env", cmd->args[0]))
 		bi_env(env);
 	else if (!ft_strcmp("exit", cmd->args[0]))
-		return (7);
+		exit();
 	else
 		return (0);
 	return (1);
