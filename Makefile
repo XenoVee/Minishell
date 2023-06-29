@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/29 15:45:04 by Owen          ########   odam.nl          #
+#    Updated: 2023/06/29 18:09:09 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ ENVP_DIR = envp/
 ENVP_DF = $(addprefix $(ENVP_DIR), $(ENVP_FILES))
 
 #builtins
-BUILTIN_FILES = echo.c env.c unset.c export.c pwd.c cd.c
+BUILTIN_FILES = echo.c env.c unset.c export.c pwd.c cd.c exit.c
 BUILTIN_DIR = builtins/
 BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
 

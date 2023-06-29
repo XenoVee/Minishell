@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/29 13:04:52 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/29 17:47:55 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,28 +51,30 @@ char	**arrayize(t_dllist *env)
 		if (len[VALUE])
 			ft_strlcat(array[i], "=", len[NAME] + 2);
 		if (len[VALUE])
-			ft_strlcat(array[i], env->current->value, len[NAME] + len[VALUE] + 2);
+			ft_strlcat(array[i],
+				env->current->value, len[NAME] + len[VALUE] + 2);
 		i++;
 		env->current = env->current->next;
 	}
 	return (array);
 }
+
 static int	builtin(t_commands *cmd, t_dllist *env)
 {
 	if (!ft_strcmp("echo", cmd->args[0]))
-		bi_echo(cmd);
+		bi_echo(cmd, 2);
 	else if (!ft_strcmp("cd", cmd->args[0]))
 		bi_cd(env, cmd);
 	else if (!ft_strcmp("pwd", cmd->args[0]))
-		bi_pwd();
+		bi_pwd(2);
 	else if (!ft_strcmp("export", cmd->args[0]))
-		bi_export(cmd, env);
+		bi_export(cmd, env, 2);
 	else if (!ft_strcmp("unset", cmd->args[0]))
 		bi_unset(cmd, env);
 	else if (!ft_strcmp("env", cmd->args[0]))
-		bi_env(env);
+		bi_env(env, 2);
 	else if (!ft_strcmp("exit", cmd->args[0]))
-		exit();
+		bi_exit(cmd);
 	else
 		return (0);
 	return (1);
