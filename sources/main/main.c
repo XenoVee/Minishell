@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/29 14:00:18 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/29 14:00:55 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	cmdclear(t_commands *cmd)
 	free (cmd);
 }
 
-int	main(int argc, char **argv, char **envp)
+int	second_main(int argc, char **argv, char **envp)
 {
 	t_dllist	*env;
 	t_commands	*cmd;
@@ -125,19 +125,6 @@ int	main(int argc, char **argv, char **envp)
 	cmdclear(cmd);
 	cmdclear(cmd2);
 	cmdclear(cmd3);
-}
-
-int	second_main(int argc, char **argv, char **envp)
-{
-	t_dllist	*env;
-
-	(void)argc;
-	env = envcpy(envp);
-	bi_cd(env, argv[1]);
-	//argc++;
-	if (argv[0])
-		;
-	return (1);
 }
 
 int	main(int ac, char **av, char **env)
