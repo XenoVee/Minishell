@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/28 00:11:59 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 15:00:09 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/29 15:51:12 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	parse_heredoc(t_data *data, t_commands **last_cmd, t_token **list)
 	if (!remove_old_ref(io, true))
 		return ;
 	io->infile = get_heredoc_name();
-	io->delim_hd = get_delim_hd(temp->next->string, &(io->quotes_hd));
+	io->delim_hd = get_delim_hd(temp->next->string, io->quotes_hd);
 	if (build_heredoc(data, io))
 		io->fd_in = open(io->infile, O_RDONLY);
 	else

@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/29 11:33:15 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 15:00:46 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/29 15:54:55 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**merge_strings(char **words, t_commands *cmd, t_token **list, int size)
 		i++;
 		temp = temp->next;
 	}
-	words[i] = '\0';
+	words[i] = "\0";
 	return (words);
 }
 
@@ -85,7 +85,7 @@ bool	create_args_cmd(t_token **list, t_commands *cmd)
 	t_token	*temp;
 
 	i = 0;
-	size = count_args(list) + 2;
+	size = count_args(*list) + 2;
 	temp = *list;
 	cmd->args = (char **)malloc(sizeof(char *) * size);
 	if (!cmd->args)

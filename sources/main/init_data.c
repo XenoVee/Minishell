@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 20:42:45 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/28 00:33:09 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 15:10:18 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_data_fd(t_commands *cmd)
 	{
 		cmd->fd_data = malloc(sizeof * cmd->fd_data);
 		if (!cmd->fd_data)
-			return (NULL);
+			return ;
 		cmd->fd_data->infile = NULL;
 		cmd->fd_data->outfile = NULL;
 		cmd->fd_data->delim_hd = NULL;
@@ -36,9 +36,8 @@ bool	init_data(t_data *data, char **env)
 	data->env = envcpy(env);
 	if (!data->env)
 		return (NULL);
-	//printf("Does env exist? %s\n", data->env->head->name);
 	data->user_input = NULL;
 	data->cmd = NULL;
-	//g_exit_code = 0;
+	g_exit_code = 0;
 	return (true);
 }

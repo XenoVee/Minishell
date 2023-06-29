@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 17:54:01 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 14:59:35 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/29 15:49:22 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ void	parse_data(t_data *data, t_token *token)
 			lst_add_back_cmd(&data->cmd, lst_new_command());
 		if (temp->type == HEREDOC)
 			parse_heredoc(data, &data->cmd, &temp);
-		if (temp->type == WORD || temp->type == VAR)
-			parse_word(data, &temp);
-		
+		else if (temp->type == WORD || temp->type == VAR)
+			parse_word(&data->cmd, &temp);
 	}
-	else
-		return ;
+	return ;
 }

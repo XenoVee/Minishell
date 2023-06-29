@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 17:46:18 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 14:43:07 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 15:46:03 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@ t_commands	*lst_new_command(void);
 void		lst_add_back_cmd(t_commands **list, t_commands *new);
 t_commands	*lst_last_cmd(t_commands *list);
 bool		process_args(t_token **list, t_commands *cmd);
+void		parse_heredoc(t_data *data, t_commands **last_cmd, t_token **list);
+void		parse_word(t_commands **cmd, t_token **list);
 
 #endif

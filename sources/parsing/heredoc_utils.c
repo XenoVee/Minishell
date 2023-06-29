@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/28 10:42:34 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 14:58:58 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/29 15:44:32 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*hd_expand_var(t_data *data, char *string)
 	return (string);
 }
 
-static char	expand_var_hd(t_data *data, char *input)
+static char	*expand_var_hd(t_data *data, char *input)
 {
 	int		i;
 	char	**words;
@@ -91,7 +91,7 @@ bool	check_line_hd(t_data *data, t_data_fd *io, char **input, bool *ret)
 		*ret = true;
 		return (false);
 	}
-	if (ft_strcmp(*input, io->fd_in) == 0)
+	if (ft_strcmp(*input, io->delim_hd) == 0)
 	{
 		*ret = true;
 		return (false);

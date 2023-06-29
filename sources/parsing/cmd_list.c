@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 18:14:13 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 14:57:42 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/29 15:32:15 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_commands	*lst_last_cmd(t_commands *list)
 void	lst_delone_cmd(t_commands *list, void (*del)(void *))
 {
 	if (list->args)
-		free_string_array(list->args);
+		free_str_arr(list->args);
 	(*del)(list);
 }
 

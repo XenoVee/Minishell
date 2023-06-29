@@ -6,11 +6,12 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:50:47 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/28 14:51:37 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 15:26:07 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "cleanup.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -30,30 +31,38 @@ int		cmd_err_msg(char *command, char *info, char *msg, int err)
 	err_msg = ft_strdup("minishell: ");
 	if (command != NULL)
 	{
-		err_msg = ft_strjoin(err_msg, command);
-		err_msg = ft_strjoin(err_msg, ": ");
+		err_msg = join_str(err_msg, command);
+		err_msg = join_str(err_msg, ": ");
 	}
 	if (info != NULL)
 	{
-		err_msg = ft_strjoin(err_msg, info);
+		if (quotes == true)
+			err_msg = join_str(err_msg, "'");
+		err_msg = join_str(err_msg, info);
+		if (quotes == true)
+			err_msg = join_str(err_msg, "'");
+		err_msg = join_str(err_msg, ": ");
 	}
+	err_msg = join_str(err_msg, msg);
+	ft_putendl_fd(err_msg, STDERR_FILENO);
+	free_pointer(err_msg);
 	return (err);
 }
 
-void	error(char *errmsg)
-{
-	ft_putstr_fd("Error\n", 2);
-	if (errno == 0)
-		ft_putendl_fd(errmsg, 2);
-	else
-		perror(errmsg);
-	exit(EXIT_FAILURE);
-}
+// void	error(char *errmsg)
+// {
+// 	ft_putstr_fd("Error\n", 2);
+// 	if (errno == 0)
+// 		ft_putendl_fd(errmsg, 2);
+// 	else
+// 		perror(errmsg);
+// 	exit(EXIT_FAILURE);
+// }
 
-bool	print_error_msg(char *str)
-{
-	ft_putstr_fd("minishell: syntax error near unexpected token '", STDERR_FILENO);
-	ft_putstr_fd(str, STDERR_FILENO);
-	ft_putstr_fd("'\n", STDERR_FILENO);
-	return (false);
-}
+// bool	print_error_msg(char *str)
+// {
+// 	ft_putstr_fd("minishell: syntax error near unexpected token '", STDERR_FILENO);
+// 	ft_putstr_fd(str, STDERR_FILENO);
+// 	ft_putstr_fd("'\n", STDERR_FILENO);
+// 	return (false);
+// }

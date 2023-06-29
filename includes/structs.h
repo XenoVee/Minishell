@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 14:15:35 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 12:05:11 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 15:38:55 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ typedef struct s_commands
 	char				*cmd;
 	char				**args;
 	t_data_fd			*fd_data;
-	struct s_command	*next;
-	struct s_command	*prev;
+	struct s_commands	*next;
+	struct s_commands	*prev;
 }		t_commands;
 
 typedef struct s_data

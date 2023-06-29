@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 15:53:09 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 01:01:47 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 16:00:39 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,9 @@ char	*get_heredoc_name(void);
 char	*get_delim_hd(char *delim, bool	*quotes);
 bool	check_line_hd(t_data *data, t_data_fd *io, char **input, bool *ret);
 char	*reform_string(char **words);
+bool	next_char_sep(char c);
+bool	var_between_quotes(char *string, int i);
+char	*replace_str_hd(char *string, char *var, int index);
+char	*get_value(t_data *data, t_token *temp, char *string);
 
 #endif

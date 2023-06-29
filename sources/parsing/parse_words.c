@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   parse_word.c                                       :+:    :+:            */
+/*   parse_words.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/28 18:20:48 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 12:06:30 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 15:54:05 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	cmd_split_var(t_commands *cmd, char *string)
 	new = NULL;
 	words = ft_split(string, ' ');
 	if (!words)
-		return (NULL);
+		return ;
 	cmd->cmd = ft_strdup(words[0]);
 	if (words[1])
 		new = new_token(ft_strdup(words[1]), NULL, WORD, DEFAULT);
@@ -69,7 +69,7 @@ void	parse_word(t_commands **cmd, t_token **list)
 			if (temp->type == VAR && space_present(temp->string))
 				cmd_split_var(last, temp->string);
 			else
-				last->args = ft_strdup(temp->string);
+				last->cmd = ft_strdup(temp->string);
 			temp = temp->next;
 		}
 	}
