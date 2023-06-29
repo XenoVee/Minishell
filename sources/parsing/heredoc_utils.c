@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/28 10:42:34 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 01:00:38 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 14:58:58 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ char	*hd_expand_var(t_data *data, char *string)
 	{
 		if (string[i] == '$' && next_char_sep(string[i + 1]) == false
 			&& var_between_quotes(string, i) == false)
-			string = replace_str_hd(string, get_value(data, NULL, string + i), i);
+			string = replace_str_hd(string,
+					get_value(data, NULL, string + i), i);
 		else
 			i++;
 	}
@@ -83,9 +84,10 @@ static char	expand_var_hd(t_data *data, char *input)
 
 bool	check_line_hd(t_data *data, t_data_fd *io, char **input, bool *ret)
 {
-	if (*input = NULL)
+	if (*input == NULL)
 	{
-		cmd_err_msg("warning", "heredoc delimited by EOF: wanted", io->delim_hd, true);
+		cmd_err_msg("warning", "heredoc delimited by EOF: wanted",
+			io->delim_hd, true);
 		*ret = true;
 		return (false);
 	}

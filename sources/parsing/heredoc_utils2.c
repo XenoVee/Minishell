@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/28 17:27:08 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 12:05:35 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 14:59:18 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*reform_string(char **words)
 	int		i;
 
 	i = -1;
-	while(words[++i])
+	while (words[++i])
 	{
 		temp = string;
 		if (i == 0)

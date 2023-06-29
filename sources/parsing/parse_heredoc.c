@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/28 00:11:59 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 00:53:38 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 15:00:09 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ bool	remove_old_ref(t_data_fd *io, bool infile)
 		if (io->fd_in == -1)
 			return (false);
 		if (io->delim_hd != NULL)
-
-			{
-				free_pointer(io->delim_hd);
-				io->delim_hd = NULL;
-			}
+		{
+			free_pointer(io->delim_hd);
+			io->delim_hd = NULL;
+		}
 	}
 	return (true);
 }

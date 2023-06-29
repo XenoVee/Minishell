@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/25 01:49:40 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/28 15:04:18 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 14:45:47 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "structs.h"
 #include <stdio.h>
 
-int		var_length(char *string)
+int	var_length(char *string)
 {
 	int	i;
 	int	count;
@@ -69,7 +69,7 @@ static bool	erase_variable(t_token **list, char *string, int index)
 	return (true);
 }
 
-static bool erase_replace_var(t_token **list, char *string,
+static bool	erase_replace_var(t_token **list, char *string,
 				char *var, int index)
 {
 	int		len;
@@ -85,7 +85,6 @@ static bool erase_replace_var(t_token **list, char *string,
 		(*list)->string = new;
 	}
 	return (true);
-	
 }
 
 void	replace_var(t_token **list, char *var, int index)

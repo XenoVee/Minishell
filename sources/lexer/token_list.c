@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 20:07:18 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/27 15:11:50 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 14:56:37 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	lst_delone_tkn(t_token *lst, void (*del)(void *))
 
 void	lst_clear_tkn(t_token **list, void (*del)(void *))
 {
-	t_token *temp;
+	t_token	*temp;
 
 	temp = NULL;
 	while (*list != NULL)

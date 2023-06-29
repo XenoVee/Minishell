@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/26 16:11:45 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/28 10:38:20 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 14:52:51 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	count_length(char *string, int count, int i)
 			i++;
 			continue ;
 		}
-		else if ((string[i] == '\'' && status == S_QUOTES) || (string[i] == '\"' && status == D_QUOTES))
+		else if ((string[i] == '\'' && status == S_QUOTES)
+			|| (string[i] == '\"' && status == D_QUOTES))
 		{
 			status = DEFAULT;
 			i++;
@@ -63,7 +64,7 @@ bool	remove_quotes(t_token **list)
 			continue ;
 		}
 		else if (change_status_default(list, &i) == true)
-			continue;
+			continue ;
 		new[j++] = (*list)->string[i++];
 	}
 	new[j] = '\0';
@@ -76,7 +77,6 @@ bool	quotes_found(char *string)
 	int	i;
 
 	i = 0;
-
 	while (string[i])
 	{
 		if (string[i] == '\'' || string[i] == '\"')

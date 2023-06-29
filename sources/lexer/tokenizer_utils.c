@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 15:32:31 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/28 20:06:56 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 14:56:20 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	save_word(t_token **lst, char *str, int index, int start)
 	char	*word;
 
 	i = 0;
-	//printf("saving word\n");
 	word = (char *)malloc(sizeof(char) * (index - start + 1));
 	if (!word)
 		return (FAILURE);
@@ -40,7 +39,6 @@ int	save_seperator(t_token **lst, char *str, int index, int type)
 	char	*sep;
 
 	i = 0;
-	//printf("saving sep\n");
 	if (type == HEREDOC || type == APPEND)
 	{
 		sep = (char *)malloc(sizeof(char) * 3);
@@ -69,7 +67,6 @@ int	save_seperator(t_token **lst, char *str, int index, int type)
 
 int	id_type(char *str, int i)
 {
-	//printf("identifying type\n");
 	if ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		return (SPACES);
 	else if (str[i] == '|')

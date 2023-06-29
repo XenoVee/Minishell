@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/29 11:33:15 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 14:43:16 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 15:00:46 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ char	**merge_strings(char **words, t_commands *cmd, t_token **list, int size)
 	}
 	words[i] = '\0';
 	return (words);
-	
 }
 
 bool	add_args_cmd(t_token **list, t_commands *cmd)
@@ -117,7 +116,6 @@ bool	process_args(t_token **list, t_commands *cmd)
 			return (create_args_cmd(list, cmd));
 		else
 			return (add_args_cmd(list, cmd));
-
 	}
 	return (true);
 }

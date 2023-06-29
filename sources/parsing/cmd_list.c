@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 18:14:13 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 12:06:43 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 14:57:42 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,3 @@ void	lst_clear_cmd(t_commands **list, void (*del)(void *))
 		*list = temp;
 	}
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 17:54:01 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 10:29:45 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 14:59:35 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ void	parse_data(t_data *data, t_token *token)
 			parse_word(data, &temp);
 		
 	}
+	else
+		return ;
 }
