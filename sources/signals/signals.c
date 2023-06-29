@@ -6,17 +6,19 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 13:59:44 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 17:31:06 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 23:29:46 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "signals.h"
+#include "error.h"
 
 /*Resets the readline user input prompt*/
 void	reset(int	temp)
 {
 	(void)temp;
 	write (1, "\n", 1);
+	g_exit_code = 1;
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();

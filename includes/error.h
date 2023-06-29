@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 16:46:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/28 14:52:22 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 20:51:47 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 /*includes*/
 # include <errno.h>
+# include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>

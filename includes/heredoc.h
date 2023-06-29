@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 15:53:09 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 16:00:39 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 20:39:08 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ bool	next_char_sep(char c);
 bool	var_between_quotes(char *string, int i);
 char	*replace_str_hd(char *string, char *var, int index);
 char	*get_value(t_data *data, t_token *temp, char *string);
+bool	remove_old_ref(t_data_fd *io, bool infile);
 
 #endif
