@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 13:44:45 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/25 14:17:10 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 11:22:22 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ bool		check_for_var(t_token **t_list);
 t_token		*new_token(char *str, char *str_cpy, int type, int status);
 void		lst_add_back_tkn(t_token **lst, t_token *new);
 void		lst_delone_tkn(t_token *lst, void (*del)(void *));
+void		lst_clear_tkn(t_token **list, void (*del)(void *));
 
 #endif

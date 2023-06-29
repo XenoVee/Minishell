@@ -6,12 +6,40 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/28 17:27:08 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/28 18:14:07 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 12:05:35 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heredoc.h"
 #include "expander.h"
+
+char	*reform_string(char **words)
+{
+	char	*string;
+	char	*temp;
+	int		i;
+
+	i = -1;
+	while(words[++i])
+	{
+		temp = string;
+		if (i == 0)
+			string = ft_strdup(words[0]);
+		else
+		{
+			string = ft_strjoin(temp, words[i]);
+			free_pointer(temp);
+		}
+		if (words[i + 1])
+		{
+			temp = string;
+			string = ft_strjoin(temp, " ");
+			free_pointer(temp);
+		}
+	}
+	free_str_arr(words);
+	return (string);
+}
 
 char	*erase_replace_var_hd(char *string, char *var, int index)
 {

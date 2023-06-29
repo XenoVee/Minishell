@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 01:20:27 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/27 23:54:35 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 11:30:07 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,26 @@ void	free_pointer(void *pointer)
 	}
 }
 
+void	free_str_arr(char **arr)
+{
+	int	i;
+
+	i = 0;
+	if (arr)
+	{
+		while (arr[i])
+		{
+			if (arr[i])
+			{
+				free_pointer(arr[i]);
+				arr[i] == NULL;
+			}
+			i++;
+		}
+		free(arr);
+		arr = NULL;
+	}
+}
 
 void	free_data(t_data *data)
 {

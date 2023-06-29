@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 18:14:13 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/28 00:09:07 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 12:06:43 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_commands	*lst_new_command(void)
 	if (!new)
 		return (NULL);
 	ft_memset(new, 0, sizeof(t_commands));
+	new->cmd = NULL;
 	new->args = NULL;
 	new->next = NULL;
 	new->prev = NULL;
