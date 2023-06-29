@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:02:19 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/27 16:17:54 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/29 17:11:57 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void	bi_echo(t_commands *cmd)
+void	bi_echo(t_commands *cmd, int fd)
 {
 	int	i;
 	int	j;
@@ -36,10 +36,10 @@ void	bi_echo(t_commands *cmd)
 	}
 	while (cmd->args[i] && cmd->args[i++])
 	{
-		printf("%s", cmd->args[i - 1]);
+		ft_putstr_fd(cmd->args[i - 1], fd);
 		if (cmd->args[i])
-			printf(" ");
+			write(1, " ", 1);
 	}
 	if (newline == TRUE)
-		printf("\n");
+		write(1, "\n", 1);
 }

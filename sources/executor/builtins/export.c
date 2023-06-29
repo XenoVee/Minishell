@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/14 11:15:03 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/28 15:38:46 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/29 17:19:19 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	**sort_array(t_dllist *env)
 	return (cpy);
 }
 
-static void	export_list(t_dllist *env)
+static void	export_list(t_dllist *env, int fd)
 {
 	char	**cpy;
 	int		i;
@@ -52,7 +52,8 @@ static void	export_list(t_dllist *env)
 	i = 0;
 	while (cpy[i])
 	{
-		printf("declare -x %s\n", cpy[i]);
+		write(fd, "declare -x ", 11);
+		ft_putstr_fd(cpy[i], fd);
 		i++;
 	}
 }
@@ -73,7 +74,7 @@ static void	editvar(t_dllist *env, char **s, int i)
 	free (s[0]);
 }
 
-void	bi_export(t_commands *cmd, t_dllist *env)
+void	bi_export(t_commands *cmd, t_dllist *env, int fd)
 {
 	char	**s;
 	int		n;
@@ -82,7 +83,7 @@ void	bi_export(t_commands *cmd, t_dllist *env)
 	i = 1;
 	if (cmd->args[i] == NULL)
 	{
-		export_list(env);
+		export_list(env, fd);
 		return ;
 	}
 	while (cmd->args[i])

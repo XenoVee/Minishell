@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_sprintf.h                                       :+:    :+:            */
+/*   ft_fprintf.h                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/28 14:30:55 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/12/12 17:13:04 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/29 15:26:21 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SPRINTF_H
-# define FT_SPRINTF_H
+#ifndef FT_FPRINTF_H
+# define FT_FPRINTF_H
 
 # include <unistd.h>
 # include <stdarg.h>
-# include "../libft.h"
 
-char	*ft_sprintf(const char *content, ...);
-int		ft_lartpen(const char *content);
-int		ft_partlen(const char *s);
-char	*ft_realc_strjoin(char *str1, char *str2);
-char	*ft_joinlen(char *s, const char **content);
-void	ft_joinnbr(int n);
-char	*ft_joinstr(char *ret, char *s);
-void	ft_joinnbr_unsigned(unsigned int n);
-char	*ft_joinchar(char *ret, int c);
-void	ft_joinhexadecimal(unsigned int x, int cap);
-char	*ft_join_pointer(char *ret, unsigned long ptr);
+int		ft_fprintf(int fd, const char *content, ...);
+int		ft_fpartlen(const char *s, size_t start);
+void	ft_fputlen(const char *s, size_t len, size_t start, size_t *wrt);
+void	ft_fputnbr_count(int n, size_t *wrt);
+void	ft_fputstr_count(char *s, size_t *wrt);
+void	ft_fputnbr_unsigned_count(unsigned int n, size_t *wrt);
+void	ft_fputchar_count(int c, size_t *wrt);
+void	ft_fputhexadecimal_count(unsigned int x, int cap, size_t *wrt);
+void	ft_fpointer_count(unsigned long ptr, size_t *wrt);
+void	ft_fput_ptr_count(unsigned long x, size_t *wrt);
 
 #endif

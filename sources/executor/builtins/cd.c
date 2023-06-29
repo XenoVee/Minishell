@@ -6,12 +6,13 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/25 13:21:34 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/28 15:09:56 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/29 17:46:35 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <libc.h>
+#include "error.h"
 
 static void	setpwd(t_dllist *env, char *n)
 {
@@ -35,12 +36,25 @@ static void	setpwd(t_dllist *env, char *n)
 	}
 }
 
+	// g_exit_code = 1;
 static int	ereturn(char *rel)
 {
-	perror("minishell");
+	perror("minishell: cd");
 	if (rel)
 		free (rel);
 	return (1);
+}
+
+static char	*buildrel(t_commands *cmd)
+{
+	char	*rel;
+
+	rel = getcwd(NULL, 0);
+	rel = ft_realloc(rel, (ft_strlen(rel) + ft_strlen(cmd->args[1]) + 2));
+	ft_strlcat(rel, "/", ft_strlen(rel) + 2);
+	ft_strlcat(rel, cmd->args[1],
+		(ft_strlen(rel) + ft_strlen(cmd->args[1]) + 2));
+	return (rel);
 }
 
 int	bi_cd(t_dllist *env, t_commands *cmd)
@@ -50,12 +64,7 @@ int	bi_cd(t_dllist *env, t_commands *cmd)
 	setpwd(env, "OLDPWD");
 	if (cmd->args[0] != NULL)
 	{
-		rel = getcwd(NULL, 0);
-		rel = ft_realloc(rel, (ft_strlen(rel) + ft_strlen(cmd->args[1]) + 2));
-		ft_strlcat(rel, "/", ft_strlen(rel) + 2);
-		ft_strlcat(rel, cmd->args[1], (ft_strlen(rel)
-				+ ft_strlen(cmd->args[1]) + 2));
-		printf("%s\n", rel);
+		rel = buildrel(cmd);
 		if (chdir(rel) != 0 && chdir(cmd->args[0]) != 0)
 			return (ereturn(rel));
 		free (rel);

@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/17 16:42:35 by rmaes         #+#    #+#                 */
-/*   Updated: 2022/11/14 18:13:17 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/29 15:36:43 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ unsigned long	ft_atoul(const char *str);
 void			*ft_bzero(void *e, size_t len);
 size_t			ft_strlen(const char *s);
 void			*ft_calloc(size_t count, size_t size);
+int				ft_fprintf(int fd, const char *content, ...);
 int				ft_is_atoi(char *s);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);

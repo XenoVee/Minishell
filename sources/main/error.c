@@ -6,13 +6,20 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:50:47 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/23 13:13:07 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 17:44:25 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <stdlib.h>
 #include <stdio.h>
+
+void	exec_error(char *cmd, char *msg)
+{
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd(msg, 2);
+}
 
 void	error(char *errmsg)
 {
