@@ -1,51 +1,51 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   expand_utils2.c                                    :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: Owen <Owen@student.codam.nl>                 +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2023/06/27 14:54:20 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 14:45:55 by ohearn        ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
+// /* ************************************************************************** */
+// /*                                                                            */
+// /*                                                        ::::::::            */
+// /*   expand_utils2.c                                    :+:    :+:            */
+// /*                                                     +:+                    */
+// /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
+// /*                                                   +#+                      */
+// /*   Created: 2023/06/27 14:54:20 by Owen          #+#    #+#                 */
+// /*   Updated: 2023/06/29 14:45:55 by ohearn        ########   odam.nl         */
+// /*                                                                            */
+// /* ************************************************************************** */
 
-#include "expander.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
+// #include "expander.h"
+// #include <stdlib.h>
+// #include <stdio.h>
+// #include <stdbool.h>
 
-char	*id_variable(char *string)
-{
-	char	*var;
-	int		start;
-	int		size;
-	int		i;
+// char	*id_variable(char *string)
+// {
+// 	char	*var;
+// 	int		start;
+// 	int		size;
+// 	int		i;
 
-	i = 0;
-	start = 0;
-	while (string[i])
-	{
-		if (string[i] == '$')
-		{
-			start = i + 1;
-			break ;
-		}
-		i++;
-	}
-	size = var_length(string);
-	var = ft_substr(string, start, size);
-	if (!var)
-		return (NULL);
-	return (var);
-}
+// 	i = 0;
+// 	start = 0;
+// 	while (string[i])
+// 	{
+// 		if (string[i] == '$')
+// 		{
+// 			start = i + 1;
+// 			break ;
+// 		}
+// 		i++;
+// 	}
+// 	size = var_length(string);
+// 	var = ft_substr(string, start, size);
+// 	if (!var)
+// 		return (NULL);
+// 	return (var);
+// }
 
-bool	valid_var(t_data *data, char *var)
-{
-	char	*temp;
+// bool	valid_var(t_data *data, char *var)
+// {
+// 	char	*temp;
 
-	temp = ft_getenv(data->env, var);
-	if (temp == NULL)
-		return (false);
-	return (true);
-}
+// 	temp = ft_getenv(data->env, var);
+// 	if (temp == NULL)
+// 		return (false);
+// 	return (true);
+// }

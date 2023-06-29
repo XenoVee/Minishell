@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/29 17:49:22 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/29 19:37:30 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@
 #include "builtins.h"
 #include <fcntl.h>
 
-t_commands	*cmdmakeexit(void)
+t_commands	*cmdmakecat(void)
 {
 	t_commands	*cmd;
 	char		**array;
 
 	cmd = malloc(sizeof(t_commands));
-	array = malloc(sizeof(char *) * 4);
-	array[0] = ft_strdup("exit");
-	array[1] = ft_strdup("a");
-	array[2] = ft_strdup("20");
-	array[3] = NULL;
+	array = malloc(sizeof(char *) * 3);
+	array[0] = ft_strdup("cat");
+	array[1] = ft_strdup("test");
+	array[2] = NULL;
 	cmd->args = array;
+	cmd->fd_out = open("outfile", O_RDWR);
 	cmd->next = NULL;
 	cmd->prev = NULL;
 	return (cmd);
@@ -66,7 +66,7 @@ int	main(int argc, char **argv, char **envp)
 
 	// atexit(leaks);
 	env = envcpy(envp);
-	cmd = cmdmakeexit();
+	cmd = cmdmakecat();
 	// cmd2 = cmdmakeenv();
 	// cmd3 = cmdmakeunset();
 	executor(cmd, env);

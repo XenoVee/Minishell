@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/29 17:47:55 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/29 20:02:03 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,23 @@ static int	execute(t_commands *cmd, t_dllist *env, int *pipenew, int *pipeold)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (cmd->prev)
+		if (cmd->fd_data->fd_in != -1)
+		{
+			dup2(cmd->fd_data->fd_in, STDIN);
+			close(pipeold[1]);
+		}
+		else if (cmd->prev)
 		{
 			dup2(pipeold[0], STDIN);
 			close(pipeold[0]);
 			close(pipeold[1]);
 		}
-		if (cmd->next)
+		if (cmd->fd_data->fd_out != -1)
+		{
+			close(pipenew[0]);
+			dup2(cmd->fd_data->fd_out, STDOUT);
+		}
+		else if (cmd->next)
 		{
 			close(pipenew[0]);
 			dup2(pipenew[1], STDOUT);
