@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 01:20:27 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/26 14:25:02 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 15:56:11 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,42 @@ void	free_pointer(void *pointer)
 		pointer = NULL;
 	}
 }
+
+char	*join_str(char *str, char *add)
+{
+	char	*tmp;
+
+	if (!add)
+		return (str);
+	if (!str)
+		return (ft_strdup(add));
+	tmp = str;
+	str = ft_strjoin(tmp, add);
+	free_pointer(tmp);
+	return (str);
+}
+
+void	free_str_arr(char **arr)
+{
+	int	i;
+
+	i = 0;
+	if (arr)
+	{
+		while (arr[i])
+		{
+			if (arr[i])
+			{
+				free_pointer(arr[i]);
+				arr[i] = NULL;
+			}
+			i++;
+		}
+		free(arr);
+		arr = NULL;
+	}
+}
+
 void	free_data(t_data *data)
 {
 	if (data && data->user_input)
@@ -32,7 +68,7 @@ void	free_data(t_data *data)
 	}
 	if (data && data->token)
 		lst_clear_tkn(&data->token, &free_pointer);
-	// if (data && data->cmd)
-	// 	/*make list clean function for command list*/
+	if (data && data->cmd)
+		lst_clear_cmd(&data->cmd, &free_pointer);
 }
 

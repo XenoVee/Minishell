@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 16:46:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/27 15:52:36 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/28 14:52:22 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ extern int		g_exit_code;
 /*Functions*/
 void	error(char *errmsg);
 bool	print_error_msg(char *str);
+int		cmd_err_msg(char *command, char *info, char *msg, int err);
 
 #endif

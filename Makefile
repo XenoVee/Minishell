@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/27 15:55:49 by Owen          ########   odam.nl          #
+#    Updated: 2023/06/29 15:45:04 by Owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,17 @@ EXPANDER_FILES =	expand_get_string.c\
 EXPANDER_DIR = expansion/
 EXPANDER_DF = $(addprefix $(EXPANDER_DIR), $(EXPANDER_FILES))
 
+#parsing files
+PARSING_FILES =		cmd_list.c\
+					heredoc_utils.c\
+					heredoc_utils2.c\
+					parse_data.c\
+					parse_heredoc.c\
+					parse_words.c\
+					process_args.c
+PARSING_DIR = parsing/
+PARSING_DF = $(addprefix $(PARSING_DIR), $(PARSING_FILES))
+
 #signal files
 SIGNAL_FILES =	signals.c
 SIGNAL_DIR = signals/
@@ -85,7 +96,7 @@ ENDING_DIR = ending/
 ENDING_DF =$(addprefix $(ENDING_DIR), $(ENDING_FILES))
 
 SOURCES_DIR = sources/
-FILES =	$(MAIN_DF) $(LEXER_DF) $(EXPANDER_DF) $(EXECUTOR_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
+FILES =	$(MAIN_DF) $(LEXER_DF) $(EXPANDER_DF) $(PARSING_DF) $(EXECUTOR_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
 INCLUDES = includes

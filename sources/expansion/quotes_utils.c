@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 13:07:39 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/27 13:36:35 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 14:53:00 by ohearn        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	change_status_quote(t_token **list, int *i)
 bool	change_status_default(t_token **list, int *i)
 {
 	if (((*list)->string[*i] == '\'' && (*list)->status == S_QUOTES)
-			|| ((*list)->string[*i] == '\"' && (*list)->status == D_QUOTES))
+		|| ((*list)->string[*i] == '\"' && (*list)->status == D_QUOTES))
 	{
 		(*list)->status = DEFAULT;
 		(*i)++;

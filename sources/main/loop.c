@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/24 13:46:13 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/26 12:55:15 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 15:04:38 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "../includes/loop.h"
 #include "signals.h"
 #include "cleanup.h"
+#include "error.h"
 
 int	mini_loop(t_data *data)
 {
