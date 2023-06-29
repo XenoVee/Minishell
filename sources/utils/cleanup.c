@@ -6,12 +6,14 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 01:20:27 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 15:56:11 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 00:33:20 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cleanup.h"
 #include "lexer.h"
+#include "readline/history.h"
+#include "readline/readline.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -59,7 +61,7 @@ void	free_str_arr(char **arr)
 	}
 }
 
-void	free_data(t_data *data)
+void	free_data(t_data *data, bool clear_all)
 {
 	if (data && data->user_input)
 	{
@@ -70,5 +72,9 @@ void	free_data(t_data *data)
 		lst_clear_tkn(&data->token, &free_pointer);
 	if (data && data->cmd)
 		lst_clear_cmd(&data->cmd, &free_pointer);
+	if (clear_all == true)
+	{
+		cdl_listclear(data->env);
+		rl_clear_history();
+	}
 }
-

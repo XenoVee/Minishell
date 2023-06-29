@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/24 13:46:13 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/29 19:34:20 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 00:26:16 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ int	mini_loop(t_data *data)
 		if (data->user_input[0] == 'x')
 			break ;
 		if (parse_input_str(data) == true)
-			printf("happy :D\n");
-		free_data(data);
+			printf("execution time\n");
+			//g_exit_code = insert your execution function name
+		else
+			g_exit_code = 1;
+		free_data(data, true);
 	}
 	return (0);
 }

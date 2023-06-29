@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/30 00:18:10 by Owen          ########   odam.nl          #
+#    Updated: 2023/06/30 00:34:47 by Owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,25 +19,15 @@ GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
 #main files
-MAIN_FILES = init_data.c main.c error.c loop.c
-MAIN_FILES = init_data.c main.c error.c loop.c
+MAIN_FILES = init_data.c 
+MAIN_FILES = init_data.c 
 MAIN_DIR = main/
 MAIN_DF = $(addprefix $(MAIN_DIR), $(MAIN_FILES))
 
-#lexer files
-# LEXER_FILES = 	string.c\
-# 				tokenizer_utils.c\
-# 				tokenizer.c
-# LEXER_DIR = lexer/
-# LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
-
-#minishell files
-# MINISHELL_FILES = loop.c
-# MINISHELL_DIR = minishell/
-# MINISHELL_DF = $(addprefix $(MINISHELL_DIR), $(MINISHELL_FILES))
-
 #utils files
-UTILS_FILES = cleanup.c
+UTILS_FILES = 	cleanup.c\
+				error.c\
+				init_data.c
 UTILS_DIR = utils/
 UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
@@ -72,7 +62,8 @@ PARSING_DIR = parsing/
 PARSING_DF = $(addprefix $(PARSING_DIR), $(PARSING_FILES))
 
 #signal files
-SIGNAL_FILES =	signals.c
+SIGNAL_FILES =		loop.c\
+					signals.c
 SIGNAL_DIR = signals/
 SIGNALS_DF = $(addprefix $(SIGNAL_DIR), $(SIGNAL_FILES))
 
