@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 16:46:11 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/30 00:18:32 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 00:55:42 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <stdbool.h>
+# include "cleanup.h"
 # include "../libraries/libftprintf/libft.h"
 
 /*Defines*/

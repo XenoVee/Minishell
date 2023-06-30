@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/28 18:20:48 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 15:54:05 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 08:35:14 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	cmd_split_var(t_commands *cmd, char *string)
 	int			i;
 
 	new = NULL;
+	printf("splitting vars apart\n");
 	words = ft_split(string, ' ');
 	if (!words)
 		return ;
@@ -60,11 +61,13 @@ void	parse_word(t_commands **cmd, t_token **list)
 	t_token		*temp;
 
 	temp = *list;
+	printf("time to parse words and variables\nThe type is %i\n", temp->type);
 	while (temp->type == WORD || temp->type == VAR)
 	{
 		last = lst_last_cmd(*cmd);
+		printf("so far so good\n");
 		if (temp->prev == NULL || (temp->prev && temp->prev->type == PIPE)
-			|| last->args[0] == NULL)
+			|| last->cmd == NULL)
 		{
 			if (temp->type == VAR && space_present(temp->string))
 				cmd_split_var(last, temp->string);
@@ -72,5 +75,9 @@ void	parse_word(t_commands **cmd, t_token **list)
 				last->cmd = ft_strdup(temp->string);
 			temp = temp->next;
 		}
+		else
+			process_args(&temp, last);
 	}
+	printf("done\n");
+	*list = temp;
 }

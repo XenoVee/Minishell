@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/29 20:18:43 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 20:52:05 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 00:56:42 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	handle_infile(t_data_fd *io, char *filename, char *o_filename)
 	if (!remove_old_ref(io, true))
 		return ;
 	io->infile = ft_strdup(filename);
-	if (io->infile && io->infile[0] == NULL)
+	if (io->infile && io->infile[0] == '\0')
 	{
 		cmd_err_msg(o_filename, NULL, ERR_AR, false);
 		return ;

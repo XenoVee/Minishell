@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/29 21:37:29 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 21:47:47 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 00:57:21 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	handle_append(t_data_fd *io, char *filename, char *o_filename)
 	if (!remove_old_ref(io, false))
 		return ;
 	io->outfile = ft_strdup(filename);
-	if (io->outfile && io->outfile[0])
+	if (io->outfile && io->outfile[0] == '\0')
 	{
 		cmd_err_msg(o_filename, NULL, ERR_AR, false);
 		return ;

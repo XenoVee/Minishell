@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/30 00:34:47 by Owen          ########   odam.nl          #
+#    Updated: 2023/06/30 01:10:47 by Owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,24 +19,24 @@ GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
 #main files
-MAIN_FILES = init_data.c 
-MAIN_FILES = init_data.c 
+MAIN_FILES = main.c 
+MAIN_FILES = main.c 
 MAIN_DIR = main/
 MAIN_DF = $(addprefix $(MAIN_DIR), $(MAIN_FILES))
 
 #utils files
-UTILS_FILES = 	cleanup.c\
-				error.c\
-				init_data.c
+UTILS_FILES = 		cleanup.c\
+					error.c\
+					init_data.c
 UTILS_DIR = utils/
 UTILS_DF = $(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 #tokenizer files
-LEXER_FILES = 	check_for_var.c\
-				parse_input_str.c\
-				token_list.c\
-				tokenizer_utils.c\
-				tokenizer.c
+LEXER_FILES = 		check_for_var.c\
+					parse_input_str.c\
+					token_list.c\
+					tokenizer_utils.c\
+					tokenizer.c
 LEXER_DIR = lexer/
 LEXER_DF = $(addprefix $(LEXER_DIR), $(LEXER_FILES))
 
@@ -54,9 +54,12 @@ EXPANDER_DF = $(addprefix $(EXPANDER_DIR), $(EXPANDER_FILES))
 PARSING_FILES =		cmd_list.c\
 					heredoc_utils.c\
 					heredoc_utils2.c\
-					parse_data.c\
 					parse_heredoc.c\
+					parse_input.c\
+					parse_trunc.c\
+					parse_append.c\
 					parse_words.c\
+					parse_data.c\
 					process_args.c
 PARSING_DIR = parsing/
 PARSING_DF = $(addprefix $(PARSING_DIR), $(PARSING_FILES))
@@ -87,10 +90,12 @@ ENDING_DIR = ending/
 ENDING_DF =$(addprefix $(ENDING_DIR), $(ENDING_FILES))
 
 SOURCES_DIR = sources/
-FILES =	$(MAIN_DF) $(LEXER_DF) $(EXPANDER_DF) $(PARSING_DF) $(EXECUTOR_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
+FILES =	$(MAIN_DF) $(LEXER_DF) $(EXPANDER_DF) $(PARSING_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
+#FILES =	$(MAIN_DF) $(LEXER_DF) $(EXPANDER_DF) $(PARSING_DF) $(EXECUTOR_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
-INCLUDES = includes -I/Users/rmaes/.brew/opt/readline/include
+#INCLUDES = includes -I/Users/rmaes/.brew/opt/readline/include
+MAC_INCLUDES = includes -I/opt/homebrew/opt/readline/include
 
 OBJECTS_DIR = objects/
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(FILES:.c=.o))
@@ -111,7 +116,8 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(LIST)
 	@echo "compiling: $(YELLOW)creating executable$(DEFAULT)"
-	@$(CC) -o $@ $^ -lreadline -L/Users/rmaes/.brew/opt/readline/lib
+	@$(CC) -o $@ $^ -lreadline -L/opt/homebrew/opt/readline/lib
+#	@$(CC) -o $@ $^ -lreadline -L/Users/rmaes/.brew/opt/readline/lib
 	@echo "$(GREEN)$@ successfully compiled!$(DEFAULT)"
 
 $(OBJECTS_DIR):
@@ -126,7 +132,7 @@ $(LIST):
 $(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c 
 	@mkdir -p $(@D)
 	@echo "compiling: $(YELLOW)$@$(DEFAULT)"
-	@$(CC) -c $(CFLAGS) -I $(INCLUDES) -o $@ $^
+	@$(CC) -c $(CFLAGS) -I $(MAC_INCLUDES) -o $@ $^
 
 clean:
 	@echo "cleaning:  $(RED)removing object files$(DEFAULT)"

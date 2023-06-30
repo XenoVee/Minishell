@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 17:46:18 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 20:51:37 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 00:49:11 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		parse_word(t_commands **cmd, t_token **list);
 void		parse_input(t_commands **cmd, t_token **list);
 void		parse_trunc(t_commands **cmd, t_token **list);
 void		parse_append(t_commands **cmd, t_token **list);
-void		parse_pipe(t_commands **cmd, t_token **list);
+void		handle_pipe(t_commands **cmd, t_token **list);
 bool		remove_old_ref(t_data_fd *io, bool infile);
 
 #endif

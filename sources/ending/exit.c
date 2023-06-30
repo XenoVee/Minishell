@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 13:37:00 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/24 14:25:59 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 00:52:14 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	exit_ms(t_data *data, int num)
 {
 	if (data)
 	{
-		free_data(data);
+		free_data(data, false);
 	}
 	exit(num);
 }

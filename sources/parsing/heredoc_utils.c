@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/28 10:42:34 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 15:44:32 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 01:04:21 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*hd_expand_var(t_data *data, char *string)
 		if (string[i] == '$' && next_char_sep(string[i + 1]) == false
 			&& var_between_quotes(string, i) == false)
 			string = replace_str_hd(string,
-					get_value(data, NULL, string + i), i);
+					get_val(data, NULL, string + i), i);
 		else
 			i++;
 	}

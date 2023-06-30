@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/29 20:56:46 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 21:48:00 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 00:57:03 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	handle_trunc(t_data_fd *io, char *filename, char *o_filename)
 	if (!remove_old_ref(io, false))
 		return ;
 	io->outfile = ft_strdup(filename);
-	if (io->outfile && io->outfile[0])
+	if (io->outfile && io->outfile[0] == '\0')
 	{
 		cmd_err_msg(o_filename, NULL, ERR_AR, false);
 		return ;

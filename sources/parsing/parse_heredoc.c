@@ -6,29 +6,13 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/28 00:11:59 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 15:51:12 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 01:13:14 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "heredoc.h"
 #include "parsing.h"
 #include "signals.h"
-
-/*check on this later*/
-bool	remove_old_ref(t_data_fd *io, bool infile)
-{
-	if (infile == true && io->infile)
-	{
-		if (io->fd_in == -1)
-			return (false);
-		if (io->delim_hd != NULL)
-		{
-			free_pointer(io->delim_hd);
-			io->delim_hd = NULL;
-		}
-	}
-	return (true);
-}
 
 bool	fill_heredoc(t_data *data, t_data_fd *io, int fd)
 {

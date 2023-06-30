@@ -6,13 +6,14 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 14:54:15 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 14:55:11 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/30 00:46:03 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 #include "expander.h"
 #include "parsing.h"
+#include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
 

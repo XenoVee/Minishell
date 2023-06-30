@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 18:14:13 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/30 00:10:35 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 08:29:13 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_commands	*lst_new_command(void)
 	new = (t_commands *)malloc(sizeof(t_commands));
 	if (!new)
 		return (NULL);
-	ft_memset(new, 0, sizeof(t_commands));
+	//ft_memset(new, 0, sizeof(t_commands));
 	new->cmd = NULL;
 	new->args = NULL;
 	new->pipe = false;
@@ -33,16 +33,22 @@ void	lst_add_back_cmd(t_commands **list, t_commands *new)
 {
 	t_commands	*start;
 
+	printf("adding new node to back of list\n");
 	start = *list;
 	if (!start)
 	{
-		start = new;
+		//printf("no list was made yet\n");
+		*list = new;
+		//printf("testing\n");
+		//printf("%i\n", (*list)->pipe);
 		return ;
 	}
 	if (list && *list && new)
 	{
+		//printf("list found\n");
 		while (start->next != NULL)
 			start = start->next;
+		//printf("adding it to the back\n");
 		start->next = new;
 		new->prev = start;
 	}
@@ -50,8 +56,10 @@ void	lst_add_back_cmd(t_commands **list, t_commands *new)
 
 t_commands	*lst_last_cmd(t_commands *list)
 {
-	while (list->next != NULL)
+	//printf("searching last\n");
+	while (list && list->next != NULL)
 		list = list->next;
+	//printf("last found\n");
 	return (list);
 }
 

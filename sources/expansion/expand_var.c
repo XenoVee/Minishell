@@ -6,13 +6,14 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 21:00:58 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 14:51:25 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/30 08:26:39 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expander.h"
 #include "minishell.h"
 #include "cleanup.h"
+#include <stdio.h>
 #include <stdio.h>
 
 void	update_status(t_token **node, char c)
@@ -60,7 +61,7 @@ char	*get_val(t_data *data, t_token *temp, char *string)
 		value = ft_getenv(data->env, var);
 	}
 	else if (var && var[0] == '?')
-		value = "need global var for this";
+		value = ft_itoa(g_exit_code);
 	else
 		value = NULL;
 	free_pointer(var);

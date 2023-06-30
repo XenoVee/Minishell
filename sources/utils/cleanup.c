@@ -6,15 +6,13 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 01:20:27 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/30 00:33:20 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 00:49:57 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cleanup.h"
-#include "lexer.h"
 #include "readline/history.h"
 #include "readline/readline.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 void	free_pointer(void *pointer)

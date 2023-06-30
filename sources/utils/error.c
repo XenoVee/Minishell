@@ -6,12 +6,13 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:50:47 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/29 18:10:10 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/30 01:07:24 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "cleanup.h"
+#include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -49,20 +50,10 @@ int		cmd_err_msg(char *command, char *info, char *msg, int err)
 	return (err);
 }
 
-// void	error(char *errmsg)
-// {
-// 	ft_putstr_fd("Error\n", 2);
-// 	if (errno == 0)
-// 		ft_putendl_fd(errmsg, 2);
-// 	else
-// 		perror(errmsg);
-// 	exit(EXIT_FAILURE);
-// }
-
-// bool	print_error_msg(char *str)
-// {
-// 	ft_putstr_fd("minishell: syntax error near unexpected token '", STDERR_FILENO);
-// 	ft_putstr_fd(str, STDERR_FILENO);
-// 	ft_putstr_fd("'\n", STDERR_FILENO);
-// 	return (false);
-// }
+bool	print_error_msg(char *str)
+{
+	ft_putstr_fd("minishell: syntax error near unexpected token '", STDERR_FILENO);
+	ft_putstr_fd(str, STDERR_FILENO);
+	ft_putstr_fd("'\n", STDERR_FILENO);
+	return (false);
+}
