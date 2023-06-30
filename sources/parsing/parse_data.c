@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 17:54:01 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/30 17:09:13 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 17:49:18 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ void	parse_data(t_data *data, t_token *token)
 	temp = token;
 	while (temp->next != NULL)
 	{
-		printf("new node\n");
+		//printf("new node\n");
 		if (temp == token)
 			lst_add_back_cmd(&data->cmd, lst_new_command(false));
-		printf("empty node made, ready to be filled. It does exist though!\n");
+		//printf("empty node made, ready to be filled. It does exist though!\n");
 		if (temp->type == HEREDOC)
 			parse_heredoc(data, &data->cmd, &temp);
 		else if (temp->type == WORD || temp->type == VAR)

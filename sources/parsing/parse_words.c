@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/28 18:20:48 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/30 14:44:00 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 17:50:40 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,5 @@ void	parse_word(t_commands **cmd, t_token **list)
 		else
 			process_args(&temp, last);
 	}
-	printf("done\n");
 	*list = temp;
 }
