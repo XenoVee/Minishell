@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/30 01:10:47 by Owen          ########   odam.nl          #
+#    Updated: 2023/06/30 17:07:42 by Owen          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ EXPANDER_DF = $(addprefix $(EXPANDER_DIR), $(EXPANDER_FILES))
 
 #parsing files
 PARSING_FILES =		cmd_list.c\
+					cmd_list_utils.c\
 					heredoc_utils.c\
 					heredoc_utils2.c\
 					parse_heredoc.c\
@@ -60,6 +61,8 @@ PARSING_FILES =		cmd_list.c\
 					parse_append.c\
 					parse_words.c\
 					parse_data.c\
+					process_add_echo.c\
+					process_create_echo.c\
 					process_args.c
 PARSING_DIR = parsing/
 PARSING_DF = $(addprefix $(PARSING_DIR), $(PARSING_FILES))

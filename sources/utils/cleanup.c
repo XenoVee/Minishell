@@ -6,11 +6,12 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 01:20:27 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/30 00:49:57 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 17:18:41 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cleanup.h"
+#include <unistd.h>
 #include "readline/history.h"
 #include "readline/readline.h"
 #include <stdlib.h>
@@ -24,20 +25,6 @@ void	free_pointer(void *pointer)
 	}
 }
 
-char	*join_str(char *str, char *add)
-{
-	char	*tmp;
-
-	if (!add)
-		return (str);
-	if (!str)
-		return (ft_strdup(add));
-	tmp = str;
-	str = ft_strjoin(tmp, add);
-	free_pointer(tmp);
-	return (str);
-}
-
 void	free_str_arr(char **arr)
 {
 	int	i;
@@ -49,6 +36,7 @@ void	free_str_arr(char **arr)
 		{
 			if (arr[i])
 			{
+				printf("freeing a word\n");
 				free_pointer(arr[i]);
 				arr[i] = NULL;
 			}
@@ -59,10 +47,29 @@ void	free_str_arr(char **arr)
 	}
 }
 
+void	free_data_fd(t_data_fd *io)
+{
+	if (!io)
+		return ;
+	if (!io->delim_hd)
+	{
+		printf("removing fd\n");
+		unlink(io->infile);
+		free_pointer(io->delim_hd);
+	}
+	if (io->infile)
+		free_pointer(io->infile);
+	if (io->outfile)
+		free_pointer(io->outfile);
+	if (io)
+		free_pointer(io);
+}
+
 void	free_data(t_data *data, bool clear_all)
 {
 	if (data && data->user_input)
 	{
+		printf("removing user data\n");
 		free_pointer(data->user_input);
 		data->user_input = NULL;
 	}

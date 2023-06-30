@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 14:15:35 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/30 00:09:34 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 09:54:36 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_token
 	char			*string;
 	char			*string_cpy;
 	bool			valid_var;
+	bool			join;
 	int				status;
 	struct s_token	*next;
 	struct s_token	*prev;
@@ -75,8 +76,6 @@ typedef struct s_data
 	t_token		*token;
 	t_dllist	*env;
 	char		*user_input;
-	char		*current_dir;
-	char		*old_dir;
 	t_commands	*cmd;
 }		t_data;
 

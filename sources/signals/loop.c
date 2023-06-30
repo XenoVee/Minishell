@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/24 13:46:13 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/30 00:26:16 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 17:15:24 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	mini_loop(t_data *data)
 			//g_exit_code = insert your execution function name
 		else
 			g_exit_code = 1;
-		free_data(data, true);
+		free_data(data, false);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/28 18:20:48 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/30 08:35:14 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 14:44:00 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	parse_word(t_commands **cmd, t_token **list)
 	t_token		*temp;
 
 	temp = *list;
-	printf("time to parse words and variables\nThe type is %i\n", temp->type);
 	while (temp->type == WORD || temp->type == VAR)
 	{
 		last = lst_last_cmd(*cmd);

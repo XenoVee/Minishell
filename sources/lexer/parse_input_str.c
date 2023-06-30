@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 14:54:15 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/30 00:46:03 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 17:30:22 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,32 @@
 #include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+
+void	testing_purposes(t_commands *cmd)
+{
+	t_commands	*test;
+	int			i;
+
+	test = cmd;
+	i = 0;
+	printf("testing the commands output\n");
+	while (test != NULL)
+	{
+		if (test->cmd)
+			printf("Command is %s\n", test->cmd);
+		if (test->args && test->pipe == false)
+		{
+			printf("Args are ");
+			while (test->args[i])
+			{
+				printf("%s ", test->args[i]);
+				i++;
+			}
+		}
+		test = test->next;
+	}
+	printf("\nDone with test\n");
+}
 
 bool	is_space(char *str)
 {
@@ -70,5 +96,6 @@ bool	parse_input_str(t_data *data)
 		temp = temp->next;
 	}
 	parse_data(data, data->token);
+	testing_purposes(data->cmd);
 	return (true);
 }

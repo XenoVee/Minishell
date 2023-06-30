@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 17:54:01 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/30 08:28:07 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 17:09:13 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	handle_pipe(t_commands **cmds, t_token **list)
 
 	last = lst_last_cmd(*cmds);
 	last->pipe = true;
-	lst_add_back_cmd(&last, lst_new_command());
+	lst_add_back_cmd(&last, lst_new_command(false));
 	*list = (*list)->next;
 }
 
@@ -27,10 +27,17 @@ static void	check_commands_empty(t_data *data)
 {
 	t_commands	*cmd;
 
+	printf("checking commands\n");
 	if (!data || !data->cmd)
+	{
+		if (!data)
+			printf("no data\n");
+		else if (!data->cmd)
+			printf("no cmd\n");
 		return ;
+	}
 	cmd = data->cmd;
-	while (cmd->cmd)
+	while (cmd && cmd->cmd)
 	{
 		if (!cmd->args)
 		{
@@ -54,7 +61,7 @@ void	parse_data(t_data *data, t_token *token)
 	{
 		printf("new node\n");
 		if (temp == token)
-			lst_add_back_cmd(&data->cmd, lst_new_command());
+			lst_add_back_cmd(&data->cmd, lst_new_command(false));
 		printf("empty node made, ready to be filled. It does exist though!\n");
 		if (temp->type == HEREDOC)
 			parse_heredoc(data, &data->cmd, &temp);
@@ -74,7 +81,6 @@ void	parse_data(t_data *data, t_token *token)
 			break ;
 		}
 	}
-	printf("why does it go here?\n");
 	check_commands_empty(data);
 	return ;
 }

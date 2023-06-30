@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/27 13:07:39 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 14:53:00 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/30 10:13:29 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ void	sort_strings(t_token **list, char *new)
 {
 	free_pointer((*list)->string);
 	(*list)->string = new;
+	(*list)->join = true;
 }

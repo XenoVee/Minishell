@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 20:07:18 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 14:56:37 by ohearn        ########   odam.nl         */
+/*   Updated: 2023/06/30 10:02:15 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_token	*new_token(char *str, char *str_cpy, int type, int status)
 	new_node->string = str;
 	new_node->string_cpy = str_cpy;
 	new_node->valid_var = false;
+	new_node->join = false;
 	new_node->status = status;
 	new_node->next = NULL;
 	new_node->prev = NULL;

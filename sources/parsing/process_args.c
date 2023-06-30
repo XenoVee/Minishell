@@ -6,7 +6,7 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/29 11:33:15 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/29 15:54:55 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/30 15:06:21 by Owen          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ int	count_args(t_token *list)
 	int	i;
 
 	i = 0;
-	while (list)
+	printf("entering counter\n");
+	while (list && (list->type == WORD || list->type == VAR))
 	{
-		if (list->type == WORD || list->type == VAR)
-		{
-			i++;
-			list = list->next;
-		}
+		i++;
+		list = list->next;
 	}
 	return (i);
 }
@@ -35,6 +33,7 @@ char	**merge_strings(char **words, t_commands *cmd, t_token **list, int size)
 	t_token	*temp;
 
 	i = 0;
+	printf("merging strings\n");
 	temp = *list;
 	while (i < size)
 	{
@@ -58,6 +57,7 @@ bool	add_args_cmd(t_token **list, t_commands *cmd)
 	char	**words;
 	t_token	*temp;
 
+	printf("adding args\n");
 	i = 0;
 	size = 0;
 	temp = *list;
@@ -70,12 +70,13 @@ bool	add_args_cmd(t_token **list, t_commands *cmd)
 		size++;
 	words = (char **)malloc(sizeof(char *) * (i + size + 1));
 	if (!words)
-		return (false);
+		return (1);
 	words = merge_strings(words, cmd, list, size);
+	printf("words got filled correctly\n");
 	free(cmd->args);
 	cmd->args = words;
 	free_str_arr(words);
-	return (true);
+	return (0);
 }
 
 bool	create_args_cmd(t_token **list, t_commands *cmd)
@@ -85,11 +86,13 @@ bool	create_args_cmd(t_token **list, t_commands *cmd)
 	t_token	*temp;
 
 	i = 0;
-	size = count_args(*list) + 2;
+	printf("creating args\n");
 	temp = *list;
-	cmd->args = (char **)malloc(sizeof(char *) * size);
+	size = count_args(*list);
+	printf("size is configured\n");
+	cmd->args = (char **)malloc(sizeof(char *) * (size + 2));
 	if (!cmd->args)
-		return (false);
+		return (1);
 	temp = *list;
 	cmd->args[i] = ft_strdup(cmd->cmd);
 	i++;
@@ -101,18 +104,23 @@ bool	create_args_cmd(t_token **list, t_commands *cmd)
 	}
 	cmd->args[i] = NULL;
 	*list = temp;
-	return (true);
+	return (0);
 }
 
 bool	process_args(t_token **list, t_commands *cmd)
 {
-	if (!ft_strcmp(cmd->args[0], "echo"))
+	if (!ft_strcmp(cmd->cmd, "echo"))
 	{
-		/*echo stuff, I do later if needed. Zach said no*/
+		printf("echo found\n");
+		if (!cmd->args)
+			return (create_args_ecmd(list, cmd));
+		else
+			return (add_args_ecmd(list, cmd));
 	}
 	else
 	{
-		if (cmd && !(cmd->args[1]))
+		printf("no echo\n");
+		if (cmd && !(cmd->args))
 			return (create_args_cmd(list, cmd));
 		else
 			return (add_args_cmd(list, cmd));
