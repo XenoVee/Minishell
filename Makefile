@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/29 18:09:09 by rmaes         ########   odam.nl          #
+#    Updated: 2023/06/30 15:28:48 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ BUILTIN_DIR = builtins/
 BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
 
 #executor files
-EXECUTOR_FILES = $(BUILTIN_DF) executor.c pathfinder.c
+EXECUTOR_FILES = $(BUILTIN_DF) executor.c executor_utils.c redirect.c
 EXECUTOR_DIR = executor/
 EXECUTOR_DF = $(addprefix $(EXECUTOR_DIR), $(EXECUTOR_FILES))
 
