@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/29 20:02:03 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/30 13:56:37 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,23 @@ char	**arrayize(t_dllist *env)
 
 static int	builtin(t_commands *cmd, t_dllist *env)
 {
+	int	fd;
+
+	fd = 2;
+	if (!cmd->next && !cmd->prev && cmd->fd_data->fd_out != -1)
+		fd = cmd->fd_data->fd_out;
 	if (!ft_strcmp("echo", cmd->args[0]))
-		bi_echo(cmd, 2);
+		bi_echo(cmd, fd);
 	else if (!ft_strcmp("cd", cmd->args[0]))
 		bi_cd(env, cmd);
 	else if (!ft_strcmp("pwd", cmd->args[0]))
-		bi_pwd(2);
+		bi_pwd(fd);
 	else if (!ft_strcmp("export", cmd->args[0]))
-		bi_export(cmd, env, 2);
+		bi_export(cmd, env, fd);
 	else if (!ft_strcmp("unset", cmd->args[0]))
 		bi_unset(cmd, env);
 	else if (!ft_strcmp("env", cmd->args[0]))
-		bi_env(env, 2);
+		bi_env(env, fd);
 	else if (!ft_strcmp("exit", cmd->args[0]))
 		bi_exit(cmd);
 	else
