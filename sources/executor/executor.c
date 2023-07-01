@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/30 13:56:37 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/30 15:33:35 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,47 +17,6 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <stdio.h>
-
-static size_t	safestrlen(char *s)
-{
-	int	i;
-
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i++])
-		;
-	return (i);
-}
-
-char	**arrayize(t_dllist *env)
-{
-	char	**array;
-	int		i;
-	int		len[2];
-
-	i = 0;
-	array = malloc(sizeof(char *) * (env->listlen + 1));
-	array[env->listlen] = NULL;
-	env->current = env->head;
-	if (!array)
-		error(ERR_MALLOC);
-	while (env->current != env->head || i == 0)
-	{
-		len[NAME] = ft_strlen(env->current->name);
-		len[VALUE] = safestrlen(env->current->value);
-		array[i] = malloc(sizeof(char) * (len[NAME] + len[VALUE] + 2));
-		ft_strlcpy(array[i], env->current->name, len[NAME] + 1);
-		if (len[VALUE])
-			ft_strlcat(array[i], "=", len[NAME] + 2);
-		if (len[VALUE])
-			ft_strlcat(array[i],
-				env->current->value, len[NAME] + len[VALUE] + 2);
-		i++;
-		env->current = env->current->next;
-	}
-	return (array);
-}
 
 static int	builtin(t_commands *cmd, t_dllist *env)
 {
@@ -85,66 +44,40 @@ static int	builtin(t_commands *cmd, t_dllist *env)
 	return (1);
 }
 
-static int	execute(t_commands *cmd, t_dllist *env, int *pipenew, int *pipeold)
+static void	child(t_commands *cmd, int *pipenew, int *pipeold, t_dllist *env)
 {
 	char	*path;
-	int		pid;
 	char	**envp;
+
+	startpipe(cmd, pipenew, pipeold);
+	if (builtin(cmd, env))
+		exit(0);
+	else
+	{
+		path = pathfinder(cmd->args[0]);
+		if (path == NULL)
+			exit(1);
+		envp = arrayize(env);
+		if (access(path, X_OK) != 0)
+			exit(2);
+		if (execve(path, cmd->args, envp) == -1)
+			perror("minishell");
+		exit(1);
+	}
+}
+
+static int	execute(t_commands *cmd, t_dllist *env, int *pipenew, int *pipeold)
+{
+	int		pid;
 
 	if (cmd->next)
 		pipe(pipenew);
 	pid = fork();
 	if (pid == 0)
-	{
-		if (cmd->fd_data->fd_in != -1)
-		{
-			dup2(cmd->fd_data->fd_in, STDIN);
-			close(pipeold[1]);
-		}
-		else if (cmd->prev)
-		{
-			dup2(pipeold[0], STDIN);
-			close(pipeold[0]);
-			close(pipeold[1]);
-		}
-		if (cmd->fd_data->fd_out != -1)
-		{
-			close(pipenew[0]);
-			dup2(cmd->fd_data->fd_out, STDOUT);
-		}
-		else if (cmd->next)
-		{
-			close(pipenew[0]);
-			dup2(pipenew[1], STDOUT);
-			close(pipenew[1]);
-		}
-		if (builtin(cmd, env))
-			exit(0);
-		else
-		{
-			path = pathfinder(cmd->args[0]);
-			if (path == NULL)
-				exit(1);
-			envp = arrayize(env);
-			if (access(path, X_OK) != 0)
-				exit(2);
-			if (execve(path, cmd->args, envp) == -1)
-				perror("minishell");
-			exit(1);
-		}
-	}
+		child(cmd, pipenew, pipeold, env);
 	else
 	{
-		if (cmd->prev)
-		{
-			close(pipeold[0]);
-			close(pipeold[1]);
-		}
-		if (cmd->next)
-		{
-			pipeold[0] = pipenew[0];
-			pipeold[1] = pipenew[1];
-		}
+		endpipe(cmd, pipenew, pipeold);
 		wait(NULL);
 	}
 	return (0);

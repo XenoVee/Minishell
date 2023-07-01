@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:40:12 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/29 19:37:30 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/30 15:32:22 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_dllist	*env;
 	t_commands	*cmd;
+
 	// t_commands	*cmd2;
 	// t_commands	*cmd3;
-
 	// atexit(leaks);
 	env = envcpy(envp);
 	cmd = cmdmakecat();
