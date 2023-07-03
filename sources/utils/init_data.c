@@ -6,15 +6,13 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/19 20:42:45 by Owen          #+#    #+#                 */
-/*   Updated: 2023/06/30 01:10:09 by Owen          ########   odam.nl         */
+/*   Updated: 2023/07/03 15:51:03 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "error.h"
 #include "structs.h"
-
-int	g_exit_code;
 
 void	init_data_fd(t_commands *cmd)
 {

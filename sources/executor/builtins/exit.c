@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/29 13:54:42 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/29 17:50:32 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/29 18:56:45 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	bi_exit(t_commands *cmd)
 	}
 	else if (cmd->args[2] != NULL)
 	{
-		exec_error("exit: ", "too many arguments\n");
+		ft_putstr_fd("minishell: exit: ", STDERR);
+		ft_putstr_fd("too many arguments\n", STDERR);
 		return ;
 	}
 	g_exit_code = ft_atoi(cmd->args[1]);

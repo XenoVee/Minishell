@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/30 17:07:42 by Owen          ########   odam.nl          #
+#    Updated: 2023/07/03 15:46:57 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ BUILTIN_DIR = builtins/
 BUILTIN_DF = $(addprefix $(BUILTIN_DIR), $(BUILTIN_FILES))
 
 #executor files
-EXECUTOR_FILES = $(BUILTIN_DF) executor.c pathfinder.c
+EXECUTOR_FILES = $(BUILTIN_DF) executor.c executor_utils.c redirect.c
 EXECUTOR_DIR = executor/
 EXECUTOR_DF = $(addprefix $(EXECUTOR_DIR), $(EXECUTOR_FILES))
 
@@ -93,13 +93,12 @@ ENDING_DIR = ending/
 ENDING_DF =$(addprefix $(ENDING_DIR), $(ENDING_FILES))
 
 SOURCES_DIR = sources/
-FILES =	$(MAIN_DF) $(LEXER_DF) $(EXPANDER_DF) $(PARSING_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
-#FILES =	$(MAIN_DF) $(LEXER_DF) $(EXPANDER_DF) $(PARSING_DF) $(EXECUTOR_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
+# FILES =	$(MAIN_DF) $(LEXER_DF) $(EXPANDER_DF) $(PARSING_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
+FILES =	$(MAIN_DF) $(LEXER_DF) $(EXPANDER_DF) $(PARSING_DF) $(EXECUTOR_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
-#INCLUDES = includes -I/Users/rmaes/.brew/opt/readline/include
-MAC_INCLUDES = includes -I/opt/homebrew/opt/readline/include
-
+INCLUDES = includes -I/Users/rmaes/.brew/opt/readline/include
+# MAC_INCLUDES = includes -I/opt/homebrew/opt/readline/include
 OBJECTS_DIR = objects/
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(FILES:.c=.o))
 
@@ -119,8 +118,8 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(LIST)
 	@echo "compiling: $(YELLOW)creating executable$(DEFAULT)"
-	@$(CC) -o $@ $^ -lreadline -L/opt/homebrew/opt/readline/lib
-#	@$(CC) -o $@ $^ -lreadline -L/Users/rmaes/.brew/opt/readline/lib
+#	 @$(CC) -o $@ $^ -lreadline -L/opt/homebrew/opt/readline/lib
+	@$(CC) -o $@ $^ -lreadline -L/Users/rmaes/.brew/opt/readline/lib
 	@echo "$(GREEN)$@ successfully compiled!$(DEFAULT)"
 
 $(OBJECTS_DIR):

@@ -6,7 +6,7 @@
 /*   By: ohearn <ohearn@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 17:43:14 by ohearn        #+#    #+#                 */
-/*   Updated: 2023/06/27 15:52:28 by Owen          ########   odam.nl         */
+/*   Updated: 2023/06/29 18:54:47 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ void		*null_check(void *ptr);
 /*enviroment*/
 
 /*env*/
-
 
 #endif

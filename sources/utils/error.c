@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 16:50:47 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/30 01:07:24 by Owen          ########   odam.nl         */
+/*   Updated: 2023/07/03 15:51:00 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+void	error(char *errmsg)
+{
+	ft_putstr_fd("Error\n", 2);
+	if (errno == 0)
+		ft_putendl_fd(errmsg, 2);
+	else
+		perror(errmsg);
+	exit(EXIT_FAILURE);
+}
+
 static bool	need_quotes(char *cmd)
 {
 	if (ft_strncmp(cmd, "unset", 6) == 0 || ft_strncmp(cmd, "export", 7) == 0)
@@ -23,7 +33,7 @@ static bool	need_quotes(char *cmd)
 	return (false);
 }
 
-int		cmd_err_msg(char *command, char *info, char *msg, int err)
+int	cmd_err_msg(char *command, char *info, char *msg, int err)
 {
 	char	*err_msg;
 	bool	quotes;

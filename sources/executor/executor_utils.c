@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   pathfinder.c                                       :+:    :+:            */
+/*   executor_utils.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/02 18:50:31 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/05/05 14:46:09 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/06/30 15:22:27 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <errno.h>
+
+size_t	safestrlen(char *s)
+{
+	int	i;
+
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i++])
+		;
+	return (i);
+}
 
 char	*pathfinder(char *find)
 {
@@ -40,4 +52,33 @@ char	*pathfinder(char *find)
 	}
 	perror("minishell");
 	exit(1);
+}
+
+char	**arrayize(t_dllist *env)
+{
+	char	**array;
+	int		i;
+	int		len[2];
+
+	i = 0;
+	array = malloc(sizeof(char *) * (env->listlen + 1));
+	array[env->listlen] = NULL;
+	env->current = env->head;
+	if (!array)
+		error(ERR_MALLOC);
+	while (env->current != env->head || i == 0)
+	{
+		len[NAME] = ft_strlen(env->current->name);
+		len[VALUE] = safestrlen(env->current->value);
+		array[i] = malloc(sizeof(char) * (len[NAME] + len[VALUE] + 2));
+		ft_strlcpy(array[i], env->current->name, len[NAME] + 1);
+		if (len[VALUE])
+			ft_strlcat(array[i], "=", len[NAME] + 2);
+		if (len[VALUE])
+			ft_strlcat(array[i],
+				env->current->value, len[NAME] + len[VALUE] + 2);
+		i++;
+		env->current = env->current->next;
+	}
+	return (array);
 }
