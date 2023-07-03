@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/06/30 15:28:48 by rmaes         ########   odam.nl          #
+#    Updated: 2023/07/03 15:34:59 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,10 +96,12 @@ ENDING_DIR = ending/
 ENDING_DF =$(addprefix $(ENDING_DIR), $(ENDING_FILES))
 
 SOURCES_DIR = sources/
+# FILES =	$(MAIN_DF) $(LEXER_DF) $(EXPANDER_DF) $(PARSING_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
 FILES =	$(MAIN_DF) $(LEXER_DF) $(EXPANDER_DF) $(PARSING_DF) $(EXECUTOR_DF) $(UTILS_DF) $(SIGNALS_DF) $(ENVP_DF) $(ENDING_DF)
 SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
-INCLUDES = includes
+INCLUDES = includes -I/Users/rmaes/.brew/opt/readline/include
+# MAC_INCLUDES = includes -I/opt/homebrew/opt/readline/include
 
 OBJECTS_DIR = objects/
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(FILES:.c=.o))
@@ -120,7 +122,8 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT) $(LIST)
 	@echo "compiling: $(YELLOW)creating executable$(DEFAULT)"
-	@$(CC) -o $@ $^ -l readline
+#	 @$(CC) -o $@ $^ -lreadline -L/opt/homebrew/opt/readline/lib
+	@$(CC) -o $@ $^ -lreadline -L/Users/rmaes/.brew/opt/readline/lib
 	@echo "$(GREEN)$@ successfully compiled!$(DEFAULT)"
 
 $(OBJECTS_DIR):
