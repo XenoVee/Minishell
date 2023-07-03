@@ -6,10 +6,11 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/24 21:00:58 by Owen          #+#    #+#                 */
-/*   Updated: 2023/07/03 15:52:22 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/07/03 16:18:00 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "error.h"
 #include "expander.h"
 #include "minishell.h"
 #include "cleanup.h"

@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/25 13:21:34 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/29 17:46:35 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/07/03 16:38:52 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static void	setpwd(t_dllist *env, char *n)
 	}
 }
 
-	// g_exit_code = 1;
 static int	ereturn(char *rel)
 {
 	perror("minishell: cd");

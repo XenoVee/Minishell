@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/07/03 15:48:15 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/07/03 16:51:42 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	builtin(t_commands *cmd, t_dllist *env)
 	int	fd;
 
 	fd = 2;
-	if (!cmd->next && !cmd->prev && cmd->fd_data->fd_out != -1)
+	if (!cmd->next && !cmd->prev && cmd->fd_data && cmd->fd_data->fd_out != -1)
 		fd = cmd->fd_data->fd_out;
 	if (!ft_strcmp("echo", cmd->args[0]))
 		bi_echo(cmd, fd);
@@ -49,6 +49,7 @@ static void	child(t_commands *cmd, int *pipenew, int *pipeold, t_dllist *env)
 	char	*path;
 	char	**envp;
 
+	printf("hi\n");
 	startpipe(cmd, pipenew, pipeold);
 	if (builtin(cmd, env))
 		exit(0);

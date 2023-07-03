@@ -6,13 +6,14 @@
 /*   By: Owen <Owen@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/23 14:54:15 by Owen          #+#    #+#                 */
-/*   Updated: 2023/07/03 15:48:47 by rmaes         ########   odam.nl         */
+/*   Updated: 2023/07/03 16:43:19 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 #include "expander.h"
 #include "parsing.h"
+#include "executor.h"
 #include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -88,6 +89,6 @@ bool	parse_input_str(t_data *data)
 		temp = temp->next;
 	}
 	parse_data(data, data->token);
-	testing_purposes(data->cmd);
+	executor(data->cmd, data->env);
 	return (true);
 }

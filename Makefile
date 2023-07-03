@@ -6,7 +6,7 @@
 #    By: rmaes <rmaes@student.codam.nl>               +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/06/13 17:19:52 by rmaes         #+#    #+#                  #
-#    Updated: 2023/07/03 15:46:57 by rmaes         ########   odam.nl          #
+#    Updated: 2023/07/03 16:14:25 by rmaes         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ GREEN = \033[0;92m
 YELLOW = \033[0;93m
 
 #main files
-MAIN_FILES = main.c 
 MAIN_FILES = main.c 
 MAIN_DIR = main/
 MAIN_DF = $(addprefix $(MAIN_DIR), $(MAIN_FILES))
@@ -99,6 +98,7 @@ SOURCES = $(addprefix $(SOURCES_DIR), $(FILES))
 
 INCLUDES = includes -I/Users/rmaes/.brew/opt/readline/include
 # MAC_INCLUDES = includes -I/opt/homebrew/opt/readline/include
+
 OBJECTS_DIR = objects/
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(FILES:.c=.o))
 
@@ -134,7 +134,7 @@ $(LIST):
 $(OBJECTS_DIR)%.o: $(SOURCES_DIR)%.c 
 	@mkdir -p $(@D)
 	@echo "compiling: $(YELLOW)$@$(DEFAULT)"
-	@$(CC) -c $(CFLAGS) -I $(MAC_INCLUDES) -o $@ $^
+	@$(CC) -c $(CFLAGS) -I $(INCLUDES) -o $@ $^
 
 clean:
 	@echo "cleaning:  $(RED)removing object files$(DEFAULT)"
