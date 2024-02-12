@@ -6,13 +6,16 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/30 15:25:50 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/30 15:28:08 by rmaes         ########   odam.nl         */
+/*   Updated: 2024/02/12 11:52:21 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 #include "executor.h"
+// I feel like I close pipes too often, might need changes, have to test
+// especially with the in/outfile handlers
 
+// runs in parent process
 void	endpipe(t_commands *cmd, int *pipenew, int *pipeold)
 {
 	if (cmd->prev)
@@ -27,6 +30,9 @@ void	endpipe(t_commands *cmd, int *pipenew, int *pipeold)
 	}
 }
 
+// runs in child process
+// opens the pipes using dup(2);
+// pipe: array of two file descriptors. pipe[0] is read, pipe[1] is write
 void	startpipe(t_commands *cmd, int *pipenew, int *pipeold)
 {
 	if (cmd->fd_data->fd_in != -1)

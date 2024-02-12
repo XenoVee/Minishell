@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/05 15:04:06 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/28 15:47:49 by rmaes         ########   odam.nl         */
+/*   Updated: 2024/02/12 11:57:43 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_dlnode	*ft_getenvnode(t_dllist *env, char *var)
 	return (node);
 }
 
+// returns ptr to the value of ENV variable with given name from the passed list
 char	*ft_getenv(t_dllist *env, char *var)
 {
 	t_dlnode	*node;

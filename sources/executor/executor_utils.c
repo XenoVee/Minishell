@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/02 18:50:31 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/06/30 15:22:27 by rmaes         ########   odam.nl         */
+/*   Updated: 2024/02/12 11:00:07 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <errno.h>
 
+// doesnt segfault when given NULL
 size_t	safestrlen(char *s)
 {
 	int	i;
@@ -28,6 +29,7 @@ size_t	safestrlen(char *s)
 	return (i);
 }
 
+// checks if a given file exists
 char	*pathfinder(char *find)
 {
 	char	*path;
@@ -54,6 +56,8 @@ char	*pathfinder(char *find)
 	exit(1);
 }
 
+// I handle the env as a list because it is many many times easier to edit.
+// some functions (such a execve()) need it as an array, so this turns it back.
 char	**arrayize(t_dllist *env)
 {
 	char	**array;

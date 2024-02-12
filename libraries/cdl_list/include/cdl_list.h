@@ -6,7 +6,7 @@
 /*   By: athena <athena@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/12/13 13:05:43 by athena        #+#    #+#                 */
-/*   Updated: 2023/06/19 15:13:26 by rmaes         ########   odam.nl         */
+/*   Updated: 2024/02/12 11:58:56 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 // A singular node in the list. 
 // Prev and Next point to the previous and next nodes in the list respectively
-// Content is a pointer to the node's content
+// each node has a name and a value
 typedef struct s_dlnode
 {
 	struct s_dlnode	*prev;

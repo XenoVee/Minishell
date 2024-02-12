@@ -6,7 +6,7 @@
 /*   By: rmaes <rmaes@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/24 15:06:32 by rmaes         #+#    #+#                 */
-/*   Updated: 2023/07/03 16:51:42 by rmaes         ########   odam.nl         */
+/*   Updated: 2024/02/12 11:32:14 by rmaes         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <signal.h>
 #include <stdio.h>
 
+// if/elseifs to check if the command is a builtin. A builtin cannot be piped
 static int	builtin(t_commands *cmd, t_dllist *env)
 {
 	int	fd;
@@ -44,12 +45,15 @@ static int	builtin(t_commands *cmd, t_dllist *env)
 	return (1);
 }
 
+// the child. Minishell works using execve(),
+// which *replaces* the calling process with
+// an executable passed as argument.
+// if you were to call it in the main process, it would close minishell.
 static void	child(t_commands *cmd, int *pipenew, int *pipeold, t_dllist *env)
 {
 	char	*path;
 	char	**envp;
 
-	printf("hi\n");
 	startpipe(cmd, pipenew, pipeold);
 	if (builtin(cmd, env))
 		exit(0);
@@ -67,6 +71,7 @@ static void	child(t_commands *cmd, int *pipenew, int *pipeold, t_dllist *env)
 	}
 }
 
+// setup pipes, and create a child
 static int	execute(t_commands *cmd, t_dllist *env, int *pipenew, int *pipeold)
 {
 	int		pid;
@@ -84,6 +89,9 @@ static int	execute(t_commands *cmd, t_dllist *env, int *pipenew, int *pipeold)
 	return (0);
 }
 
+// The executor runs with two arguments: a 'commands' struct list that contains
+// all the information about the commands it is to run,
+// and a linked list 'env' containing all the env variables.
 int	executor(t_commands *cmd, t_dllist *env)
 {
 	int	pipenew[2];
